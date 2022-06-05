@@ -11,17 +11,37 @@ Museums@SG aims to ride on this trend to promote awareness of Singapore's arts a
 
 Link to demo : [Insert link here](https:///www.example.com)
 
+---
 
 ## UI/UX
 
 Link to user persona study can be found [here](https://miro.com/app/board/uXjVOvARG74=/?share_link_id=463975420245).
 
+### User Goals
+
+The users of Museums@SG are mostly students and young adults who have an interest for the arts. The aim of users is to be able to access information about all the museums in Singapore with ease. Additionally, users would also want to get informed advisory on the directions, nearby amenities and weather conditions around the museum locations. 
+
+
+### Organisational Goals
+
+Organisations such as the National Arts Council (NAC) aim to promote awareness for the arts and culture in Singapore and would want a platform that can provide information about all the museums in Singapore and encourage participation in arts events. 
+
+---
+
 ## Features
+
+---
 
 ## Technologies Used
 
+---
+
 ## Testing
 
+---
+
 ## Deployment
+
+---
 
 ## Credits and Acknowledgement
