@@ -2,7 +2,7 @@
 
 ![Screenshots of Museums@SG's homepage](image.jpg)
 
-Recent growing interest in the arts and culture of Singapore among young Singaporeans has seen events such as the Singapore Arts Week (SAW) and unique exhibitions like the "Marvel Studios : 10 Years of Heroes" sprung up over the years. 
+Recent growing interest in the arts and culture of Singapore among young Singaporeans has seen events such as the Singapore Arts Week (SAW) and unique exhibitions like the *"Marvel Studios : 10 Years of Heroes"* sprung up over the years. 
 
 Museums@SG aims to ride on this trend to promote awareness of Singapore's arts and culture among Singaporeans, especially the younger generations. While the Singapore Art Museum and the Singapore Art Science Museum are few of the well-known and most frequented museums, little is known about the other 50+ museums dotted around Singapore.
 
@@ -33,6 +33,11 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 ---
 
 ## Technologies Used
+
+- HTML
+- CSS
+- Bootstrap 5
+- JavaScript
 
 ---
 
