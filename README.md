@@ -14,6 +14,8 @@ Link to demo : [Insert link here](https:///www.example.com)
 
 ## UI/UX
 
+Link to user persona study can be found [here](https://miro.com/app/board/uXjVOvARG74=/?share_link_id=463975420245).
+
 ## Features
 
 ## Technologies Used
