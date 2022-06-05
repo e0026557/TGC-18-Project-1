@@ -26,6 +26,12 @@ The users of Museums@SG are mostly students and young adults who have an interes
 
 Organisations such as the National Arts Council (NAC) aim to promote awareness for the arts and culture in Singapore and would want a platform that can provide information about all the museums in Singapore and encourage participation in arts events. 
 
+
+### Structure and Skeleton
+
+[Sitemap](https://miro.com/app/board/uXjVOvH0src=/?share_link_id=918144273258)
+
+
 ---
 
 ## Features
