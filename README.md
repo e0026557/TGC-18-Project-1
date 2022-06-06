@@ -44,6 +44,10 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 - CSS
 - Bootstrap 5
 - JavaScript
+- Axios
+- LeafletJS
+- Leaflet.markercluster
+- Leaflet.encoded
 
 ---
 
