@@ -31,6 +31,7 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 [Sitemap](https://miro.com/app/board/uXjVOvH0src=/?share_link_id=918144273258)
 
+[Wireframes](assets/wireframes/wireframes.pdf)
 
 ---
 
