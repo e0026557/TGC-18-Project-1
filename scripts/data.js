@@ -1,5 +1,6 @@
 // --- Set up APIs ---
 // API keys
+const MAPBOX_API_KEY = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
 const NAVIGATION_API_KEY = 'DTlb4SGIUXbhU3D12zA1iAGXFiZna7BK';
 const WEATHER_API_KEY = '891b31000be51f52585183d6ffdb3dc1';
 const FOURSQUARE_API_KEY = 'fsq3yqoRulXjtzuJ8AHH4ZXqd+AlIXUfLNFhMGfN8kOOLRk=';
@@ -9,7 +10,10 @@ const NAVIGATION_API_BASE_URL = 'https://tih-api.stb.gov.sg/map/v1.1/experientia
 const WEATHER_API_BASE_URL = 'https://api.openweathermap.org/data/2.5/onecall';
 const FOURSQUARE_API_BASE_URL = 'https://api.foursquare.com/v3/places/search';
 
-// Functions to build API URLs for each API
+// Museum data's relative path
+const MUSEUM_URL = '../data/museums.geojson';
+
+// Functions to get data from each API
 async function getNavigation(mode, origin, destination) {
     let url = NAVIGATION_API_BASE_URL + `/${mode}`;
     let response = await axios.get(url, {
@@ -57,6 +61,11 @@ async function getNearby(latlon, radius, category) {
     return response.data;
 }
 
+async function getMuseums() {
+    let response = await axios.get(MUSEUM_URL);
+    return response.data;
+}
+
 // Functions to test APIs
 async function testNavigationAPI() {
     let data = await getNavigation('default', '1.3548,103.7763', '1.3387,103.7787');
@@ -75,3 +84,9 @@ async function testFoursquareAPI() {
     console.log(data);
 }
 // testFoursquareAPI();
+
+async function testMuseum() {
+    let data = await getMuseums();
+    console.log(data);
+}
+// testMuseum();
