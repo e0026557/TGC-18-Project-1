@@ -1,3 +1,7 @@
+// --- Global ---
+// Global variables for accessing museum information
+const MUSEUMS = [];
+
 // --- Functions ---
 // Function to create Leaflet map
 // Note: mapId is the ID of the element containing the map (without '#')
@@ -57,9 +61,7 @@ function setStartPoint(lat, lon, option) {
 }
 
 
-// --- Rendering Leaflet map
-// Global variables for accessing museum information
-const MUSEUMS = [];
+// --- Rendering Leaflet map ---
 
 // Create Leaflet map
 let centerPoint = [1.3521, 103.8198];
@@ -70,9 +72,62 @@ let markerCluster = L.markerClusterGroup();
 markerCluster.addTo(map);
 
 // Render museum markers
+// Set up marker icons
+const museumIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-museum.png',
+
+    iconSize: [40,40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
+const parkingIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-parking.png',
+
+    iconSize: [40,40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
+const busIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-bus.png',
+
+    iconSize: [40,40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
+const diningIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-dining.png',
+
+    iconSize: [40,40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
+const startIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-start.png',
+
+    iconSize: [40,40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
+const endIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-end.png',
+
+    iconSize: [40,40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
 (async function() {
     let museums = await getMuseums();
     let museumLayer = L.geoJson(museums, {
+        'pointToLayer': function(feature, latlng) {
+            return L.marker(latlng, {icon: museumIcon});
+        },
+
         'onEachFeature': function(feature, layer) {
             let museum = getMuseumInfo(feature.properties.Description)
             let museumCoordinates = feature.geometry.coordinates.slice(0,2);
@@ -95,3 +150,5 @@ markerCluster.addTo(map);
     museumLayer.addTo(markerCluster);
 
 })();
+
+
