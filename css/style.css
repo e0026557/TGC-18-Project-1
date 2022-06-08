@@ -1,0 +1,4 @@
+/* Define height for map container */
+#map {
+    height: 100vh;
+}
