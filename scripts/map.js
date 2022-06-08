@@ -1,6 +1,8 @@
 // --- Global ---
 // Global variables for accessing museum information
 const MUSEUMS = [];
+let startCoordinates = null;
+let endCoordinates = null;
 
 
 // --- Rendering Leaflet map ---
@@ -33,8 +35,8 @@ markerCluster.addTo(map);
                 <h3 class="museum-name">${museum.name}</h3>
                 <p class="museum-description">${museum.description}</p>
                 <address class="museum-address">${museum.address}</address>
-                <button class="btn-start" onclick="setStartPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
-                <button class="btn-end" onclick="setStartPoint(${museumCoordinates[0]}, ${museumCoordinates[1]}, 'end')">Set as end point</button>
+                <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
+                <button class="btn-end" onclick="setNavigationPoint(${museumCoordinates[0]}, ${museumCoordinates[1]}, 'end')">Set as end point</button>
                 ${museumCoordinates}
             `);
         }
@@ -43,5 +45,4 @@ markerCluster.addTo(map);
     museumLayer.addTo(markerCluster);
 
 })();
-
 

@@ -42,6 +42,7 @@ function getMuseumInfo(html) {
     let name = columns[9].innerHTML;
     let imageUrl = columns[10].innerHTML;
 
+    // Return museum object
     return {
         'name': name,
         'description': description,
@@ -52,8 +53,16 @@ function getMuseumInfo(html) {
 
 // Function for buttons to set start/end points
 // options: 'start' or 'end'
-function setStartPoint(lat, lon, option) {
-    console.log(lat, lon, option);
+function setNavigationPoint(lat, lon, option) {
+    let coordinates = [lat, lon];
+    if (option == 'start') {
+        startCoordinates = coordinates;
+    }
+    else {
+        endCoordinates = coordinates;
+    }
+
+    console.log(`Start: ${startCoordinates}, End: ${endCoordinates}`);
 }
 
 
