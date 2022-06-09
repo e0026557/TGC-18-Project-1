@@ -5,7 +5,7 @@ function createMap(lat, lon, mapId) {
     // Initialize map
     const map = L.map(mapId);
     let defaultCoord = [lat, lon]; // center point
-    let defaultZoom = 12;
+    let defaultZoom = 13;
 
     map.setView(defaultCoord, defaultZoom); // Set center point
 
@@ -101,7 +101,7 @@ function displayMuseumResults() {
 
     // Iterate through MUSEUM array to check if query matches 
     for (let museum of MUSEUMS) {
-        if (museum.name.toLowerCase().includes(query)) {
+        if (museum.name.toLowerCase().includes(query) && query != '') {
             // Update state variable
             resultsFound = true;
 
@@ -127,6 +127,7 @@ function displayMuseumResults() {
                 markerCluster.zoomToShowLayer(museum.layer, function () {
                     museum.layer.openPopup();
                 })
+                
             });
 
             resultUlElement.appendChild(resultLiElement);

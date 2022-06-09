@@ -1,4 +1,10 @@
 /* --- General --- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .invisible {
     display: none;
 }
@@ -33,9 +39,20 @@
 
 /* Console drawer */
 .console--drawer {
-    max-height: 200px;
+    max-height: 30vh;
     overflow-y: scroll;
     
     display: flex;
     flex-direction: column;
+}
+
+/* Console drawer toggle button */
+#btnToggleSearchDrawer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnToggleSearchDrawer i {
+    font-size: 10px;
 }
