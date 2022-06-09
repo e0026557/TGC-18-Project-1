@@ -139,6 +139,10 @@ function displayMuseumResult() {
     let divSearchResult = document.querySelector('#searchResult');
     divSearchResult.innerHTML = '';
 
+    // Clear autocomplete search results (if any)
+    let autocompleteBox = document.querySelector('#autocomplete-box');
+    autocompleteBox.innerHTML = '';
+
     let resultFound = false; // State variable to check if there is search result or not
 
     // Iterate through MUSEUM array to check if query matches 
@@ -167,7 +171,7 @@ function displayMuseumResult() {
 
     // Return a message if query does not match all museum names
     if (!resultFound) {
-        divSearchResult.innerHTML = '<li>No results found.</li>';
+        divSearchResult.innerHTML = 'No results found.';
     }
 
     // Update state of search drawer and state of toggle button

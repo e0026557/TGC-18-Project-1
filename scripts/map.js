@@ -27,10 +27,15 @@ document.querySelector('#btnSearch').addEventListener('click', function () {
     displayMuseumResult();
 });
 
-// Search bar - autocomplete feature
+// Search bar - autocomplete feature & 'enter' to search feature
 let searchMuseumInput = document.querySelector('#txtSearch');
-searchMuseumInput.addEventListener('keyup', function() {
-    displayAutocompleteResults();
+searchMuseumInput.addEventListener('keyup', function (event) {
+    if (event.key == 'Enter') {
+        displayMuseumResult();
+    }
+    else {
+        displayAutocompleteResults();
+    }
 });
 
 
