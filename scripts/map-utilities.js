@@ -178,7 +178,7 @@ function displayMuseumResult() {
     // -> Make search results tab to visible 
     let searchDrawer = document.querySelector('.console--drawer');
     let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
-    let searchResultsTab = document.querySelector('.tab-searchResult');
+    let searchResultsTab = document.querySelector('.tab--search-result');
 
     if (searchResultsTab.classList.contains('invisible')) {
         searchResultsTab.classList.remove('invisible');
