@@ -158,11 +158,11 @@ function displayMuseumResults() {
 function changeToggleBtnState(button, drawer) {
     // Check state of drawer
     if (drawer.dataset.expand == 'true') {
-        button.innerHTML = 'Close';
+        button.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
         drawer.dataset.expand = 'false';
     }
     else {
-        button.innerHTML = 'Open';
+        button.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
         drawer.dataset.expand = 'true';
     }
 }
