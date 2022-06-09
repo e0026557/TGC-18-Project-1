@@ -47,16 +47,17 @@
             </div>
             
             <!-- Expandable drawer for search bar console -->
-            <div class="console--drawer" data-expand="true">
-                <div id="autocomplete-box"></div>
-
-                <div class="tab tab-searchResult">
-                    <div id="searchResult"></div>
+            <div class="container-console--drawer">
+                <div class="console--drawer" data-expand="true">
+                    <div class="tab tab-searchResult">
+                        <div id="searchResult"></div>
+                    </div>
+                    <div class="tab tab-Navigation"></div>
                 </div>
-                <div class="tab tab-Navigation"></div>
+                <!-- Button to toggle drawer -->
+                <button id="btnToggleSearchDrawer"><i class="fa-solid fa-chevron-down"></i></button>
+                <div id="autocomplete-box"></div>
             </div>
-            <!-- Button to toggle drawer -->
-            <button id="btnToggleSearchDrawer"><i class="fa-solid fa-chevron-down"></i></button>
         </div>
 
         <!-- Map -->

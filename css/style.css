@@ -37,6 +37,14 @@
     flex: 1;
 }
 
+
+/* --- Console Drawer Components --- */
+.container-console--drawer {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
 /* Console drawer */
 .console--drawer {
     max-height: 30vh;
@@ -46,6 +54,19 @@
     flex-direction: column;
 }
 
+/* Autocomplete display box */
+#autocomplete-box {
+    background-color: aliceblue;
+    top: 0;
+    left: 0;
+    max-height: 30vh;
+    width: 100%;
+    overflow-y: scroll;
+
+
+    position: absolute;
+}
+
 /* Console drawer toggle button */
 #btnToggleSearchDrawer {
     display: flex;
@@ -53,6 +74,7 @@
     align-items: center;
 }
 
+/* Console drawer toggle button icon */
 #btnToggleSearchDrawer i {
     font-size: 10px;
 }
