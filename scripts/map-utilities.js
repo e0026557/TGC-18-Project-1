@@ -117,6 +117,10 @@ function displayMuseumResults() {
                 // Clear previous search results
                 divSearchResult.innerHTML = '';
 
+                // Update states of drawer and toggle button
+                searchDrawer.dataset.expand = 'false';
+                changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
+
                 // Fly to selected museum marker
                 map.flyTo(museum.coordinates, 18);
                 // Tell markerCluster to show selected museum marker and open popup
