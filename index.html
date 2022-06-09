@@ -35,17 +35,19 @@
     <!-- Main content of webpage -->
     <main>
         <!-- Search bar console -->
-        <div class="container-search">
-            <input type="text" id="txtSearch" placeholder="Search Museum@SG">
-            <button id="btnSearch">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button id="btnNavigation">
-                <i class="fa-solid fa-diamond-turn-right"></i>
-            </button>
+        <div class="container-console">
+            <div class="console--search-bar">
+                <input type="text" id="txtSearch" placeholder="Search Museum@SG">
+                <button id="btnSearch">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button id="btnNavigation">
+                    <i class="fa-solid fa-diamond-turn-right"></i>
+                </button>
+            </div>
 
             <!-- Expandable drawer for search bar console -->
-            <div class="container-search--drawer" data-expand="true">
+            <div class="console--drawer" data-expand="true">
                 <div class="tab tab-searchResult">
                     <div id="searchResult"></div>
                 </div>

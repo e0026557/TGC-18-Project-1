@@ -41,8 +41,11 @@ async function renderAllMuseumMarkers() {
             <address class="museum-address">${museum.address}</address>
             <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
             <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
-            ${museum.coordinates}
             `);
+
+            layer.addEventListener('click', function () {
+                map.flyTo(layer.getLatLng(), 18);
+            })
 
             // Populate global MUSEUM variable with museum object
             MUSEUMS.push(museum);
@@ -84,7 +87,8 @@ function getMuseumInfo(html) {
 // Function to display search results for museums
 function displayMuseumResults() {
     // Extract search query
-    let query = document.querySelector('#txtSearch').value.toLowerCase();
+    let searchInput = document.querySelector('#txtSearch');
+    let query = searchInput.value.toLowerCase();
 
     // Clear previous search results
     let divSearchResult = document.querySelector('#searchResult');
@@ -92,6 +96,7 @@ function displayMuseumResults() {
 
     // Create Ul element to store search results as list
     let resultUlElement = document.createElement('ul');
+
     let resultsFound = false; // State variable to check if there are search results or not
 
     // Iterate through MUSEUM array to check if query matches 
@@ -102,12 +107,20 @@ function displayMuseumResults() {
 
             // Create result li element
             let resultLiElement = document.createElement('li');
+            resultLiElement.classList.add('search-result');
             resultLiElement.innerHTML = museum.name;
+
             resultLiElement.addEventListener('click', function () {
+                // Populate search input field selected result
+                searchInput.value = museum.name;
+
+                // Clear previous search results
+                divSearchResult.innerHTML = '';
+
                 // Fly to selected museum marker
                 map.flyTo(museum.coordinates, 18);
                 // Tell markerCluster to show selected museum marker and open popup
-                markerCluster.zoomToShowLayer(museum.layer, function(){
+                markerCluster.zoomToShowLayer(museum.layer, function () {
                     museum.layer.openPopup();
                 })
             });
@@ -125,7 +138,7 @@ function displayMuseumResults() {
 
     // Update state of search drawer and state of toggle button
     // -> Make search results tab to visible 
-    let searchDrawer = document.querySelector('.container-search--drawer');
+    let searchDrawer = document.querySelector('.console--drawer');
     let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
     let searchResultsTab = document.querySelector('.tab-searchResult');
 
@@ -138,7 +151,7 @@ function displayMuseumResults() {
         searchDrawer.dataset.expand = 'true';
         changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
     }
-    
+
 }
 
 // Function to toggle state of toggle buttons for drawers
@@ -174,47 +187,47 @@ function setNavigationPoint(lat, lon, option) {
 const museumIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-museum.png',
 
-    iconSize: [40,40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
 
 const parkingIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-parking.png',
 
-    iconSize: [40,40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
 
 const busIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-bus.png',
 
-    iconSize: [40,40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
 
 const diningIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-dining.png',
 
-    iconSize: [40,40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
 
 const startIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-start.png',
 
-    iconSize: [40,40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
 
 const endIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-end.png',
 
-    iconSize: [40,40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });

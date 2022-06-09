@@ -25,20 +25,27 @@ document.querySelector('#btnSearch').addEventListener('click', function () {
     displayMuseumResults();
 });
 
-// Detect enter key pressed in search input field
+// Detect 'enter' key pressed in search input field
+// let searchMuseumInput = document.querySelector('#txtSearch');
+// searchMuseumInput.addEventListener('keyup', function(event) {
+//     if (event.key == 'Enter') {
+//         displayMuseumResults();
+//     }
+// });
+
 let searchMuseumInput = document.querySelector('#txtSearch');
-searchMuseumInput.addEventListener('keyup', function(event) {
-    if (event.key == 'Enter') {
-        displayMuseumResults();
-    }
+searchMuseumInput.addEventListener('keyup', function() {
+    displayMuseumResults();
 });
 
 
 // Toggle expand/collapse of search bar drawer component
 let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
-btnToggleSearchDrawer.addEventListener('click', function() {
+btnToggleSearchDrawer.addEventListener('click', function () {
     // Check state of drawer
-    let searchDrawer = document.querySelector('.container-search--drawer');
+    let searchDrawer = document.querySelector('.console--drawer');
+
+    // Change state of toggle button of search drawer
     changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
 
     // Select all tabs in drawer
