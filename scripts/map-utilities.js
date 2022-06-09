@@ -22,6 +22,36 @@ function createMap(lat, lon, mapId) {
     return map;
 }
 
+// Function to render all museum markers
+async function renderAllMuseumMarkers() {
+    let museums = await getMuseums();
+    let museumLayer = L.geoJson(museums, {
+        'pointToLayer': function (feature, latlng) {
+            return L.marker(latlng, { icon: museumIcon });
+        },
+        'onEachFeature': function (feature, layer) {
+            // Create a museum object to store all museum properties
+            let museum = getMuseumInfo(feature.properties.Description);
+            museum['coordinates'] = feature.geometry.coordinates.slice(0, 2).reverse(); // To get [lat,lon] instead of [lon,lat]
+            museum['layer'] = layer; // Store the museum marker
+
+            layer.bindPopup(`
+            <h3 class="museum-name">${museum.name}</h3>
+            <p class="museum-description">${museum.description}</p>
+            <address class="museum-address">${museum.address}</address>
+            <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
+            <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
+            ${museum.coordinates}
+            `);
+
+            // Populate global MUSEUM variable with museum object
+            MUSEUMS.push(museum);
+        }
+    });
+    museumLayer.addTo(markerCluster);
+
+};
+
 // Function to extract key information from HTML description in museum geojson feature
 function getMuseumInfo(html) {
     // Create an element to store the HTML description for extraction
@@ -49,6 +79,79 @@ function getMuseumInfo(html) {
         'address': address,
         'imageUrl': imageUrl
     };
+}
+
+// Function to display search results for museums
+function displayMuseumResults() {
+    // Extract search query
+    let query = document.querySelector('#txtSearch').value.toLowerCase();
+
+    // Clear previous search results
+    let divSearchResult = document.querySelector('#searchResult');
+    divSearchResult.innerHTML = '';
+
+    // Create Ul element to store search results as list
+    let resultUlElement = document.createElement('ul');
+    let resultsFound = false; // State variable to check if there are search results or not
+
+    // Iterate through MUSEUM array to check if query matches 
+    for (let museum of MUSEUMS) {
+        if (museum.name.toLowerCase().includes(query)) {
+            // Update state variable
+            resultsFound = true;
+
+            // Create result li element
+            let resultLiElement = document.createElement('li');
+            resultLiElement.innerHTML = museum.name;
+            resultLiElement.addEventListener('click', function () {
+                // Fly to selected museum marker
+                map.flyTo(museum.coordinates, 18);
+                // Tell markerCluster to show selected museum marker and open popup
+                markerCluster.zoomToShowLayer(museum.layer, function(){
+                    museum.layer.openPopup();
+                })
+            });
+
+            resultUlElement.appendChild(resultLiElement);
+        }
+    }
+
+    // Return a message if query does not match all museum names
+    if (!resultsFound) {
+        resultUlElement.innerHTML = '<li>No results found.</li>';
+    }
+
+    divSearchResult.appendChild(resultUlElement);
+
+    // Update state of search drawer and state of toggle button
+    // -> Make search results tab to visible 
+    let searchDrawer = document.querySelector('.container-search--drawer');
+    let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
+    let searchResultsTab = document.querySelector('.tab-searchResult');
+
+    if (searchResultsTab.classList.contains('invisible')) {
+        searchResultsTab.classList.remove('invisible');
+        // Update state of toggle button for search drawer
+        changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
+    }
+    else {
+        searchDrawer.dataset.expand = 'true';
+        changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
+    }
+    
+}
+
+// Function to toggle state of toggle buttons for drawers
+function changeToggleBtnState(button, drawer) {
+    // Check state of drawer
+    if (drawer.dataset.expand == 'true') {
+        button.innerHTML = 'Close';
+        drawer.dataset.expand = 'false';
+    }
+    else {
+        button.innerHTML = 'Open';
+        drawer.dataset.expand = 'true';
+    }
 }
 
 // Function for buttons to set start/end points
