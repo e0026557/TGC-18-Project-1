@@ -94,3 +94,27 @@ document.querySelector('#btnSearch').addEventListener('click', function () {
 
     divSearchResult.appendChild(resultUlElement);
 });
+
+
+// Toggle expand/collapse of search bar drawer component
+let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
+btnToggleSearchDrawer.addEventListener('click', function() {
+    // Check state of drawer
+    let searchDrawer = document.querySelector('.container-search--drawer');
+    if (searchDrawer.dataset.expand == 'true') {
+        btnToggleSearchDrawer.innerHTML = 'Open';
+        searchDrawer.dataset.expand = 'false';
+    }
+    else {
+        btnToggleSearchDrawer.innerHTML = 'Close';
+        searchDrawer.dataset.expand = 'true';
+    }
+
+    // Select all tabs in drawer
+    let tabs = searchDrawer.querySelectorAll('.tab');
+
+    // Toggle visibility of tabs
+    for (let tab of tabs) {
+        tab.classList.toggle('invisible');
+    }
+})

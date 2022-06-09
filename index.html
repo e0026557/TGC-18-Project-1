@@ -34,7 +34,7 @@
 <body>
     <!-- Main content of webpage -->
     <main>
-        <!-- Search bar -->
+        <!-- Search bar console -->
         <div class="container-search">
             <input type="text" id="txtSearch" placeholder="Search Museum@SG">
             <button id="btnSearch">
@@ -43,7 +43,16 @@
             <button id="btnNavigation">
                 <i class="fa-solid fa-diamond-turn-right"></i>
             </button>
-            <div id="searchResult"></div>
+
+            <!-- Expandable drawer for search bar console -->
+            <div class="container-search--drawer" data-expand="false">
+                <div class="tab tab-searchResult">
+                    <div id="searchResult"></div>
+                </div>
+                <div class="tab tab-Navigation"></div>
+            </div>
+            <!-- Button to toggle drawer -->
+            <button id="btnToggleSearchDrawer">Open</button>
         </div>
 
         <!-- Map -->
