@@ -129,62 +129,46 @@ function displayAutocompleteResults() {
 
 }
 
-// Function to display search results for museums
-function displayMuseumResults() {
+// Function to display search result for museums
+function displayMuseumResult() {
     // Extract search query
     let searchInput = document.querySelector('#txtSearch');
     let query = searchInput.value.toLowerCase();
 
-    // Clear previous search results
+    // Clear previous search result
     let divSearchResult = document.querySelector('#searchResult');
     divSearchResult.innerHTML = '';
 
-    // Create Ul element to store search results as list
-    let resultUlElement = document.createElement('ul');
-
-    let resultsFound = false; // State variable to check if there are search results or not
+    let resultFound = false; // State variable to check if there is search result or not
 
     // Iterate through MUSEUM array to check if query matches 
     for (let museum of MUSEUMS) {
-        if (museum.name.toLowerCase().includes(query) && query != '') {
+        if (museum.name.toLowerCase() == query) {
             // Update state variable
-            resultsFound = true;
+            resultFound = true;
 
-            // Create result li element
-            let resultLiElement = document.createElement('li');
-            resultLiElement.classList.add('search-result');
-            resultLiElement.innerHTML = museum.name;
+           divSearchResult.innerHTML = `
+           <h3 class="museum-name">${museum.name}</h3>
+           <p class="museum-description">${museum.description}</p>
+           <address class="museum-address">${museum.address}</address>
+           <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
+           <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
+           `;
 
-            resultLiElement.addEventListener('click', function () {
-                // Populate search input field selected result
-                searchInput.value = museum.name;
+           // Fly to selected museum marker
+           map.flyTo(museum.coordinates, 18);
+           // Tell markerCluster to show selected museum marker and open popup
+           markerCluster.zoomToShowLayer(museum.layer, function () {
+               museum.layer.openPopup();
+           });
 
-                // Clear previous search results
-                divSearchResult.innerHTML = '';
-
-                // Update states of drawer and toggle button
-                searchDrawer.dataset.expand = 'false';
-                changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
-
-                // Fly to selected museum marker
-                map.flyTo(museum.coordinates, 18);
-                // Tell markerCluster to show selected museum marker and open popup
-                markerCluster.zoomToShowLayer(museum.layer, function () {
-                    museum.layer.openPopup();
-                })
-                
-            });
-
-            resultUlElement.appendChild(resultLiElement);
         }
     }
 
     // Return a message if query does not match all museum names
-    if (!resultsFound) {
-        resultUlElement.innerHTML = '<li>No results found.</li>';
+    if (!resultFound) {
+        divSearchResult.innerHTML = '<li>No results found.</li>';
     }
-
-    divSearchResult.appendChild(resultUlElement);
 
     // Update state of search drawer and state of toggle button
     // -> Make search results tab to visible 

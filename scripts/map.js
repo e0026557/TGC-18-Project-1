@@ -24,7 +24,7 @@ renderAllMuseumMarkers();
 // Search bar - search button click
 let searchMuseumLayer = L.layerGroup();
 document.querySelector('#btnSearch').addEventListener('click', function () {
-    displayMuseumResults();
+    displayMuseumResult();
 });
 
 // Search bar - autocomplete feature
