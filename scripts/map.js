@@ -30,7 +30,7 @@ document.querySelector('#btnSearch').addEventListener('click', function () {
 // Search bar - autocomplete feature
 let searchMuseumInput = document.querySelector('#txtSearch');
 searchMuseumInput.addEventListener('keyup', function() {
-    displayMuseumResults();
+    displayAutocompleteResults();
 });
 
 

@@ -84,6 +84,51 @@ function getMuseumInfo(html) {
     };
 }
 
+// Function to display autocomplete suggestions
+function displayAutocompleteResults() {
+    // Extract search query
+    let searchInput = document.querySelector('#txtSearch');
+    let query = searchInput.value.toLowerCase();
+
+    // Clear previous autocomplete suggestions
+    let autocompleteBox = document.querySelector('#autocomplete-box');
+    autocompleteBox.innerHTML = '';
+
+    // Create Ul element to store autocomplete suggestions as list
+    let autocompleteUlElement = document.createElement('ul');
+
+    let matchFound = false; // State variable to check if there are matches or not
+
+    // Iterate through MUSEUM array to check if query matches 
+    for (let museum of MUSEUMS) {
+        if (museum.name.toLowerCase().includes(query) && query != '') {
+            // Update state variable
+            matchFound = true;
+
+            // Create autocomplete suggestion li element
+            let autocompleteLiElement = document.createElement('li');
+            autocompleteLiElement.classList.add('autocomplete-result');
+            autocompleteLiElement.innerHTML = museum.name;
+
+            autocompleteLiElement.addEventListener('click', function () {
+                // Populate search input field selected autocomplete suggestion
+                searchInput.value = museum.name;
+
+                // Clear previous autocomplete suggestions
+                autocompleteBox.innerHTML = '';
+            });
+
+            autocompleteUlElement.appendChild(autocompleteLiElement);
+        }
+    }
+
+    // Append autocomplete suggestions if there are matches
+    if (matchFound) {
+        autocompleteBox.appendChild(autocompleteUlElement);
+    }
+
+}
+
 // Function to display search results for museums
 function displayMuseumResults() {
     // Extract search query
