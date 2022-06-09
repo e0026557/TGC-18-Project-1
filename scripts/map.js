@@ -11,6 +11,7 @@ let endCoordinates = null;
 // Create Leaflet map
 let centerPoint = [1.3521, 103.8198];
 const map = createMap(centerPoint[0], centerPoint[1], 'map');
+map.zoomControl.setPosition('topright'); // Set zoom controls to be on the topright corner
 
 // Create Leaflet marker cluster group
 let markerCluster = L.markerClusterGroup();
@@ -56,11 +57,20 @@ document.querySelector('#btnSearch').addEventListener('click', function () {
     // Extract search query
     let query = document.querySelector('#txtSearch').value.toLowerCase();
 
+    // Clear previous search results
     let divSearchResult = document.querySelector('#searchResult');
+    divSearchResult.innerHTML = '';
+
+    // Create Ul element to store search results as list
     let resultUlElement = document.createElement('ul');
+    let resultsFound = false; // State variable to check if there are search results or not
+
     // Iterate through MUSEUM array to check if query matches 
     for (let museum of MUSEUMS) {
         if (museum.name.toLowerCase().includes(query)) {
+            // Update state variable
+            resultsFound = true;
+
             // Create result li element
             let resultLiElement = document.createElement('li');
             resultLiElement.innerHTML = museum.name;
@@ -75,6 +85,11 @@ document.querySelector('#btnSearch').addEventListener('click', function () {
 
             resultUlElement.appendChild(resultLiElement);
         }
+    }
+
+    // Return a message if query does not match all museum names
+    if (!resultsFound) {
+        resultUlElement.innerHTML = '<li>No results found.</li>';
     }
 
     divSearchResult.appendChild(resultUlElement);

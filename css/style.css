@@ -1,4 +1,19 @@
-/* Define height for map container */
+/* Map */
 #map {
+    /* Define height for map container */
     height: 100vh;
+}
+
+
+/* Search Bar Components */
+.container-search {
+    position: absolute;
+    z-index: 314159;
+    background-color: rgba(255,255,255,0.9);
+}
+
+/* Search results */
+#searchResult {
+    max-height: 200px;
+    overflow-y: scroll;
 }
