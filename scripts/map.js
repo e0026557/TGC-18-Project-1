@@ -20,19 +20,14 @@ markerCluster.addTo(map);
 // Render all museum markers
 renderAllMuseumMarkers();
 
+// Search bar interactions
+// Search bar - search button click
 let searchMuseumLayer = L.layerGroup();
 document.querySelector('#btnSearch').addEventListener('click', function () {
     displayMuseumResults();
 });
 
-// Detect 'enter' key pressed in search input field
-// let searchMuseumInput = document.querySelector('#txtSearch');
-// searchMuseumInput.addEventListener('keyup', function(event) {
-//     if (event.key == 'Enter') {
-//         displayMuseumResults();
-//     }
-// });
-
+// Search bar - autocomplete feature
 let searchMuseumInput = document.querySelector('#txtSearch');
 searchMuseumInput.addEventListener('keyup', function() {
     displayMuseumResults();
