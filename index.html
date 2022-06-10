@@ -48,8 +48,8 @@
             <!-- Expandable drawer for search bar console -->
             <div class="container-console--drawer">
                 <div class="console--drawer console--drawer-collapse" data-expand="false">
-                    <!-- Tabs to display various information -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <!-- Tabs to display various museum-related information -->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
                         <!-- Tab: Museum information (Default tab) -->
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="tab-museum" data-bs-toggle="tab"
@@ -68,43 +68,24 @@
                                 data-bs-target="#tab-nearby-content" type="button" role="tab"
                                 aria-controls="tab-nearby-content" aria-selected="false">Nearby</button>
                         </li>
-                        <!-- Tab: Navigation -->
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab-navigation" data-bs-toggle="tab"
-                                data-bs-target="#tab-navigation-content" type="button" role="tab"
-                                aria-controls="tab-navigation-content" aria-selected="false">Navigation</button>
-                        </li>
                     </ul>
                     <!-- Tab contents -->
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content">
                         <!-- Museum content -->
                         <div class="tab-pane fade show active" id="tab-museum-content" role="tabpanel"
                             aria-labelledby="tab-museum">
-                            <div id="searchResult"></div>
+                            <div id="searchResult">There is no result to show.</div>
                         </div>
                         <!-- Weather content -->
                         <div class="tab-pane fade" id="tab-weather-content" role="tabpanel"
-                            aria-labelledby="tab-weather">weather content</div>
+                            aria-labelledby="tab-weather">
+                            <div id="searchWeather">There is no result to show.</div>
+                        </div>
                         <!-- Nearby content -->
                         <div class="tab-pane fade" id="tab-nearby-content" role="tabpanel" aria-labelledby="tab-nearby">
-                            nearby content</div>
-                        <!-- Navigation content -->
-                        <div class="tab-pane fade" id="tab-navigation-content" role="tabpanel"
-                            aria-labelledby="tab-navigation">navigation content</div>
+                            <div id="searchWeather">There is no result to show.</div>
+                        </div>
                     </div>
-
-                    <!-- Tab: Museum information -->
-                    <div class="tab tab--search-result">
-                        <div id="searchResult"></div>
-                    </div>
-                    <!-- Tab: Weather forecast -->
-                    <div class="tab tab--weather-forecast">
-                        <div id="weatherForecast"></div>
-                    </div>
-                    <!-- Tab: Nearby -->
-                    <div class="tab tab--nearby"></div>
-                    <!-- Tab: Navigation -->
-                    <div class="tab tab--navigation"></div>
                 </div>
                 <!-- Button to toggle drawer -->
                 <button id="btnToggleSearchDrawer"><i class="fa-solid fa-chevron-down"></i></button>

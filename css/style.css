@@ -11,7 +11,7 @@
 }
 
 .console--drawer-expand {
-    height: 50vh;
+    height: 60vh;
 }
 
 /* Tab states */
@@ -28,7 +28,7 @@
 
 /* --- Search Bar Components --- */
 .container-console {
-    width: 30vw;
+    width: 40vw;
     position: absolute;
     z-index: 314159;
     background-color: rgba(255,255,255,0.9);
@@ -58,7 +58,7 @@
 /* Console drawer */
 .console--drawer {
     overflow-y: scroll;
-    
+
     display: flex;
     flex-direction: column;
     transition: height 0.3s;
