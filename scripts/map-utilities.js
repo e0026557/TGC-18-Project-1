@@ -44,8 +44,7 @@ async function renderAllMuseumMarkers() {
             `);
 
             layer.addEventListener('click', async function () {
-                displayMuseumInfo(museum);
-                await displayWeatherResult(museum.coordinates);
+                await displayMuseumInfo(museum);
                 map.flyTo(layer.getLatLng(), 18);
             })
 
@@ -165,6 +164,7 @@ async function displayMuseumResult() {
             <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
            `;
 
+           // Display weather information of museum's location
            await displayWeatherResult(museum.coordinates);
 
             // Fly to selected museum marker
@@ -199,7 +199,7 @@ async function displayMuseumResult() {
 }
 
 // Function to display museum information on search console (for click on marker interactions)
-function displayMuseumInfo(museum) {
+async function displayMuseumInfo(museum) {
     // Clear previous search result
     let divSearchResult = document.querySelector('#searchResult');
     divSearchResult.innerHTML = '';
@@ -217,6 +217,9 @@ function displayMuseumInfo(museum) {
     <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
     <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
     `;
+
+    // Display weather information of museum's location
+    await displayWeatherResult(museum.coordinates);
 
     // Update state of search drawer and state of toggle button
     let searchDrawer = document.querySelector('.console--drawer');
@@ -262,7 +265,7 @@ async function displayWeatherResult(latlng) {
 
         // Create img element
         let weatherIcon = document.createElement('img');
-        weatherIcon.src = `../assets/weather-icons/${weather.iconCode}`;
+        weatherIcon.src = `../assets/weather-icons/${weather.iconCode}.png`;
         weatherIcon.classList.add('weather-icon');
 
         // Create span element
