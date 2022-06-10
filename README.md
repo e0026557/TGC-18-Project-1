@@ -9,7 +9,7 @@ Museums@SG aims to ride on this trend to promote awareness of Singapore's arts a
  In a quick glance, Museums@SG provides essential information about all the museums in Singapore, with features such as weather forecast, nearby dining and transport, as well as navigation for those art-lovers and 'museum-hoppers' out there.
 
 
-Link to demo : [Insert link here](https:///www.example.com)
+Link to demo : [Museums@SG](https://sg-museums.netlify.app/)
 
 ---
 
