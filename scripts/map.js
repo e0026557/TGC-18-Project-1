@@ -23,15 +23,15 @@ renderAllMuseumMarkers();
 // Search bar interactions
 // Search bar - search button click
 let searchMuseumLayer = L.layerGroup();
-document.querySelector('#btnSearch').addEventListener('click', function () {
-    displayMuseumResult();
+document.querySelector('#btnSearch').addEventListener('click', async function () {
+    await displayMuseumResult();
 });
 
 // Search bar - autocomplete feature & 'enter' to search feature
 let searchMuseumInput = document.querySelector('#txtSearch');
-searchMuseumInput.addEventListener('keyup', function (event) {
+searchMuseumInput.addEventListener('keyup', async function (event) {
     if (event.key == 'Enter') {
-        displayMuseumResult();
+        await displayMuseumResult();
     }
     else {
         displayAutocompleteResults();

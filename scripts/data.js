@@ -33,7 +33,25 @@ async function getWeather(lat, lon) {
     console.log(url);
 
     let response = await axios.get(url);
-    return response.data;
+    let weatherInfo = response.data;
+    let currentWeather = {
+        'type': 'current',
+        'temperature': weatherInfo.current.temp,
+        'description': weatherInfo.current.weather[0].description,
+        'iconCode': weatherInfo.current.weather[0].icon
+    };
+    // Get 2hr weather forecast
+    let forecastWeather = {
+        'type': 'forecast',
+        'temperature': weatherInfo.hourly[1].temp,
+        'description': weatherInfo.hourly[1].weather[0].description,
+        'iconCode': weatherInfo.hourly[1].weather[0].icon
+    }
+
+    return {
+        'currentWeather': currentWeather,
+        'forecastWeather': forecastWeather
+    };
 }
 
 async function getNearby(latlon, radius, category) {

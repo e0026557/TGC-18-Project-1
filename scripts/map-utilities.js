@@ -43,8 +43,9 @@ async function renderAllMuseumMarkers() {
             <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
             `);
 
-            layer.addEventListener('click', function () {
+            layer.addEventListener('click', async function () {
                 displayMuseumInfo(museum);
+                await displayWeatherResult(museum.coordinates);
                 map.flyTo(layer.getLatLng(), 18);
             })
 
@@ -133,7 +134,7 @@ function displayAutocompleteResults() {
 }
 
 // Function to display search result for museums
-function displayMuseumResult() {
+async function displayMuseumResult() {
     // Extract search query
     let searchInput = document.querySelector('#txtSearch');
     let actualQuery = searchInput.value;
@@ -156,12 +157,15 @@ function displayMuseumResult() {
             resultFound = true;
 
             divSearchResult.innerHTML = `
-           <h3 class="museum-name">${museum.name}</h3>
-           <p class="museum-description">${museum.description}</p>
-           <address class="museum-address">${museum.address}</address>
-           <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
-           <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
+            <img class="museum-img" src="${museum.imageUrl}" alt="Photo of museum" />
+            <h3 class="museum-name">${museum.name}</h3>
+            <p class="museum-description">${museum.description}</p>
+            <address class="museum-address">${museum.address}</address>
+            <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
+            <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
            `;
+
+           await displayWeatherResult(museum.coordinates);
 
             // Fly to selected museum marker
             map.flyTo(museum.coordinates, 18);
@@ -206,6 +210,7 @@ function displayMuseumInfo(museum) {
 
 
     divSearchResult.innerHTML = `
+    <img class="museum-img" src="${museum.imageUrl}" alt="Photo of museum" />
     <h3 class="museum-name">${museum.name}</h3>
     <p class="museum-description">${museum.description}</p>
     <address class="museum-address">${museum.address}</address>
@@ -223,6 +228,55 @@ function displayMuseumInfo(museum) {
 
     let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
     changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
+
+}
+
+// Function to display weather information
+async function displayWeatherResult(latlng) {
+    let weatherInfo = await getWeather(latlng[0], latlng[1]);
+
+    // Clear previous results
+    let divSearchWeather = document.querySelector('#searchWeather');
+    divSearchWeather.innerHTML = '';
+
+    // Current weather object
+    let currentWeather = weatherInfo.currentWeather;
+
+    // 2hr forecast weather object
+    let forecastWeather = weatherInfo.forecastWeather;
+
+    for (let weather of [currentWeather, forecastWeather]) {
+        // Create div element
+        let weatherDiv = document.createElement('div');
+
+        // Create header element
+        let weatherHeader = document.createElement('h3');
+        weatherHeader.classList.add('weather-header');
+
+        if (weather.type == 'current') {
+            weatherHeader.innerHTML = 'Current Weather';
+        }
+        else {
+            weatherHeader.innerHTML = '2-Hour Forecast';
+        }
+
+        // Create img element
+        let weatherIcon = document.createElement('img');
+        weatherIcon.src = `../assets/weather-icons/${weather.iconCode}`;
+        weatherIcon.classList.add('weather-icon');
+
+        // Create span element
+        let weatherDescription = document.createElement('span');
+        weatherDescription.innerHTML = weather.description[0].toUpperCase() + weather.description.slice(1);
+
+        // Set up weather information div
+        weatherDiv.appendChild(weatherHeader);
+        weatherDiv.appendChild(weatherIcon);
+        weatherDiv.appendChild(weatherDescription);
+
+        // Append weather information div to div #searchWeather
+        divSearchWeather.appendChild(weatherDiv);
+    }
 
 }
 
