@@ -44,6 +44,7 @@ async function renderAllMuseumMarkers() {
             `);
 
             layer.addEventListener('click', function () {
+                displayMuseumInfo(museum);
                 map.flyTo(layer.getLatLng(), 18);
             })
 
@@ -154,7 +155,7 @@ function displayMuseumResult() {
             // Update state variable
             resultFound = true;
 
-           divSearchResult.innerHTML = `
+            divSearchResult.innerHTML = `
            <h3 class="museum-name">${museum.name}</h3>
            <p class="museum-description">${museum.description}</p>
            <address class="museum-address">${museum.address}</address>
@@ -162,12 +163,12 @@ function displayMuseumResult() {
            <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
            `;
 
-           // Fly to selected museum marker
-           map.flyTo(museum.coordinates, 18);
-           // Tell markerCluster to show selected museum marker and open popup
-           markerCluster.zoomToShowLayer(museum.layer, function () {
-               museum.layer.openPopup();
-           });
+            // Fly to selected museum marker
+            map.flyTo(museum.coordinates, 18);
+            // Tell markerCluster to show selected museum marker and open popup
+            markerCluster.zoomToShowLayer(museum.layer, function () {
+                museum.layer.openPopup();
+            });
 
         }
     }
@@ -183,19 +184,45 @@ function displayMuseumResult() {
     // Update state of search drawer and state of toggle button
     let searchDrawer = document.querySelector('.console--drawer');
     searchDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
-    
+
     // -> Expand search drawer (if collapsed)
     searchDrawer.classList.add('console--drawer-expand');
     searchDrawer.classList.remove('console--drawer-collapse');
-    
+
     let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
     changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
-    
-    // -> Make search results tab visible (if invisible) 
-    let searchResultsTab = document.querySelector('.tab--search-result');
-    if (searchResultsTab.classList.contains('invisible')) {
-        searchResultsTab.classList.remove('invisible');
-    }
+
+}
+
+// Function to display museum information on search console (for click on marker interactions)
+function displayMuseumInfo(museum) {
+    // Clear previous search result
+    let divSearchResult = document.querySelector('#searchResult');
+    divSearchResult.innerHTML = '';
+
+    // Clear autocomplete search results (if any)
+    let autocompleteBox = document.querySelector('#autocomplete-box');
+    autocompleteBox.innerHTML = '';
+
+
+    divSearchResult.innerHTML = `
+    <h3 class="museum-name">${museum.name}</h3>
+    <p class="museum-description">${museum.description}</p>
+    <address class="museum-address">${museum.address}</address>
+    <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
+    <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
+    `;
+
+    // Update state of search drawer and state of toggle button
+    let searchDrawer = document.querySelector('.console--drawer');
+    searchDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
+
+    // -> Expand search drawer (if collapsed)
+    searchDrawer.classList.add('console--drawer-expand');
+    searchDrawer.classList.remove('console--drawer-collapse');
+
+    let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
+    changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
 
 }
 
