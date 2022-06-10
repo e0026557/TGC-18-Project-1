@@ -113,6 +113,8 @@ function displayAutocompleteResults() {
             autocompleteLiElement.addEventListener('click', function () {
                 // Populate search input field selected autocomplete suggestion
                 searchInput.value = museum.name;
+                // Set focus on search input field
+                searchInput.focus();
 
                 // Clear previous autocomplete suggestions
                 autocompleteBox.innerHTML = '';
