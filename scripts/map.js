@@ -48,6 +48,16 @@ btnToggleSearchDrawer.addEventListener('click', function () {
     // Change state of toggle button of search drawer
     changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
 
+    // Toggle visibility of drawer depending on state
+    if (searchDrawer.dataset.expand == 'true') {
+        searchDrawer.classList.add('console--drawer-expand');
+        searchDrawer.classList.remove('console--drawer-collapse');
+    }
+    else {
+        searchDrawer.classList.add('console--drawer-collapse');
+        searchDrawer.classList.remove('console--drawer-expand');
+    }
+
     // Select all tabs in drawer
     let tabs = searchDrawer.querySelectorAll('.tab');
 

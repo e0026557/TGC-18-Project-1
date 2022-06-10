@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+.console--drawer-collapse {
+    height: 0;
+}
+
+.console--drawer-expand {
+    height: 30vh;
+}
+
 .invisible {
     display: none;
 }
@@ -47,11 +55,12 @@
 }
 /* Console drawer */
 .console--drawer {
-    max-height: 30vh;
+    /* height: 30vh; */
     overflow-y: scroll;
     
     display: flex;
     flex-direction: column;
+    transition: height 0.3s;
 }
 
 /* Autocomplete display box */

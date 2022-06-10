@@ -175,19 +175,20 @@ function displayMuseumResult() {
     }
 
     // Update state of search drawer and state of toggle button
-    // -> Make search results tab to visible 
     let searchDrawer = document.querySelector('.console--drawer');
+    searchDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
+    
+    // -> Expand search drawer (if collapsed)
+    searchDrawer.classList.add('console--drawer-expand');
+    searchDrawer.classList.remove('console--drawer-collapse');
+    
     let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
+    changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
+    
+    // -> Make search results tab visible (if invisible) 
     let searchResultsTab = document.querySelector('.tab--search-result');
-
     if (searchResultsTab.classList.contains('invisible')) {
         searchResultsTab.classList.remove('invisible');
-        // Update state of toggle button for search drawer
-        changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
-    }
-    else {
-        searchDrawer.dataset.expand = 'true';
-        changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
     }
 
 }
@@ -196,11 +197,11 @@ function displayMuseumResult() {
 function changeToggleBtnState(button, drawer) {
     // Check state of drawer
     if (drawer.dataset.expand == 'true') {
-        button.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+        button.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
         drawer.dataset.expand = 'false';
     }
     else {
-        button.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+        button.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
         drawer.dataset.expand = 'true';
     }
 }
