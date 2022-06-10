@@ -57,10 +57,10 @@ btnToggleSearchDrawer.addEventListener('click', function () {
         searchDrawer.classList.add('console--drawer-collapse');
         searchDrawer.classList.remove('console--drawer-expand');
     }
-
+    
     // Select all tabs in drawer
     let tabs = searchDrawer.querySelectorAll('.tab');
-
+    
     // Toggle visibility of tabs
     for (let tab of tabs) {
         tab.classList.toggle('invisible');
