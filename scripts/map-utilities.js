@@ -135,6 +135,7 @@ function displayAutocompleteResults() {
 function displayMuseumResult() {
     // Extract search query
     let searchInput = document.querySelector('#txtSearch');
+    let actualQuery = searchInput.value;
     let query = searchInput.value.toLowerCase();
 
     // Clear previous search result
@@ -172,8 +173,11 @@ function displayMuseumResult() {
     }
 
     // Return a message if query does not match all museum names
+    // -> Display same message for each tab of search console drawer
     if (!resultFound) {
-        divSearchResult.innerHTML = 'No results found.';
+        divSearchResult.innerHTML = `No matches for "${actualQuery}" found.`;
+        document.querySelector('#searchWeather').innerHTML = `No matches for "${actualQuery}" found.`;
+        document.querySelector('#searchNearby').innerHTML = `No matches for "${actualQuery}" found.`;
     }
 
     // Update state of search drawer and state of toggle button
