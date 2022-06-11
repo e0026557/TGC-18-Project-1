@@ -76,7 +76,19 @@ async function getNearby(latlon, radius, category) {
         }
 
     });
-    return response.data;
+
+    // Get array of places
+    let places = response.data.results;
+    // Map each place to extract only name, coordinates, distance of each place
+    places = places.map(place => {
+        return {
+            'name': place.name,
+            'coordinates': [place.geocodes.main.latitude, place.geocodes.main.longitude],
+            'distance': place.distance
+        };
+    });
+
+    return places;
 }
 
 async function getMuseums() {
