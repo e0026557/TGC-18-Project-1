@@ -164,11 +164,11 @@ async function displayMuseumResult() {
             <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
            `;
 
-           // Display weather information of museum's location
-           await displayWeatherResult(museum.coordinates);
+            // Display weather information of museum's location
+            await displayWeatherResult(museum.coordinates);
 
-           // Display form to select nearby amenities
-           displayNearbyForm(museum);
+            // Display form to select nearby amenities
+            displayNearbyForm(museum);
 
             // Fly to selected museum marker
             map.flyTo(museum.coordinates, 17);
@@ -188,6 +188,26 @@ async function displayMuseumResult() {
         document.querySelector('#searchNearby').innerHTML = `No matches for "${actualQuery}" found.`;
     }
 
+    // Make search result tab visible and hide all other tabs
+    let tabs = document.querySelectorAll('.tab');
+    for (let tab of tabs) {
+        if (tab.classList.contains('tab--search')) {
+            tab.classList.remove('invisible');
+        }
+        else {
+            if (!tab.classList.contains('invisible')) {
+                tab.classList.add('invisible');
+            }
+        }
+    }
+
+    // Expand console drawer
+    expandConsoleDrawer()
+
+}
+
+// Function to expand console drawer
+function expandConsoleDrawer() {
     // Update state of search drawer and state of toggle button
     let searchDrawer = document.querySelector('.console--drawer');
     searchDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
@@ -198,7 +218,12 @@ async function displayMuseumResult() {
 
     let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
     changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
+}
 
+// Function to clear search bar query
+function clearSearchBar() {
+    let searchInput = document.querySelector('#txtSearch');
+    searchInput.value = '';
 }
 
 // Function to display museum information on search console (for click on marker interactions)
@@ -211,6 +236,9 @@ async function displayMuseumInfo(museum) {
     let autocompleteBox = document.querySelector('#autocomplete-box');
     autocompleteBox.innerHTML = '';
 
+    // Clear search query in search bar input
+    let searchInput = document.querySelector('#txtSearch');
+    searchInput.value = '';
 
     divSearchResult.innerHTML = `
     <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
@@ -227,17 +255,7 @@ async function displayMuseumInfo(museum) {
     // Display form to select nearby amenities
     displayNearbyForm(museum);
 
-    // Update state of search drawer and state of toggle button
-    let searchDrawer = document.querySelector('.console--drawer');
-    searchDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
-
-    // -> Expand search drawer (if collapsed)
-    searchDrawer.classList.add('console--drawer-expand');
-    searchDrawer.classList.remove('console--drawer-collapse');
-
-    let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
-    changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
-
+    expandConsoleDrawer();
 }
 
 // Function to display weather information
@@ -322,7 +340,7 @@ function displayNearbyForm(museum) {
         checkbox.value = value;
 
         // Add event listener to update nearby markers on change
-        checkbox.addEventListener('change', async function() {
+        checkbox.addEventListener('change', async function () {
             await displayNearbyResult(museum);
         });
 
@@ -346,7 +364,7 @@ function displayNearbyForm(museum) {
     selectElement.id = 'select-radius';
 
     // Add event listener to select element
-    selectElement.addEventListener('change', async function() {
+    selectElement.addEventListener('change', async function () {
         displayNearbyResult(museum);
     });
 
@@ -357,7 +375,7 @@ function displayNearbyForm(museum) {
         '500': '500m',
         '1000': '1km'
     };
-    
+
     for (let value of optionValues) {
         // Create option element
         let optionElement = document.createElement('option');
@@ -412,7 +430,7 @@ async function displayNearbyResult(museum) {
 
         // Create marker for each place
         for (let place of places) {
-            let marker = L.marker(place.coordinates, {icon: markerIcon});
+            let marker = L.marker(place.coordinates, { icon: markerIcon });
             marker.bindPopup(`
                 <h3 class="marker--amenities-header">${place.name}</h3>
                 <span class="marker--amenities-distance">Distance: ${place.distance}m</span>
@@ -435,6 +453,25 @@ function changeToggleBtnState(button, drawer) {
         button.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
         drawer.dataset.expand = 'true';
     }
+}
+
+// Function to show navigation tab
+function showNavigationContent() {
+    // Make navigation tab visible and hide all other tabs
+    let tabs = document.querySelectorAll('.tab');
+    for (let tab of tabs) {
+        if (tab.classList.contains('tab--navigation')) {
+            tab.classList.remove('invisible');
+        }
+        else {
+            if (!tab.classList.contains('invisible')) {
+                tab.classList.add('invisible');
+            }
+        }
+    }
+
+    // Expand console drawer
+    expandConsoleDrawer();
 }
 
 // Function for buttons to set start/end points

@@ -46,6 +46,10 @@ searchMuseumInput.addEventListener('keyup', async function (event) {
     }
 });
 
+// Search bar - navigation button click
+document.querySelector('#btnNavigation').addEventListener('click', function() {
+    showNavigationContent();
+})
 
 // Toggle expand/collapse of search bar drawer component
 let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
@@ -64,13 +68,5 @@ btnToggleSearchDrawer.addEventListener('click', function () {
     else {
         searchDrawer.classList.add('console--drawer-collapse');
         searchDrawer.classList.remove('console--drawer-expand');
-    }
-    
-    // Select all tabs in drawer
-    let tabs = searchDrawer.querySelectorAll('.tab');
-    
-    // Toggle visibility of tabs
-    for (let tab of tabs) {
-        tab.classList.toggle('invisible');
     }
 })
