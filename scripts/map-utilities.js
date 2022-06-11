@@ -379,9 +379,7 @@ function displayNearbyForm(museum) {
 // Function to display nearby amenities
 async function displayNearbyResult(museum) {
     // Clear all existing amenities markers and radius circle
-    for (let layer of [radiusLayer, diningLayer, parkingLayer, busLayer, mrtLayer]) {
-        layer.clearLayers();
-    }
+    amenitiesLayer.clearLayers();
 
     // Get user's input on form
     // -> Get selected amenities to display
@@ -403,7 +401,7 @@ async function displayNearbyResult(museum) {
         'fillColor': 'limegreen',
         'fillOpacity': 0.4
     };
-    L.circle(museum.coordinates, circleOptions).addTo(radiusLayer);
+    L.circle(museum.coordinates, circleOptions).addTo(amenitiesLayer);
 
     // Get nearby amenities by category
     for (let category of selectedAmenities) {
@@ -411,7 +409,6 @@ async function displayNearbyResult(museum) {
 
         // Change marker icon and layer group depending on category of amenities to display
         let markerIcon = markerIcons[category];
-        let markerLayerGroup = layers[category];
 
         // Create marker for each place
         for (let place of places) {
@@ -420,7 +417,7 @@ async function displayNearbyResult(museum) {
                 <h3 class="marker--amenities-header">${place.name}</h3>
                 <span class="marker--amenities-distance">Distance: ${place.distance}m</span>
             `);
-            marker.addTo(markerLayerGroup);
+            marker.addTo(amenitiesLayer);
         }
 
     }

@@ -17,21 +17,13 @@ map.zoomControl.setPosition('topright'); // Set zoom controls to be on the topri
 let markerCluster = L.markerClusterGroup();
 markerCluster.addTo(map);
 
-// Create layer for displaying circle radius around museum markers
-let radiusLayer = L.layerGroup().addTo(map);
+// Create layer to display markers of nearby amenities and radius circle
+let amenitiesLayer = L.layerGroup().addTo(map);
 
-// Create layers for each category of amenities (dining, parking, bus, mrt)
-let diningLayer = L.layerGroup().addTo(map);
-let parkingLayer = L.layerGroup().addTo(map);
-let busLayer = L.layerGroup().addTo(map);
-let mrtLayer = L.layerGroup().addTo(map);
-
-const layers = {
-    'dining': diningLayer,
-    'parking': parkingLayer,
-    'bus': busLayer,
-    'mrt': mrtLayer
-};
+// Create layer controls
+L.control.layers({}, {
+    'Nearby Amenities': amenitiesLayer
+}).addTo(map);
 
 // Render all museum markers
 renderAllMuseumMarkers();
