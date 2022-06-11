@@ -70,3 +70,15 @@ btnToggleSearchDrawer.addEventListener('click', function () {
         searchDrawer.classList.remove('console--drawer-expand');
     }
 })
+
+// Toggle showing of help form when clicking on help icon
+document.querySelector('#icon-help').addEventListener('click', function() {
+    let helpBox = document.querySelector('.container-help');
+    helpBox.classList.remove('invisible');
+})
+
+// Toggle hiding of help form when clicking on close icon
+document.querySelector('#icon-close').addEventListener('click', function() {
+    let helpBox = document.querySelector('.container-help');
+    helpBox.classList.add('invisible');
+})

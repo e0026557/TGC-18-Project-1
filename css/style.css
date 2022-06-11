@@ -11,7 +11,7 @@
 }
 
 .console--drawer-expand {
-    height: 60vh;
+    height: 75vh;
 }
 
 /* Tab states */
@@ -19,22 +19,23 @@
     display: none;
 }
 
-/* Map */
-#map {
-    /* Define height for map container */
-    height: 100vh;
+/* --- Main --- */
+.container-main {
+    position: relative;
 }
-
 
 /* --- Search Bar Components --- */
 .container-console {
     width: 40vw;
-    position: absolute;
     z-index: 314159;
     background-color: rgba(255,255,255,0.9);
-
+    
     display: flex;
     flex-direction: column;
+ 
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 /* Search bar */
@@ -52,13 +53,13 @@
 .container-console--drawer {
     display: flex;
     flex-direction: column;
-
+    
     position: relative;
 }
 /* Console drawer */
 .console--drawer {
     overflow-y: scroll;
-
+    
     display: flex;
     flex-direction: column;
     transition: height 0.3s;
@@ -72,7 +73,7 @@
     max-height: 30vh;
     width: 100%;
     overflow-y: scroll;
-
+    
     position: absolute;
 }
 
@@ -86,4 +87,40 @@
 /* Console drawer toggle button icon */
 #btnToggleSearchDrawer i {
     font-size: 10px;
+}
+
+/* --- Map --- */
+#map {
+    /* Define height for map container */
+    height: 100vh;
+}
+
+/* --- Help Component --- */
+#icon-help {
+    font-size: 40px;
+    color: orange;
+    z-index: 314159;
+    
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+}
+
+.container-help {
+    background-color: red;
+    width: 400px;
+    height: 80vh;
+    z-index: 314159;
+
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#icon-close {
+    font-size: 30px;
 }
