@@ -30,7 +30,6 @@ async function getWeather(lat, lon) {
     // List of weather data to be excluded from API call
     let exclude = 'minutely,daily,alerts';
     let url = WEATHER_API_BASE_URL + `?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${WEATHER_API_KEY}&units=metric`;
-    console.log(url);
 
     let response = await axios.get(url);
     let weatherInfo = response.data;
