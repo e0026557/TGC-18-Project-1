@@ -45,7 +45,7 @@ async function renderAllMuseumMarkers() {
 
             layer.addEventListener('click', async function () {
                 await displayMuseumInfo(museum);
-                map.flyTo(layer.getLatLng(), 18);
+                map.flyTo(layer.getLatLng(), 17);
             })
 
             // Populate global MUSEUM variable with museum object
@@ -171,7 +171,7 @@ async function displayMuseumResult() {
            displayNearbyForm(museum);
 
             // Fly to selected museum marker
-            map.flyTo(museum.coordinates, 18);
+            map.flyTo(museum.coordinates, 17);
             // Tell markerCluster to show selected museum marker and open popup
             markerCluster.zoomToShowLayer(museum.layer, function () {
                 museum.layer.openPopup();
@@ -351,11 +351,11 @@ function displayNearbyForm(museum) {
     });
 
     // -> 3 options: 500m, 1km and 2km
-    let optionValues = ['500', '1000', '2000'];
+    let optionValues = ['300', '500', '1000'];
     let optionTexts = {
+        '300': '300m',
         '500': '500m',
-        '1000': '1km',
-        '2000': '2km'
+        '1000': '1km'
     };
     
     for (let value of optionValues) {
@@ -418,6 +418,7 @@ async function displayNearbyResult(museum) {
             let marker = L.marker(place.coordinates, {icon: markerIcon});
             marker.bindPopup(`
                 <h3 class="marker--amenities-header">${place.name}</h3>
+                <span class="marker--amenities-distance">Distance: ${place.distance}m</span>
             `);
             marker.addTo(markerLayerGroup);
         }
