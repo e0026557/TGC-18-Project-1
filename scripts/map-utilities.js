@@ -283,6 +283,94 @@ async function displayWeatherResult(latlng) {
 
 }
 
+
+// Function to display form for nearby tab
+(function displayNearbyForm() {
+    // Select div containing content for Nearby tab
+    let divSearchNearby = document.querySelector('#searchNearby');
+
+    // Create form
+    let divForm = document.createElement('div');
+    divForm.classList.add('form-nearby');
+
+    // -> 4 checkboxes to select category of amenities to display
+    let divCheckboxes = document.createElement('div'); // div to hold all checkbox elements
+    divCheckboxes.innerHTML = '<h3 class="form-header">Explore Nearby: </h3>';
+    let checkboxValues = ['dining', 'parking', 'bus', 'mrt'];
+    let checkboxLabels = {
+        'dining': 'Dining',
+        'parking': 'Parking',
+        'bus': 'Bus Stop',
+        'mrt': 'MRT Station'
+    };
+    for (let value of checkboxValues) {
+        // Create checkbox element
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.name = 'amenitiesType'
+        checkbox.id = `checkbox-${value}`;
+        checkbox.classList.add('checkbox-amenities');
+        checkbox.value = value;
+
+        // Create label for checkbox element
+        let label = document.createElement('label');
+        label.innerHTML = checkboxLabels[value];
+        label.htmlFor = checkbox.id;
+
+        divCheckboxes.appendChild(checkbox);
+        divCheckboxes.appendChild(label);
+    }
+
+    // Append div containing checkboxes to form div
+    divForm.appendChild(divCheckboxes);
+
+    // Create a div to contain select dropdown
+    let divSelect = document.createElement('div');
+    divSelect.innerHTML = '<h3 class="form-header">Select search radius: </h3>';
+    // Create select dropdown to select radius of search
+    let selectElement = document.createElement('select');
+
+    // -> 3 options: 500m, 1km and 2km
+    let optionValues = ['500', '1000', '2000'];
+    let optionTexts = {
+        '500': '500m',
+        '1000': '1km',
+        '2000': '2km'
+    };
+    
+    for (let value of optionValues) {
+        // Create option element
+        let optionElement = document.createElement('option');
+        optionElement.value = value;
+        optionElement.text = optionTexts[value];
+
+        // Add to select element
+        selectElement.appendChild(optionElement);
+    }
+
+    // Append select element to divSelect
+    divSelect.appendChild(selectElement);
+    divForm.appendChild(divSelect);
+
+    // Create button
+    let buttonElement = document.createElement('button');
+    buttonElement.id = 'btnSearchNearby';
+    buttonElement.innerHTML = 'Search'
+
+    // Append button element to form div
+    divForm.appendChild(buttonElement);
+
+    // Append form div to divSearchNearby
+    divSearchNearby.appendChild(divForm);
+})();
+
+// Function to display nearby amenities
+async function displayNearbyResult() {
+    // Get array of nearby amenities based on user input on form
+
+}
+
+
 // Function to toggle state of toggle buttons for drawers
 function changeToggleBtnState(button, drawer) {
     // Check state of drawer
