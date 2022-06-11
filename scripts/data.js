@@ -58,7 +58,7 @@ async function getNearby(latlon, radius, category) {
     const categoryCode = {
         'dining': '13000',
         'parking': '19020',
-        'MRT': '19046',
+        'mrt': '19046',
         'bus': '19042'
     };
 
