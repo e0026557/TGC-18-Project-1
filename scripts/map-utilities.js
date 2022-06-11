@@ -156,7 +156,7 @@ async function displayMuseumResult() {
             resultFound = true;
 
             divSearchResult.innerHTML = `
-            <img class="museum-img" src="${museum.imageUrl}" alt="Photo of museum" />
+            <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
             <h3 class="museum-name">${museum.name}</h3>
             <p class="museum-description">${museum.description}</p>
             <address class="museum-address">${museum.address}</address>
@@ -213,7 +213,7 @@ async function displayMuseumInfo(museum) {
 
 
     divSearchResult.innerHTML = `
-    <img class="museum-img" src="${museum.imageUrl}" alt="Photo of museum" />
+    <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
     <h3 class="museum-name">${museum.name}</h3>
     <p class="museum-description">${museum.description}</p>
     <address class="museum-address">${museum.address}</address>
