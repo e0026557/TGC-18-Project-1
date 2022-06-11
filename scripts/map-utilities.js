@@ -466,6 +466,14 @@ const busIcon = L.icon({
     popupAnchor: [0, -40]
 });
 
+const mrtIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-mrt.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
 const diningIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-dining.png',
 
@@ -495,6 +503,7 @@ const markerIcons = {
     'museum': museumIcon,
     'parking': parkingIcon,
     'bus': busIcon,
+    'mrt': mrtIcon,
     'dining': diningIcon,
     'start': startIcon,
     'end': endIcon
