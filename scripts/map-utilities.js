@@ -378,6 +378,11 @@ function displayNearbyForm(museum) {
 
 // Function to display nearby amenities
 async function displayNearbyResult(museum) {
+    // Clear all existing amenities markers
+    for (let layer of [diningLayer, parkingLayer, busLayer, mrtLayer]) {
+        layer.clearLayers();
+    }
+
     // Get user's input on form
     // -> Get selected amenities to display
     let selectedAmenities = [];
