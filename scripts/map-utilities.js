@@ -167,6 +167,9 @@ async function displayMuseumResult() {
            // Display weather information of museum's location
            await displayWeatherResult(museum.coordinates);
 
+           // Display form to select nearby amenities
+           displayNearbyForm();
+
             // Fly to selected museum marker
             map.flyTo(museum.coordinates, 18);
             // Tell markerCluster to show selected museum marker and open popup
@@ -220,6 +223,9 @@ async function displayMuseumInfo(museum) {
 
     // Display weather information of museum's location
     await displayWeatherResult(museum.coordinates);
+
+    // Display form to select nearby amenities
+    displayNearbyForm();
 
     // Update state of search drawer and state of toggle button
     let searchDrawer = document.querySelector('.console--drawer');
@@ -285,9 +291,12 @@ async function displayWeatherResult(latlng) {
 
 
 // Function to display form for nearby tab
-(function displayNearbyForm() {
+function displayNearbyForm() {
     // Select div containing content for Nearby tab
     let divSearchNearby = document.querySelector('#searchNearby');
+
+    // Clear previous results
+    divSearchNearby.innerHTML = '';
 
     // Create form
     let divForm = document.createElement('div');
@@ -362,7 +371,7 @@ async function displayWeatherResult(latlng) {
 
     // Append form div to divSearchNearby
     divSearchNearby.appendChild(divForm);
-})();
+}
 
 // Function to display nearby amenities
 async function displayNearbyResult() {
