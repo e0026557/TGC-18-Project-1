@@ -378,8 +378,8 @@ function displayNearbyForm(museum) {
 
 // Function to display nearby amenities
 async function displayNearbyResult(museum) {
-    // Clear all existing amenities markers
-    for (let layer of [diningLayer, parkingLayer, busLayer, mrtLayer]) {
+    // Clear all existing amenities markers and radius circle
+    for (let layer of [radiusLayer, diningLayer, parkingLayer, busLayer, mrtLayer]) {
         layer.clearLayers();
     }
 
@@ -395,6 +395,15 @@ async function displayNearbyResult(museum) {
 
     // -> Get search radius
     let radius = document.querySelector('#select-radius').value;
+
+    // Create circle marker around selected museum marker
+    let circleOptions = {
+        'radius': radius,
+        'color': 'limegreen',
+        'fillColor': 'limegreen',
+        'fillOpacity': 0.4
+    };
+    L.circle(museum.coordinates, circleOptions).addTo(radiusLayer);
 
     // Get nearby amenities by category
     for (let category of selectedAmenities) {
