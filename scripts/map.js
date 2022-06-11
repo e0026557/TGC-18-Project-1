@@ -17,6 +17,19 @@ map.zoomControl.setPosition('topright'); // Set zoom controls to be on the topri
 let markerCluster = L.markerClusterGroup();
 markerCluster.addTo(map);
 
+// Create layers for each category of amenities (dining, parking, bus, mrt)
+let diningLayer = L.layerGroup().addTo(map);
+let parkingLayer = L.layerGroup().addTo(map);
+let busLayer = L.layerGroup().addTo(map);
+let mrtLayer = L.layerGroup().addTo(map);
+
+const layers = {
+    'dining': diningLayer,
+    'parking': parkingLayer,
+    'bus': busLayer,
+    'mrt': mrtLayer
+};
+
 // Render all museum markers
 renderAllMuseumMarkers();
 

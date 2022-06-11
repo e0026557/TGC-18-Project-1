@@ -168,7 +168,7 @@ async function displayMuseumResult() {
            await displayWeatherResult(museum.coordinates);
 
            // Display form to select nearby amenities
-           displayNearbyForm();
+           displayNearbyForm(museum);
 
             // Fly to selected museum marker
             map.flyTo(museum.coordinates, 18);
@@ -225,7 +225,7 @@ async function displayMuseumInfo(museum) {
     await displayWeatherResult(museum.coordinates);
 
     // Display form to select nearby amenities
-    displayNearbyForm();
+    displayNearbyForm(museum);
 
     // Update state of search drawer and state of toggle button
     let searchDrawer = document.querySelector('.console--drawer');
@@ -291,7 +291,7 @@ async function displayWeatherResult(latlng) {
 
 
 // Function to display form for nearby tab
-function displayNearbyForm() {
+function displayNearbyForm(museum) {
     // Select div containing content for Nearby tab
     let divSearchNearby = document.querySelector('#searchNearby');
 
@@ -321,6 +321,11 @@ function displayNearbyForm() {
         checkbox.classList.add('checkbox-amenities');
         checkbox.value = value;
 
+        // Add event listener to update nearby markers on change
+        checkbox.addEventListener('change', async function() {
+            await displayNearbyResult(museum);
+        });
+
         // Create label for checkbox element
         let label = document.createElement('label');
         label.innerHTML = checkboxLabels[value];
@@ -338,6 +343,12 @@ function displayNearbyForm() {
     divSelect.innerHTML = '<h3 class="form-header">Select search radius: </h3>';
     // Create select dropdown to select radius of search
     let selectElement = document.createElement('select');
+    selectElement.id = 'select-radius';
+
+    // Add event listener to select element
+    selectElement.addEventListener('change', async function() {
+        displayNearbyResult(museum);
+    });
 
     // -> 3 options: 500m, 1km and 2km
     let optionValues = ['500', '1000', '2000'];
@@ -361,22 +372,43 @@ function displayNearbyForm() {
     divSelect.appendChild(selectElement);
     divForm.appendChild(divSelect);
 
-    // Create button
-    let buttonElement = document.createElement('button');
-    buttonElement.id = 'btnSearchNearby';
-    buttonElement.innerHTML = 'Search'
-
-    // Append button element to form div
-    divForm.appendChild(buttonElement);
-
     // Append form div to divSearchNearby
     divSearchNearby.appendChild(divForm);
 }
 
 // Function to display nearby amenities
-async function displayNearbyResult() {
-    // Get array of nearby amenities based on user input on form
+async function displayNearbyResult(museum) {
+    // Get user's input on form
+    // -> Get selected amenities to display
+    let selectedAmenities = [];
+    let checkboxes = document.querySelectorAll('.checkbox-amenities');
+    for (let checkbox of checkboxes) {
+        if (checkbox.checked) {
+            selectedAmenities.push(checkbox.value);
+        }
+    }
 
+    // -> Get search radius
+    let radius = document.querySelector('#select-radius').value;
+
+    // Get nearby amenities by category
+    for (let category of selectedAmenities) {
+        let places = await getNearby(museum.coordinates.join(','), radius, category);
+
+        // Change marker icon and layer group depending on category of amenities to display
+        let markerIcon = markerIcons[category];
+        let markerLayerGroup = layers[category];
+
+        // Create marker for each place
+        for (let place of places) {
+            let marker = L.marker(place.coordinates, {icon: markerIcon});
+            marker.bindPopup(`
+                <h3 class="marker--amenities-header">${place.name}</h3>
+            `);
+            marker.addTo(markerLayerGroup);
+        }
+
+    }
 }
 
 
@@ -457,3 +489,13 @@ const endIcon = L.icon({
     iconAnchor: [20, 40],
     popupAnchor: [0, -40]
 });
+
+// Lookup table for each marker icon
+const markerIcons = {
+    'museum': museumIcon,
+    'parking': parkingIcon,
+    'bus': busIcon,
+    'dining': diningIcon,
+    'start': startIcon,
+    'end': endIcon
+};
