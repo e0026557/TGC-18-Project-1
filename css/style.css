@@ -6,7 +6,7 @@
 }
 
 /* --- States --- */
-/* States for console drawer (Not applicable to mobile) */
+/* States for console drawer */
 .console--drawer-collapse {
     height: 0;
 }
@@ -20,7 +20,7 @@
     display: none;
 }
 
-/* States for help form (Not applicable to mobile) */
+/* States for help form */
 .slide-up {
     transform: translateY(0);
     transition: transform 0.3s;
@@ -111,12 +111,11 @@
 
 /* --- Map --- */
 #map {
-    /* Define height for map container */
     height: 100vh;
     width: 100vw;
 }
 
-/* --- Help Component --- */
+/* --- Help Components --- */
 #icon-help {
     font-size: 40px;
     color: orange;
