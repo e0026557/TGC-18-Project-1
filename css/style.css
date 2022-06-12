@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 
-/* Console Drawer states */
+/* --- States --- */
+/* States for console drawer (Not applicable to mobile) */
 .console--drawer-collapse {
     height: 0;
 }
@@ -14,12 +15,12 @@
     height: 75vh;
 }
 
-/* Tab states */
+/* States for tab */
 .invisible {
     display: none;
 }
 
-/* Help form states */
+/* States for help form (Not applicable to mobile) */
 .slide-up {
     transform: translateY(0);
     transition: transform 0.3s;
@@ -29,29 +30,29 @@
     transform: translateY(100%);
 }
 
+/* *** MOBILE SETTINGS (BELOW 768PX) *** */
 /* --- Main --- */
 .container-main {
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
 
     height: 100vh;
     width: 100vw;
 }
 
-/* --- Search Bar Components --- */
-.container-console {
-    width: 400px;
+/* --- Nav Console Components (mobile only) --- */
+.container-nav-console {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
     z-index: 314159;
-    background-color: rgba(255,255,255,0.9);
-    
+    background-color: aliceblue;
+
     display: flex;
     flex-direction: column;
- 
-    position: absolute;
-    top: 20px;
-    left: 20px;
 }
 
+/* --- Search Bar Components --- */
 /* Search bar */
 .console--search-bar {
     width: 100%;
@@ -63,91 +64,121 @@
     flex: 1;
 }
 
-
-/* --- Console Drawer Components --- */
-.container-console--drawer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    
-    position: relative;
-}
-/* Console drawer */
-.console--drawer {
-    width: 100%;
-    overflow-y: scroll;
-    
-    display: flex;
-    flex-direction: column;
-    transition: height 0.3s;
-}
-
-/* Autocomplete display box */
-#autocomplete-box {
-    background-color: aliceblue;
-    top: 0;
-    left: 0;
-    max-height: 30vh;
-    width: 100%;
-    overflow-y: scroll;
-    
-    position: absolute;
-}
-
-/* Console drawer toggle button */
-#btnToggleConsoleDrawer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Console drawer toggle button icon */
-#btnToggleConsoleDrawer i {
-    font-size: 10px;
-}
-
 /* --- Map --- */
 #map {
-    /* Define height for map container */
-    height: 100vh;
+    /* Define height for map container (Accounting for mobile nav console's height */
+    height: calc(100vh - 0px);
     width: 100vw;
 }
 
-/* --- Help Component --- */
-#icon-help {
-    font-size: 40px;
-    color: orange;
-    z-index: 314159;
-    
-    position: absolute;
-    bottom: 40px;
-    right: 30px;
+
+
+/* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
+@media screen and (min-width: 768px) {
+
+    /* --- Search Bar Console Components --- */
+    .container-console {
+        width: 400px;
+        z-index: 314159;
+        background-color: rgba(255, 255, 255, 0.9);
+
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    /* --- Console Drawer Components --- */
+    .container-console--drawer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+    }
+
+    /* Console drawer */
+    .console--drawer {
+        width: 100%;
+        overflow-y: scroll;
+
+        display: flex;
+        flex-direction: column;
+        transition: height 0.3s;
+    }
+
+    /* Console drawer toggle button */
+    #btnToggleConsoleDrawer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Console drawer toggle button icon */
+    #btnToggleConsoleDrawer i {
+        font-size: 10px;
+    }
+
+    /* Autocomplete display box */
+    #autocomplete-box {
+        background-color: aliceblue;
+        top: 0;
+        left: 0;
+        max-height: 30vh;
+        width: 100%;
+        overflow-y: scroll;
+
+        position: absolute;
+    }
+
+    /* --- Map --- */
+    #map {
+        /* Define height for map container */
+        height: 100vh;
+        width: 100vw;
+    }
+
+    /* --- Help Component --- */
+    #icon-help {
+        font-size: 40px;
+        color: orange;
+        z-index: 314159;
+
+        position: absolute;
+        bottom: 40px;
+        right: 30px;
+    }
+
+    .container-help {
+        background-color: rgba(255, 255, 255, 0.95);
+        width: 400px;
+        height: 70vh;
+        z-index: 314159;
+
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #icon-close {
+        font-size: 30px;
+    }
+
+    .form-asterisk {
+        color: red;
+    }
+
+    .form-error-message {
+        font-size: 12px;
+        color: red;
+    }
 }
 
-.container-help {
-    background-color: rgba(255,255,255,0.95);
-    width: 400px;
-    height: 70vh;
-    z-index: 314159;
-
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#icon-close {
-    font-size: 30px;
-}
-
-.form-asterisk {
-    color: red;
-}
-
-.form-error-message {
-    font-size: 12px;
-    color: red;
-}
+/* *** LARGE SCREEN SETTINGS (992PX AND ABOVE) *** */
+@media screen and (min-width: 992px) {}
