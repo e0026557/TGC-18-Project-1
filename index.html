@@ -33,47 +33,8 @@
 <body>
     <!-- Main content of webpage -->
     <main class="container-main">
-        <!-- Navbar console (Only for mobile devices) -->
-        <div class="container-nav-console d-md-none">
-            <!-- Button to toggle nav console drawer -->
-            <button id="btnToggleNavConsoleDrawer"><i class="fa-solid fa-chevron-up"></i></button>
-            <!-- Navbar drawer -->
-            <div class="container-fluid nav--drawer nav--drawer-collapse" data-expand="false">
-                <!-- Search bar -->
-                <div class="nav-console--search-bar">
-                    <input type="text" id="nav-txtSearch" placeholder="Search Museum@SG">
-                    <button id="nav-btnSearch">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-
-                <!-- Tabs -->
-                <div class="container-tab">
-                    <!-- Tab: Museum -->
-                    <div class="tab tab--search"></div>
-                    <!-- Tab: Weather -->
-                    <div class="tab tab--weather"></div>
-                    <!-- Tab: Nearby -->
-                    <div class="tab tab--nearby"></div>
-                    <!-- Tab: Navigation -->
-                    <div class="tab tab--navigation"></div>
-                </div>
-            </div>
-
-            <!-- Navbar -->
-            <nav class="mobile-navbar">
-                <div class="row">
-                    <div class="col-3 d-flex justify-content-center mobile-nav-link">Museum</div>
-                    <div class="col-3 d-flex justify-content-center mobile-nav-link">Weather</div>
-                    <div class="col-3 d-flex justify-content-center mobile-nav-link">Nearby</div>
-                    <div class="col-3 d-flex justify-content-center mobile-nav-link">Navigation</div>
-                </div>
-            </nav>
-        </div>
-
-
         <!-- Search bar console (Only for tablets and above) -->
-        <div class="container-console d-none d-md-flex">
+        <div class="container-console">
             <div class="console--search-bar">
                 <input type="text" id="txtSearch" placeholder="Search Museum@SG">
                 <button id="btnSearch">
@@ -179,9 +140,9 @@
         <div id="map"></div>
 
         <!-- Help icon (Only for tablets and above) -->
-        <i id="icon-help" class="fa-solid fa-circle-question d-none d-md-block"></i>
+        <i id="icon-help" class="fa-solid fa-circle-question"></i>
         <!-- Help Form (Only for tablets and above) -->
-        <div class="container-help d-none d-md-flex slide-down">
+        <div class="container-help slide-down">
             <div class="ms-auto me-3 mt-3">
                 <i id="icon-close" class="fa-solid fa-xmark"></i>
             </div>

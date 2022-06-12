@@ -40,146 +40,123 @@
     width: 100vw;
 }
 
-/* --- Nav Console Components (mobile only) --- */
-.container-nav-console {
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
+/* --- Search Console Components --- */
+.container-console {
+    width: 400px;
     z-index: 314159;
-    background-color: aliceblue;
+    background-color: rgba(255, 255, 255, 0.9);
 
     display: flex;
     flex-direction: column;
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
+/* --- Search Bar Components --- */
+/* Search bar */
+.console--search-bar {
+    width: 100%;
+    display: flex;
+}
+
+/* Search input field */
+#txtSearch {
+    flex: 1;
+}
+
+/* --- Console Drawer Components --- */
+.container-console--drawer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+/* Console drawer */
+.console--drawer {
+    width: 100%;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    transition: height 0.3s;
+}
+
+/* Console drawer toggle button */
+#btnToggleConsoleDrawer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Console drawer toggle button icon */
+#btnToggleConsoleDrawer i {
+    font-size: 10px;
+}
+
+/* Autocomplete display box */
+#autocomplete-box {
+    background-color: aliceblue;
+    top: 0;
+    left: 0;
+    max-height: 30vh;
+    width: 100%;
+    overflow-y: scroll;
+
+    position: absolute;
+}
 
 /* --- Map --- */
 #map {
-    /* Define height for map container (Accounting for mobile nav console's height */
-    height: calc(100vh - 0px);
+    /* Define height for map container */
+    height: 100vh;
     width: 100vw;
 }
 
+/* --- Help Component --- */
+#icon-help {
+    font-size: 40px;
+    color: orange;
+    z-index: 314159;
 
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+}
+
+.container-help {
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 400px;
+    height: 70vh;
+    z-index: 314159;
+
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#icon-close {
+    font-size: 30px;
+}
+
+.form-asterisk {
+    color: red;
+}
+
+.form-error-message {
+    font-size: 12px;
+    color: red;
+}
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
-@media screen and (min-width: 768px) {
-
-    /* --- Search Console Components --- */
-    .container-console {
-        width: 400px;
-        z-index: 314159;
-        background-color: rgba(255, 255, 255, 0.9);
-
-        display: flex;
-        flex-direction: column;
-
-        position: absolute;
-        top: 20px;
-        left: 20px;
-    }
-
-    /* --- Search Bar Components --- */
-    /* Search bar */
-    .console--search-bar {
-        width: 100%;
-        display: flex;
-    }
-
-    /* Search input field */
-    #txtSearch {
-        flex: 1;
-    }
-
-    /* --- Console Drawer Components --- */
-    .container-console--drawer {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-
-        position: relative;
-    }
-
-    /* Console drawer */
-    .console--drawer {
-        width: 100%;
-        overflow-y: scroll;
-
-        display: flex;
-        flex-direction: column;
-        transition: height 0.3s;
-    }
-
-    /* Console drawer toggle button */
-    #btnToggleConsoleDrawer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Console drawer toggle button icon */
-    #btnToggleConsoleDrawer i {
-        font-size: 10px;
-    }
-
-    /* Autocomplete display box */
-    #autocomplete-box {
-        background-color: aliceblue;
-        top: 0;
-        left: 0;
-        max-height: 30vh;
-        width: 100%;
-        overflow-y: scroll;
-
-        position: absolute;
-    }
-
-    /* --- Map --- */
-    #map {
-        /* Define height for map container */
-        height: 100vh;
-        width: 100vw;
-    }
-
-    /* --- Help Component --- */
-    #icon-help {
-        font-size: 40px;
-        color: orange;
-        z-index: 314159;
-
-        position: absolute;
-        bottom: 40px;
-        right: 30px;
-    }
-
-    .container-help {
-        background-color: rgba(255, 255, 255, 0.95);
-        width: 400px;
-        height: 70vh;
-        z-index: 314159;
-
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #icon-close {
-        font-size: 30px;
-    }
-
-    .form-asterisk {
-        color: red;
-    }
-
-    .form-error-message {
-        font-size: 12px;
-        color: red;
-    }
-}
+@media screen and (min-width: 768px) {}
 
 /* *** LARGE SCREEN SETTINGS (992PX AND ABOVE) *** */
 @media screen and (min-width: 992px) {}
