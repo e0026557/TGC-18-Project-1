@@ -120,9 +120,34 @@
 
         <!-- Help icon -->
         <i id="icon-help" class="fa-solid fa-circle-question"></i>
-        <div class="container-help invisible">
-            <i id="icon-close" class="fa-solid fa-xmark"></i>
-            <h3></h3>
+        <div class="container-help slide-down">
+            <div class="ms-auto me-3 mt-3">
+                <i id="icon-close" class="fa-solid fa-xmark"></i>
+            </div>
+
+            <div class="container mt-2">
+                <h3>How Can We Help?</h3>
+                <div class="mt-2">
+                    <label class="form-label">Name <span class="form-asterisk">*</span></label>
+                    <input type="text" id="txtName" class="form-control" placeholder="John Doe">
+                    <span id="error-name" class="form-error-message"></span>
+                </div>
+
+                <div class="mt-2">
+                    <label class="form-label">Email <span class="form-asterisk">*</span></label>
+                    <input type="text" id="txtEmail" class="form-control" placeholder="john-doe@gmail.com">
+                    <span id="error-email" class="form-error-message"></span>
+                </div>
+
+                <div class="mt-2">
+                    <label class="form-label">Description <span class="form-asterisk">*</span></label>
+                    <input type="text" id="txtDescription" class="form-control">
+                    <span id="error-description" class="form-error-message"></span>
+                </div>
+
+                <button id="btnHelpSubmit" class="btn btn-primary mt-4">Submit</button>
+            </div>
+
         </div>
     </main>
 

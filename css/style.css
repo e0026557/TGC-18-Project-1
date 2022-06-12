@@ -19,9 +19,20 @@
     display: none;
 }
 
+/* Help form states */
+.slide-up {
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+
+.slide-down {
+    transform: translateY(100%);
+}
+
 /* --- Main --- */
 .container-main {
     position: relative;
+    overflow-y: hidden;
 }
 
 /* --- Search Bar Components --- */
@@ -107,9 +118,9 @@
 }
 
 .container-help {
-    background-color: red;
+    background-color: rgba(255,255,255,0.95);
     width: 400px;
-    height: 80vh;
+    height: 70vh;
     z-index: 314159;
 
     position: absolute;
@@ -117,10 +128,14 @@
     right: 0px;
 
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
 }
 
 #icon-close {
     font-size: 30px;
+}
+
+.form-asterisk {
+    color: red;
 }
