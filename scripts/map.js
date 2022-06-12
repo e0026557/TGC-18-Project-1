@@ -87,7 +87,8 @@ document.querySelector('#icon-close').addEventListener('click', function() {
     btnHelp.classList.remove('invisible');
 })
 
-// Function for checking if name is valid (assuming English context only)
+
+// Function for checking if name is valid for help form (assuming English context only)
 function isValidName(name) {
     // Convert name to lowercase
     let nameWords = name.toLowerCase().split(' '); // Split by whitespaces
@@ -109,7 +110,7 @@ function isValidName(name) {
     
 }
 
-// Function to validate email address
+// Function to validate email address for help form
 function isValidEmail(email) {
     // Valid email address if there is name@domain.xxx format 
     if (!email.includes('@') || !email.includes('.') || email.includes(' ')) {
@@ -166,21 +167,27 @@ document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
     }
     else {
         invalidName = true;
-        errorName.innerHTML = `Only alphabets and special characters such as ' and - are allowed.`;
+        errorName.innerHTML = `Only alphabets and special characters such as ' and - are allowed`;
     }
 
     // Check if email is valid
     let emailInput = document.querySelector('#txtEmail').value;
-    console.log(emailInput);
     if (isValidEmail(emailInput)) {
         errorEmail.innerHTML = '';
-        console.log('valid email')
     }
     else {
         invalidEmail = true;
         errorEmail.innerHTML = `Invalid email address`;
     }
 
-    // TODO : Validate description
+    // Check if there is any description input by user
+    let descriptionInput = document.querySelector('#txtDescription').value;
+    if (!descriptionInput.trim()) {
+        invalidDescription = true;
+        errorDescription.innerHTML = `Please enter description`
+    }
+    else {
+        errorDescription.innerHTML = '';
+    }
 
 });
