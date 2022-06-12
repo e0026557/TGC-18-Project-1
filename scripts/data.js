@@ -100,7 +100,7 @@ async function testNavigationAPI() {
     let data = await getNavigation('default', '1.3548,103.7763', '1.3387,103.7787');
     console.log(data);
 };
-// testNavigationAPI();
+testNavigationAPI();
 
 async function testWeatherAPI() {
     let data = await getWeather(1.3548,103.7763);

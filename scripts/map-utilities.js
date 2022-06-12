@@ -277,7 +277,7 @@ async function displayMuseumInfo(museum) {
     displayNearbyForm(museum);
 
     // Make search result tab visible and hide all other tabs
-    showTabContent('tab--search');    
+    showTabContent('tab--search');
 
     expandConsoleDrawer();
 }
@@ -510,10 +510,16 @@ function showTabContent(tabClassName) {
 function setNavigationPoint(lat, lon, option) {
     let coordinates = [lat, lon];
     if (option == 'start') {
+        // Reassign value of global variable start point
         startCoordinates = coordinates;
+        // Populate start input field of navigation form
+        document.querySelector('#startPoint').value = coordinates.join(',');
     }
     else {
+        // Reassign value of global variable end point
         endCoordinates = coordinates;
+        // Populate end input field of navigation form
+        document.querySelector('#endPoint').value = coordinates.join(',');
     }
 
     console.log(`Start: ${startCoordinates}, End: ${endCoordinates}`);
