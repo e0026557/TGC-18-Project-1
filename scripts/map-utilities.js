@@ -382,7 +382,7 @@ function displayNearbyForm(museum) {
     selectElement.id = 'select-radius';
 
     // Create a default option for radius selection
-    selectElement.innerHTML = `<option value="default" disabled selected>Select radius</option>`
+    selectElement.innerHTML = `<option value="0" disabled selected>Select radius</option>`
 
     // Add event listener to select element
     selectElement.addEventListener('change', async function () {
@@ -457,6 +457,14 @@ async function displayNearbyResult(museum) {
                 <span class="marker--amenities-distance">
                     Distance: ${place.distance}m
                 </span>
+                <div>
+                    <button class="btn-sm btn-start" onclick="setNavigationPoint(${place.coordinates[0]}, ${place.coordinates[1]}, 'start')">
+                        Set as start point
+                    </button>
+                    <button class="btn-sm btn-end" onclick="setNavigationPoint(${place.coordinates[0]}, ${place.coordinates[1]}, 'end')">
+                        Set as end point
+                    </button>
+                </div>
             `);
             marker.addTo(amenitiesLayer);
         }
