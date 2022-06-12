@@ -109,8 +109,43 @@ function isValidName(name) {
     
 }
 
-// TODO
 // Function to validate email address
+function isValidEmail(email) {
+    // Valid email address if there is name@domain.xxx format 
+    if (!email.includes('@') || !email.includes('.') || email.includes(' ')) {
+        return false;
+    }
+
+   // Check that there is only 1 '@' symbol 
+   // -> also check that there are no invalid special characters listed below
+   let invalidSpecialChars = `"'(),:<>[]\\/\``;
+   let count = 0;
+   for (let char of email) {
+       if (char == '@') {
+           count++;
+       }
+       else if (invalidSpecialChars.includes(char)) {
+            return false;
+       }
+   } 
+   if (count > 1) {
+       return false;
+   }
+
+   // Check that there is a '.' after '@'
+   if (email.lastIndexOf('.') < email.indexOf('@')) {
+        return false;
+   }
+
+
+   // Check that email does not end with '.'
+   if (email[email.length-1] == '.') {
+       return false;
+   }
+
+   // If email passes the above checks, consider it valid 
+   return true;
+}
 
 // Validation for help form
 document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
@@ -126,14 +161,26 @@ document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
 
     // Valid name if name does not contain any numbers or special characters (except apostrophe ' and dash -)
     let nameInput = document.querySelector('#txtName').value;
-    if (!isValidName(nameInput)) {
+    if (isValidName(nameInput)) {
+        errorName.innerHTML = ''; // Clear error message if valid name
+    }
+    else {
         invalidName = true;
         errorName.innerHTML = `Only alphabets and special characters such as ' and - are allowed.`;
     }
+
+    // Check if email is valid
+    let emailInput = document.querySelector('#txtEmail').value;
+    console.log(emailInput);
+    if (isValidEmail(emailInput)) {
+        errorEmail.innerHTML = '';
+        console.log('valid email')
+    }
     else {
-        errorName.innerHTML = ''; // Clear error message if valid name
+        invalidEmail = true;
+        errorEmail.innerHTML = `Invalid email address`;
     }
 
-    // TODO: validate email
+    // TODO : Validate description
 
 });
