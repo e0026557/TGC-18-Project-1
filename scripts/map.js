@@ -116,6 +116,9 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
 
         // Display polyline on map
         let polyline = L.Polyline.fromEncoded(encodedPolyline).addTo(navigationLayer);
+        polyline.setStyle({
+            'color':'red'
+        })
         map.fitBounds(polyline.getBounds());
     }
 
