@@ -23,6 +23,7 @@ async function getNavigation(mode, origin, destination) {
             'destination': destination
         }
     });
+    console.log(response.data)
     return response.data;
 }
 

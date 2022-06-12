@@ -21,9 +21,13 @@ markerCluster.addTo(map);
 // Create layer to display markers of nearby amenities and radius circle
 let amenitiesLayer = L.layerGroup().addTo(map);
 
+// Create layer to display navigation routes
+let navigationLayer = L.layerGroup().addTo(map);
+
 // Create layer controls
 L.control.layers({}, {
-    'Nearby Amenities': amenitiesLayer
+    'Nearby Amenities': amenitiesLayer,
+    'Navigation Route': navigationLayer
 }).addTo(map);
 
 // Render all museum markers
@@ -66,6 +70,57 @@ btnToggleConsoleDrawer.addEventListener('click', function () {
         expandConsoleDrawer(); // expand console drawer if currently in collapsed state
     }
 })
+
+// Display polyline route of start to end point when user clicks on 'Get route' button
+document.querySelector('#btnGetRoute').addEventListener('click', async function() {
+    // Set error flag
+    let routeError = false;
+
+    let origin = null;
+    let destination = null;
+    
+    // Get transport mode
+    let mode = document.querySelector('.transport-mode:checked').value;
+    
+    // Check if start point has been selected
+    let errorStart = document.querySelector('#error-start');
+    if (startCoordinates == null) {
+        errorStart.innerHTML = 'Please select a start point';
+        routeError = true;
+    }
+    else {
+        errorStart.innerHTML = '';
+        origin = startCoordinates.join(',');
+    }
+
+    // Check if End point has been selected
+    let errorEnd = document.querySelector('#error-end');
+    if (endCoordinates == null) {
+        errorEnd.innerHTML = 'Please select an end point';
+        routeError = true;
+    }
+    else {
+        errorEnd.innerHTML = '';
+        destination = endCoordinates.join(',');
+    }
+
+    // Get navigation information if there are no errors above
+    if (!routeError) {
+        // Clear previous routes
+        navigationLayer.clearLayers();
+
+        let navigationInfo = await getNavigation(mode, origin, destination);
+        
+        // Get encoded polyline
+        let encodedPolyline = navigationInfo.data.routes[0].overview_polyline.points; 
+
+        // Display polyline on map
+        let polyline = L.Polyline.fromEncoded(encodedPolyline).addTo(navigationLayer);
+        map.fitBounds(polyline.getBounds());
+    }
+
+})
+
 
 // Toggle showing of help form when clicking on help icon
 let btnHelp = document.querySelector('#icon-help');
