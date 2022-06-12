@@ -12,7 +12,6 @@ let userCoordinates = getUserLocation(); // Get user's location, replacing with 
 // Create Leaflet map
 let centerPoint = [1.3521, 103.8198];
 const map = createMap(centerPoint[0], centerPoint[1], 'map');
-map.zoomControl.setPosition('topright'); // Set zoom controls to be on the topright corner
 
 // Create Leaflet marker cluster group
 let markerCluster = L.markerClusterGroup();
@@ -25,10 +24,17 @@ let amenitiesLayer = L.layerGroup().addTo(map);
 let navigationLayer = L.layerGroup().addTo(map);
 
 // Create layer controls
-L.control.layers({}, {
+let layerControl = L.control.layers({}, {
     'Nearby Amenities': amenitiesLayer,
     'Navigation Route': navigationLayer
 }).addTo(map);
+
+// Set position of Leaflet controls
+adjustLeafletControls()
+// If window resizes, adjust position of Leaflet controls accordingly
+window.addEventListener('resize', function() {
+    adjustLeafletControls()
+})
 
 // Render all museum markers
 renderAllMuseumMarkers();

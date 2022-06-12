@@ -24,6 +24,19 @@ function createMap(lat, lon, mapId) {
     return map;
 }
 
+// Function to adjust position of Leaflet controls depending on screen width
+function adjustLeafletControls() {
+    // Adjust position of Leaflet zoom and layer controls depending on screen width
+    if (window.innerWidth < 768 ) {
+        map.zoomControl.setPosition('bottomleft'); // Set zoom controls to be on the bottomleft corner
+        layerControl.setPosition('bottomleft')
+    }
+    else {
+        map.zoomControl.setPosition('topright'); // Set zoom controls to be on the topright corner
+        layerControl.setPosition('topright')
+    }
+}
+
 // Function to extract key information from HTML description in museum geojson feature
 function getMuseumInfo(html) {
     // Create an element to store the HTML description for extraction
