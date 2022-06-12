@@ -381,6 +381,9 @@ function displayNearbyForm(museum) {
     let selectElement = document.createElement('select');
     selectElement.id = 'select-radius';
 
+    // Create a default option for radius selection
+    selectElement.innerHTML = `<option value="default" disabled selected>Select radius</option>`
+
     // Add event listener to select element
     selectElement.addEventListener('change', async function () {
         displayNearbyResult(museum);
