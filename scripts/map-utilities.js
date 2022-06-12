@@ -526,6 +526,21 @@ function setNavigationPoint(lat, lon, option) {
 }
 
 
+// Function to get user's current coordinates
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            userCoordinates = [position.coords.latitude, position.coords.longitude];
+        })
+    }
+    else {
+        alert('Error: Geolocation is not supported.');
+        userCoordinates = [1.3521, 103.8198]; // Set to Singapore's latlng
+    }
+}
+
+
+
 // --- Set up Leaflet marker icons ---
 // Set up marker icons
 const museumIcon = L.icon({
@@ -584,6 +599,14 @@ const endIcon = L.icon({
     popupAnchor: [0, -40]
 });
 
+const redIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-red.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
 // Lookup table for each marker icon
 const markerIcons = {
     'museum': museumIcon,
@@ -592,5 +615,6 @@ const markerIcons = {
     'mrt': mrtIcon,
     'dining': diningIcon,
     'start': startIcon,
-    'end': endIcon
+    'end': endIcon,
+    'red': redIcon
 };

@@ -6,6 +6,7 @@ const MUSEUMS = [];
 let startCoordinates = null;
 let endCoordinates = null;
 
+let userCoordinates = getUserLocation(); // Get user's location, replacing with default coordinates if geolocation is not enabled/supported
 
 // --- Rendering Leaflet map ---
 // Create Leaflet map
