@@ -48,26 +48,21 @@ searchMuseumInput.addEventListener('keyup', async function (event) {
 
 // Search bar - navigation button click
 document.querySelector('#btnNavigation').addEventListener('click', function() {
-    showNavigationContent();
+    showTabContent('tab--navigation');
 })
 
-// Toggle expand/collapse of search bar drawer component
-let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
-btnToggleSearchDrawer.addEventListener('click', function () {
-    // Check state of drawer
-    let searchDrawer = document.querySelector('.console--drawer');
+// Toggle expand/collapse of search bar console drawer component
+let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+btnToggleConsoleDrawer.addEventListener('click', function () {
+    // Check state of console drawer
+    let consoleDrawer = document.querySelector('.console--drawer');
 
-    // Change state of toggle button of search drawer
-    changeToggleBtnState(btnToggleSearchDrawer, searchDrawer);
-
-    // Toggle visibility of drawer depending on state
-    if (searchDrawer.dataset.expand == 'true') {
-        searchDrawer.classList.add('console--drawer-expand');
-        searchDrawer.classList.remove('console--drawer-collapse');
+    // Toggle visibility of console drawer depending on state
+    if (consoleDrawer.dataset.expand == 'true') {
+        collapseConsoleDrawer(); // collapse console drawer if currently in expanded state
     }
     else {
-        searchDrawer.classList.add('console--drawer-collapse');
-        searchDrawer.classList.remove('console--drawer-expand');
+        expandConsoleDrawer(); // expand console drawer if currently in collapsed state
     }
 })
 

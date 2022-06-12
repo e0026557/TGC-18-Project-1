@@ -1,3 +1,5 @@
+// --- Global Variables ---
+
 // --- Functions ---
 // Function to create Leaflet map
 // Note: mapId is the ID of the element containing the map (without '#')
@@ -21,40 +23,6 @@ function createMap(lat, lon, mapId) {
 
     return map;
 }
-
-// Function to render all museum markers
-async function renderAllMuseumMarkers() {
-    let museums = await getMuseums();
-    let museumLayer = L.geoJson(museums, {
-        'pointToLayer': function (feature, latlng) {
-            return L.marker(latlng, { icon: museumIcon });
-        },
-        'onEachFeature': function (feature, layer) {
-            // Create a museum object to store all museum properties
-            let museum = getMuseumInfo(feature.properties.Description);
-            museum['coordinates'] = feature.geometry.coordinates.slice(0, 2).reverse(); // To get [lat,lon] instead of [lon,lat]
-            museum['layer'] = layer; // Store the museum marker
-
-            layer.bindPopup(`
-            <h3 class="museum-name">${museum.name}</h3>
-            <p class="museum-description">${museum.description}</p>
-            <address class="museum-address">${museum.address}</address>
-            <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
-            <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
-            `);
-
-            layer.addEventListener('click', async function () {
-                await displayMuseumInfo(museum);
-                map.flyTo(layer.getLatLng(), 17);
-            })
-
-            // Populate global MUSEUM variable with museum object
-            MUSEUMS.push(museum);
-        }
-    });
-    museumLayer.addTo(markerCluster);
-
-};
 
 // Function to extract key information from HTML description in museum geojson feature
 function getMuseumInfo(html) {
@@ -85,6 +53,49 @@ function getMuseumInfo(html) {
     };
 }
 
+// Function to render all museum markers
+async function renderAllMuseumMarkers() {
+    let museums = await getMuseums();
+    let museumLayer = L.geoJson(museums, {
+        'pointToLayer': function (feature, latlng) {
+            return L.marker(latlng, { icon: museumIcon });
+        },
+        'onEachFeature': function (feature, layer) {
+            // Create a museum object to store all museum properties
+            let museum = getMuseumInfo(feature.properties.Description);
+            museum['coordinates'] = feature.geometry.coordinates.slice(0, 2).reverse(); // To get [lat,lon] instead of [lon,lat]
+            museum['layer'] = layer; // Store the museum marker
+
+            layer.bindPopup(`
+                <h3 class="museum-name">${museum.name}</h3>
+                <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
+                    Set as start point
+                </button>
+                <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
+                    Set as end point
+                </button>
+            `);
+
+            // Add event listener for click interaction with markers
+            layer.addEventListener('click', async function () {
+                await displayMuseumInfo(museum);
+                map.flyTo(layer.getLatLng(), 17);
+            })
+
+            // Populate global MUSEUM variable with museum object
+            MUSEUMS.push(museum);
+        }
+    });
+    museumLayer.addTo(markerCluster);
+
+};
+
+// Function to clear autocomplete results
+function clearAutocompleteResults() {
+    let autocompleteBox = document.querySelector('#autocomplete-box');
+    autocompleteBox.innerHTML = '';
+}
+
 // Function to display autocomplete suggestions
 function displayAutocompleteResults() {
     // Extract search query
@@ -92,11 +103,11 @@ function displayAutocompleteResults() {
     let query = searchInput.value.toLowerCase();
 
     // Clear previous autocomplete suggestions
-    let autocompleteBox = document.querySelector('#autocomplete-box');
-    autocompleteBox.innerHTML = '';
+    clearAutocompleteResults();
 
     // Create Ul element to store autocomplete suggestions as list
     let autocompleteUlElement = document.createElement('ul');
+    autocompleteUlElement.classList.add('autocomplete-list');
 
     let matchFound = false; // State variable to check if there are matches or not
 
@@ -118,16 +129,16 @@ function displayAutocompleteResults() {
                 searchInput.focus();
 
                 // Clear previous autocomplete suggestions
-                autocompleteBox.innerHTML = '';
+                clearAutocompleteResults();
             });
 
             autocompleteUlElement.appendChild(autocompleteLiElement);
         }
     }
 
-    // Append autocomplete suggestions if there are matches
+    // Append autocomplete suggestions to div (autocomplete-box) if there are matches
     if (matchFound) {
-        autocompleteBox.appendChild(autocompleteUlElement);
+        document.querySelector('#autocomplete-box').appendChild(autocompleteUlElement);
     }
 
 }
@@ -136,16 +147,15 @@ function displayAutocompleteResults() {
 async function displayMuseumResult() {
     // Extract search query
     let searchInput = document.querySelector('#txtSearch');
-    let actualQuery = searchInput.value;
-    let query = searchInput.value.toLowerCase();
+    let actualQuery = searchInput.value; // Actual user input
+    let query = searchInput.value.toLowerCase(); // Standardised input
 
-    // Clear previous search result
+    // Clear previous search result for museum
     let divSearchResult = document.querySelector('#searchResult');
     divSearchResult.innerHTML = '';
 
     // Clear autocomplete search results (if any)
-    let autocompleteBox = document.querySelector('#autocomplete-box');
-    autocompleteBox.innerHTML = '';
+    clearAutocompleteResults();
 
     let resultFound = false; // State variable to check if there is search result or not
 
@@ -156,12 +166,16 @@ async function displayMuseumResult() {
             resultFound = true;
 
             divSearchResult.innerHTML = `
-            <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
-            <h3 class="museum-name">${museum.name}</h3>
-            <p class="museum-description">${museum.description}</p>
-            <address class="museum-address">${museum.address}</address>
-            <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
-            <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
+                <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
+                <h3 class="museum-name">${museum.name}</h3>
+                <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
+                    Set as start point
+                </button>
+                <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
+                    Set as end point
+                </button>
+                <p class="museum-description">${museum.description}</p>
+                <address class="museum-address">${museum.address}</address>
            `;
 
             // Display weather information of museum's location
@@ -189,35 +203,39 @@ async function displayMuseumResult() {
     }
 
     // Make search result tab visible and hide all other tabs
-    let tabs = document.querySelectorAll('.tab');
-    for (let tab of tabs) {
-        if (tab.classList.contains('tab--search')) {
-            tab.classList.remove('invisible');
-        }
-        else {
-            if (!tab.classList.contains('invisible')) {
-                tab.classList.add('invisible');
-            }
-        }
-    }
+    showTabContent('tab--search');
 
     // Expand console drawer
     expandConsoleDrawer()
 
 }
 
+// Function to collapse console drawer
+function collapseConsoleDrawer() {
+    // Update state of console drawer and state of toggle button
+    let consoleDrawer = document.querySelector('.console--drawer');
+    consoleDrawer.dataset.expand = 'true'; // so that changeToggleBtnState can update both states accordingly
+
+    // -> Collapse console drawer (if expanded)
+    consoleDrawer.classList.add('console--drawer-collapse');
+    consoleDrawer.classList.remove('console--drawer-expand');
+
+    let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+    changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
+}
+
 // Function to expand console drawer
 function expandConsoleDrawer() {
-    // Update state of search drawer and state of toggle button
-    let searchDrawer = document.querySelector('.console--drawer');
-    searchDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
+    // Update state of console drawer and state of toggle button
+    let consoleDrawer = document.querySelector('.console--drawer');
+    consoleDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
 
-    // -> Expand search drawer (if collapsed)
-    searchDrawer.classList.add('console--drawer-expand');
-    searchDrawer.classList.remove('console--drawer-collapse');
+    // -> Expand console drawer (if collapsed)
+    consoleDrawer.classList.add('console--drawer-expand');
+    consoleDrawer.classList.remove('console--drawer-collapse');
 
-    let btnToggleSearchDrawer = document.querySelector('#btnToggleSearchDrawer');
-    changeToggleBtnState(btnToggleSearchDrawer, searchDrawer); // update both states of search drawer and toggle button
+    let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+    changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
 }
 
 // Function to clear search bar query
@@ -233,20 +251,23 @@ async function displayMuseumInfo(museum) {
     divSearchResult.innerHTML = '';
 
     // Clear autocomplete search results (if any)
-    let autocompleteBox = document.querySelector('#autocomplete-box');
-    autocompleteBox.innerHTML = '';
+    clearAutocompleteResults();
 
-    // Clear search query in search bar input
+    // Replace search query in search bar input with selected marker's museum name
     let searchInput = document.querySelector('#txtSearch');
-    searchInput.value = '';
+    searchInput.value = museum.name;
 
     divSearchResult.innerHTML = `
-    <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
-    <h3 class="museum-name">${museum.name}</h3>
-    <p class="museum-description">${museum.description}</p>
-    <address class="museum-address">${museum.address}</address>
-    <button class="btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">Set as start point</button>
-    <button class="btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">Set as end point</button>
+        <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
+        <h3 class="museum-name">${museum.name}</h3>
+        <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
+            Set as start point
+        </button>
+        <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
+            Set as end point
+        </button>
+        <p class="museum-description">${museum.description}</p>
+        <address class="museum-address">${museum.address}</address>
     `;
 
     // Display weather information of museum's location
@@ -255,6 +276,9 @@ async function displayMuseumInfo(museum) {
     // Display form to select nearby amenities
     displayNearbyForm(museum);
 
+    // Make search result tab visible and hide all other tabs
+    showTabContent('tab--search');    
+
     expandConsoleDrawer();
 }
 
@@ -262,17 +286,11 @@ async function displayMuseumInfo(museum) {
 async function displayWeatherResult(latlng) {
     let weatherInfo = await getWeather(latlng[0], latlng[1]);
 
-    // Clear previous results
+    // Clear previous weather results
     let divSearchWeather = document.querySelector('#searchWeather');
     divSearchWeather.innerHTML = '';
 
-    // Current weather object
-    let currentWeather = weatherInfo.currentWeather;
-
-    // 2hr forecast weather object
-    let forecastWeather = weatherInfo.forecastWeather;
-
-    for (let weather of [currentWeather, forecastWeather]) {
+    for (let weather of Object.values(weatherInfo)) {
         // Create div element
         let weatherDiv = document.createElement('div');
 
@@ -417,7 +435,7 @@ async function displayNearbyResult(museum) {
         'radius': radius,
         'color': 'limegreen',
         'fillColor': 'limegreen',
-        'fillOpacity': 0.4
+        'fillOpacity': 0.3
     };
     L.circle(museum.coordinates, circleOptions).addTo(amenitiesLayer);
 
@@ -433,7 +451,9 @@ async function displayNearbyResult(museum) {
             let marker = L.marker(place.coordinates, { icon: markerIcon });
             marker.bindPopup(`
                 <h3 class="marker--amenities-header">${place.name}</h3>
-                <span class="marker--amenities-distance">Distance: ${place.distance}m</span>
+                <span class="marker--amenities-distance">
+                    Distance: ${place.distance}m
+                </span>
             `);
             marker.addTo(amenitiesLayer);
         }
@@ -455,12 +475,12 @@ function changeToggleBtnState(button, drawer) {
     }
 }
 
-// Function to show navigation tab
-function showNavigationContent() {
+// Function to show selected tab and hide all other tabs
+function showTabContent(tabClassName) {
     // Make navigation tab visible and hide all other tabs
     let tabs = document.querySelectorAll('.tab');
     for (let tab of tabs) {
-        if (tab.classList.contains('tab--navigation')) {
+        if (tab.classList.contains(tabClassName)) {
             tab.classList.remove('invisible');
         }
         else {

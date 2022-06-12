@@ -78,14 +78,14 @@
 }
 
 /* Console drawer toggle button */
-#btnToggleSearchDrawer {
+#btnToggleConsoleDrawer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 /* Console drawer toggle button icon */
-#btnToggleSearchDrawer i {
+#btnToggleConsoleDrawer i {
     font-size: 10px;
 }
 
