@@ -31,7 +31,7 @@ function createMap(lat, lon, mapId) {
 // Function to adjust position of Leaflet controls depending on screen width
 function adjustLeafletControls() {
     // Adjust position of Leaflet zoom and layer controls depending on screen width
-    if (window.innerWidth < 768 ) {
+    if (window.innerWidth < 768) {
         map.zoomControl.setPosition('bottomleft'); // Set zoom controls to be on the bottomleft corner
         layerControl.setPosition('bottomleft')
     }
@@ -170,6 +170,16 @@ async function displayMuseumResult() {
     let searchInput = document.querySelector('#txtSearch');
     let actualQuery = searchInput.value; // Actual user input
     let query = searchInput.value.toLowerCase(); // Standardised input
+
+    // Return if query is an empty string
+    if (query == '') {
+        // Make search result tab visible and hide all other tabs
+        showTabContent('tab--search');
+
+        // Expand console drawer
+        expandConsoleDrawer()
+        return;
+    }
 
     // Clear previous search result for museum
     let divSearchResult = document.querySelector('#searchResult');
@@ -564,7 +574,7 @@ function setNavigationPoint(lat, lon, option) {
 // Function to get user's current coordinates
 function getUserLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             userCoordinates = [position.coords.latitude, position.coords.longitude];
         })
     }
