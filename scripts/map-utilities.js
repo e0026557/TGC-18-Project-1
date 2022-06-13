@@ -1,4 +1,8 @@
 // --- Global Variables ---
+// Lookup tables to store names of museums and amenities by their unique coordinates
+const museumMarkerNames = {};
+let amenitiesMarkerNames = {}; // Lookup table will be renewed each time a new nearby amenities query is made
+
 
 // --- Functions ---
 // Function to create Leaflet map
@@ -97,6 +101,10 @@ async function renderAllMuseumMarkers() {
 
             // Populate global MUSEUM variable with museum object
             MUSEUMS.push(museum);
+
+            // Store museum names by their coordinates
+            let coordString = museum.coordinates.join(',');
+            museumMarkerNames[coordString] = museum.name;
         }
     });
     museumLayer.addTo(markerCluster);
@@ -430,6 +438,9 @@ function displayNearbyForm(museum) {
 
 // Function to display nearby amenities
 async function displayNearbyResult(museum) {
+    // Clear lookup table containing amenities markers' coordinates (key) and amenities' names (value)
+    amenitiesMarkerNames = {};
+
     // Clear all existing amenities markers and radius circle
     amenitiesLayer.clearLayers();
 
@@ -480,6 +491,10 @@ async function displayNearbyResult(museum) {
                 </div>
             `);
             marker.addTo(amenitiesLayer);
+
+            // Store amenities' names by their coordinates
+            let coordString = place.coordinates.join(',');
+            amenitiesMarkerNames[coordString] = place.name;
         }
 
     }
@@ -522,20 +537,24 @@ function showTabContent(tabClassName) {
 // options: 'start' or 'end'
 function setNavigationPoint(lat, lon, option) {
     let coordinates = [lat, lon];
+
+    // Get name of location by coordinates
+    let coordString = coordinates.join(',');
+    let locationName = museumMarkerNames[coordString] || amenitiesMarkerNames[coordString]; // Get location name from one of the lookup tables 
+
     if (option == 'start') {
         // Reassign value of global variable start point
         startCoordinates = coordinates;
         // Populate start input field of navigation form
-        document.querySelector('#startPoint').value = coordinates.join(',');
+        document.querySelector('#startPoint').value = locationName;
     }
     else {
         // Reassign value of global variable end point
         endCoordinates = coordinates;
         // Populate end input field of navigation form
-        document.querySelector('#endPoint').value = coordinates.join(',');
+        document.querySelector('#endPoint').value = locationName;
     }
 
-    console.log(`Start: ${startCoordinates}, End: ${endCoordinates}`);
 }
 
 
