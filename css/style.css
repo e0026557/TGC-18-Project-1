@@ -117,7 +117,9 @@
 
 /* --- Help Components --- */
 #icon-help {
-    font-size: 40px;
+    height: 45px;
+    width: 45px;
+
     color: orange;
     z-index: 314159;
 
