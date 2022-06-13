@@ -555,6 +555,9 @@ function setNavigationPoint(lat, lon, option) {
         document.querySelector('#endPoint').value = locationName;
     }
 
+    // Show navigation form
+    showTabContent('tab--navigation');
+
 }
 
 
