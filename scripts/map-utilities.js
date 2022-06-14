@@ -573,6 +573,7 @@ function setNavigationPoint(lat, lon, option) {
 
 // Function to get user's current coordinates
 function getUserLocation() {
+    let userCoordinates = [1.3521, 103.8198]; // Set to Singapore's latlng by default
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             userCoordinates = [position.coords.latitude, position.coords.longitude];
@@ -580,7 +581,6 @@ function getUserLocation() {
     }
     else {
         alert('Error: Geolocation is not supported.');
-        userCoordinates = [1.3521, 103.8198]; // Set to Singapore's latlng
     }
 
     return userCoordinates;
