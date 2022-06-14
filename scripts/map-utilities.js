@@ -2,6 +2,7 @@
 // Lookup tables to store names of museums and amenities by their unique coordinates
 const museumMarkerNames = {};
 let amenitiesMarkerNames = {}; // Lookup table will be renewed each time a new nearby amenities query is made
+let userMarkerNames = {};
 
 
 // --- Functions ---
@@ -550,7 +551,7 @@ function setNavigationPoint(lat, lon, option) {
 
     // Get name of location by coordinates
     let coordString = coordinates.join(',');
-    let locationName = museumMarkerNames[coordString] || amenitiesMarkerNames[coordString]; // Get location name from one of the lookup tables 
+    let locationName = museumMarkerNames[coordString] || amenitiesMarkerNames[coordString] || userMarkerNames[coordString]; // Get location name from one of the lookup tables 
 
     if (option == 'start') {
         // Reassign value of global variable start point
@@ -573,17 +574,43 @@ function setNavigationPoint(lat, lon, option) {
 
 // Function to get user's current coordinates
 function getUserLocation() {
-    let userCoordinates = [1.3521, 103.8198]; // Set to Singapore's latlng by default
+    // Get user's location if geolocation is supported
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            userCoordinates = [position.coords.latitude, position.coords.longitude];
-        })
-    }
-    else {
-        alert('Error: Geolocation is not supported.');
-    }
+            let coordinates = [position.coords.latitude, position.coords.longitude];
 
-    return userCoordinates;
+            // Create new marker
+            let newUserMarker = L.marker(coordinates, { icon: redIcon }).addTo(map);
+
+            newUserMarker.bindPopup(`
+            <h3 class="marker--amenities-header">Current Location</h3>
+            <div>
+                <button class="btn-sm btn-start" onclick="setNavigationPoint(${coordinates[0]}, ${coordinates[1]}, 'start')">
+                    Set as start point
+                </button>
+                <button class="btn-sm btn-end" onclick="setNavigationPoint(${coordinates[0]}, ${coordinates[1]}, 'end')">
+                    Set as end point
+                </button>
+            </div>
+            `);
+
+            map.flyTo(coordinates, 17);
+            newUserMarker.openPopup();
+
+            // Remove old marker (if any)
+            if (userMarker != null) {
+                userMarker.removeFrom(map);
+            }
+
+            // Store new user marker
+            userMarker = newUserMarker;
+
+            // Store marker's coordinates as key in userMarkerNames object
+            let coordString = coordinates.join(',');
+            userMarkerNames = {};
+            userMarkerNames[coordString] = 'Current location'; 
+        });
+    }
 }
 
 

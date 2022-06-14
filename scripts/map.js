@@ -139,19 +139,8 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
 
 // Display user's location when clicking on geolocate icon
 document.querySelector('#icon-location').addEventListener('click', function() {
-    // TODO
-    // Get user's current coordinates
-    let userCoordinates = getUserLocation();
-    // Render marker on map
-    let newUserMarker = L.marker(userCoordinates, {icon: redIcon}).addTo(map);
-
-    // Remove previous marker on map (if any)
-    if (userMarker != null) {
-        userMarker.removeFrom(map);
-    }
-
-    // Store new user marker
-    userMarker = newUserMarker;
+    // Render user location marker on map
+    getUserLocation();
 });
 
 // Toggle showing of help form when clicking on help icon
