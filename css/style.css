@@ -138,7 +138,7 @@
 
 .btn-map--location:hover {
     color: white;
-    background-color: grey;
+    background-color: rgb(110, 109, 109);
 }
 
 /* Help button */
