@@ -6,7 +6,8 @@ const MUSEUMS = [];
 let startCoordinates = null;
 let endCoordinates = null;
 
-// let userCoordinates = getUserLocation(); // Get user's location, replacing with default coordinates if geolocation is not enabled/supported
+// Global variable to store user's current location marker
+let userMarker = null;
 
 // --- Rendering Leaflet map ---
 // Create Leaflet map
@@ -136,6 +137,22 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
 
 })
 
+// Display user's location when clicking on geolocate icon
+document.querySelector('#icon-location').addEventListener('click', function() {
+    // TODO
+    // Get user's current coordinates
+    let userCoordinates = getUserLocation();
+    // Render marker on map
+    let newUserMarker = L.marker(userCoordinates, {icon: redIcon}).addTo(map);
+
+    // Remove previous marker on map (if any)
+    if (userMarker != null) {
+        userMarker.removeFrom(map);
+    }
+
+    // Store new user marker
+    userMarker = newUserMarker;
+});
 
 // Toggle showing of help form when clicking on help icon
 let btnHelp = document.querySelector('#icon-help');
