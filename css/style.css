@@ -116,7 +116,7 @@
 }
 
 /* --- Map Buttons --- */
-.container-button {
+.container-map-button {
     z-index: 314159;
     position: absolute;
     bottom: 40px;
@@ -128,25 +128,29 @@
 }
 
 /* Location button */
-.btn-location {
+.btn-map--location {
     color: white;
     background-color: grey;
     border-radius: 100%;
+    width: 40px;
+    height: 40px;
 }
 
-.btn-location:hover {
+.btn-map--location:hover {
     color: white;
     background-color: grey;
 }
 
 /* Help button */
-.btn-help {
+.btn-map--help {
     color: white;
     background-color: orange;
     border-radius: 100%;
+    width: 40px;
+    height: 40px;
 }
 
-.btn-help:hover {
+.btn-map--help:hover {
     color: white;
     background-color: rgb(238, 156, 5);
 }
