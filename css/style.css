@@ -115,17 +115,35 @@
     width: 100vw;
 }
 
-/* --- Help Components --- */
+/* --- Map Buttons --- */
+.container-button {
+    z-index: 314159;
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Location button */
+.btn-location {
+    color: white;
+    background-color: grey;
+    border-radius: 100%;
+}
+
+.btn-location:hover {
+    color: white;
+    background-color: grey;
+}
+
 /* Help button */
 .btn-help {
     color: white;
     background-color: orange;
-    z-index: 314159;
     border-radius: 100%;
-
-    position: absolute;
-    bottom: 40px;
-    right: 30px;
 }
 
 .btn-help:hover {
@@ -133,6 +151,7 @@
     background-color: rgb(238, 156, 5);
 }
 
+/* --- Help Form --- */
 .container-help {
     background-color: rgba(255, 255, 255, 0.95);
     width: 400px;
