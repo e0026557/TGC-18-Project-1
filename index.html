@@ -113,14 +113,18 @@
                         <div class="container">
                             <div class="mt-3">
                                 <label class="form-label">Start</label>
-                                <input type="text" id="startPoint" class="form-control" readonly>
+                                <input type="text" id="startPoint" class="form-control" placeholder="Choose a start point" readonly>
                                 <span id="error-start" class="form-error-message"></span>
                             </div>
 
                             <div class="mt-3">
                                 <label class="form-label">End</label>
-                                <input type="text" id="endPoint" class="form-control" readonly>
+                                <input type="text" id="endPoint" class="form-control" placeholder="Choose an end point" readonly>
                                 <span id="error-end" class="form-error-message"></span>
+                            </div>
+
+                            <div class="mt-3">
+                                <span id="error-navigation"></span>
                             </div>
 
                             <button id="btnGetRoute" class="btn btn-primary mt-4">Get Route</button>

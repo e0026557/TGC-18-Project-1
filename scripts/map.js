@@ -110,6 +110,12 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
         destination = endCoordinates.join(',');
     }
 
+    // Check that Start and End points are different (when start/end points have been selected)
+    if (origin == destination && destination != null) {
+        errorEnd.innerHTML = 'Please select an end point that is different from start point';
+        routeError = true;
+    }
+
     // Get navigation information if there are no errors above
     if (!routeError) {
         // Clear previous routes
