@@ -4,6 +4,83 @@ const museumMarkerNames = {};
 let amenitiesMarkerNames = {}; // Lookup table will be renewed each time a new nearby amenities query is made
 let userMarkerNames = {};
 
+// --- Set up Leaflet marker icons ---
+// Set up marker icons
+const museumIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-museum.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const parkingIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-parking.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const busIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-bus.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const mrtIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-mrt.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const diningIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-dining.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const startIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-start.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const endIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-end.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+const redIcon = L.icon({
+    iconUrl: '../assets/leaflet-icons/location-pin-red.png',
+
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+// Lookup table for each marker icon
+const markerIcons = {
+    'museum': museumIcon,
+    'parking': parkingIcon,
+    'bus': busIcon,
+    'mrt': mrtIcon,
+    'dining': diningIcon,
+    'start': startIcon,
+    'end': endIcon,
+    'red': redIcon
+};
 
 // --- Functions ---
 // Function to create Leaflet map
@@ -443,6 +520,12 @@ function displayNearbyForm(museum) {
     divSelect.appendChild(selectElement);
     divForm.appendChild(divSelect);
 
+    // Append a div to divForm to show number of nearby results found
+    let resultsDiv = document.createElement('div');
+    resultsDiv.id = 'results-nearby';
+
+    divForm.appendChild(resultsDiv);
+
     // Append form div to divSearchNearby
     divSearchNearby.appendChild(divForm);
 }
@@ -477,12 +560,23 @@ async function displayNearbyResult(museum) {
     };
     L.circle(museum.coordinates, circleOptions).addTo(amenitiesLayer);
 
+    // Set count variables to tally total number of nearby results by category
+    let nearbyResultCount = {
+        'dining': 0,
+        'bus': 0,
+        'mrt': 0,
+        'parking': 0
+    };
+
     // Get nearby amenities by category
     for (let category of selectedAmenities) {
         let places = await getNearby(museum.coordinates.join(','), radius, category);
 
         // Change marker icon and layer group depending on category of amenities to display
         let markerIcon = markerIcons[category];
+
+        // Update number of results by category
+        nearbyResultCount[category] = places.length;
 
         // Create marker for each place
         for (let place of places) {
@@ -509,6 +603,24 @@ async function displayNearbyResult(museum) {
         }
 
     }
+
+    // Get total number of nearby results
+    let totalResultCount = 0;
+    for (let key in nearbyResultCount) {
+        totalResultCount += nearbyResultCount[key];
+    }
+
+    // Display number of nearby results in nearby form
+    let displayMessage = `There are no results found.`;
+
+    if (totalResultCount == 1) {
+        displayMessage = `There is 1 result found.`;
+    }
+    else if (totalResultCount > 1) {
+        displayMessage = `There are ${totalResultCount} results found.`;
+    }
+
+    document.querySelector('#results-nearby').innerHTML = displayMessage;
 }
 
 
@@ -608,87 +720,10 @@ function getUserLocation() {
             // Store marker's coordinates as key in userMarkerNames object
             let coordString = coordinates.join(',');
             userMarkerNames = {};
-            userMarkerNames[coordString] = 'Current location'; 
+            userMarkerNames[coordString] = 'Current location';
         });
     }
 }
 
 
 
-// --- Set up Leaflet marker icons ---
-// Set up marker icons
-const museumIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-museum.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const parkingIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-parking.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const busIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-bus.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const mrtIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-mrt.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const diningIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-dining.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const startIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-start.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const endIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-end.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-const redIcon = L.icon({
-    iconUrl: '../assets/leaflet-icons/location-pin-red.png',
-
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-});
-
-// Lookup table for each marker icon
-const markerIcons = {
-    'museum': museumIcon,
-    'parking': parkingIcon,
-    'bus': busIcon,
-    'mrt': mrtIcon,
-    'dining': diningIcon,
-    'start': startIcon,
-    'end': endIcon,
-    'red': redIcon
-};
