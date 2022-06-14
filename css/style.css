@@ -116,16 +116,21 @@
 }
 
 /* --- Help Components --- */
-#icon-help {
-    height: 45px;
-    width: 45px;
-
-    color: orange;
+/* Help button */
+.btn-help {
+    color: white;
+    background-color: orange;
     z-index: 314159;
+    border-radius: 100%;
 
     position: absolute;
     bottom: 40px;
     right: 30px;
+}
+
+.btn-help:hover {
+    color: white;
+    background-color: rgb(238, 156, 5);
 }
 
 .container-help {
