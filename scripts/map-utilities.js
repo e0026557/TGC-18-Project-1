@@ -582,6 +582,8 @@ function getUserLocation() {
         alert('Error: Geolocation is not supported.');
         userCoordinates = [1.3521, 103.8198]; // Set to Singapore's latlng
     }
+
+    return userCoordinates;
 }
 
 
