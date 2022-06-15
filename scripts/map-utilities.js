@@ -712,5 +712,24 @@ function getUserLocation() {
     }
 }
 
+// Function to make Bootstrap tab show and hide other tabs
+// -> Bootstrap tabs are implemented as a sub-tab in search console
+function showSubTabContent(tabId) {
+    // Local function to check if tab is active
+    function isActive(tab) {
+        if (tab.classList.contains('active') && tab.classList.contains('show')) {
+            return true
+        }
+    }
 
+    // Hide all tabs
+    let tabs = document.querySelectorAll('.tab-pane');
+    for (let tab of tabs) {
+        if (tab.id == tabId) {
+            if (!tab.classList.contains('show') && !tab.classList.contains('active')) {
+
+            }
+        }
+    }
+}
 
