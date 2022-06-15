@@ -247,7 +247,7 @@ document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
     }
     else {
         invalidName = true;
-        errorName.innerHTML = `Only alphabets and special characters such as ' and - are allowed`;
+        errorName.innerHTML = `Only alphabets, apostrophes (') and dashes(-) are allowed`;
     }
 
     // Check if email is valid
