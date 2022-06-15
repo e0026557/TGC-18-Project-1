@@ -313,6 +313,8 @@ async function displayMuseumResult() {
 
     // Make search result tab visible and hide all other tabs
     showTabContent('tab--search');
+    // Display the museum sub-tab
+    showSubTabContent('tab-museum-content');
 
     // Expand console drawer
     expandConsoleDrawer()
@@ -387,6 +389,8 @@ async function displayMuseumInfo(museum) {
 
     // Make search result tab visible and hide all other tabs
     showTabContent('tab--search');
+    // Display the museum sub-tab
+    showSubTabContent('tab-museum-content');
 
     expandConsoleDrawer();
 }
@@ -718,17 +722,24 @@ function showSubTabContent(tabId) {
     // Local function to check if tab is active
     function isActive(tab) {
         if (tab.classList.contains('active') && tab.classList.contains('show')) {
-            return true
+            return true;
         }
+        return false;
     }
 
-    // Hide all tabs
+    // Hide all tabs (except for selected tab)
     let tabs = document.querySelectorAll('.tab-pane');
     for (let tab of tabs) {
         if (tab.id == tabId) {
-            if (!tab.classList.contains('show') && !tab.classList.contains('active')) {
-
+            // Show selected tab if it is not being displayed
+            if (!isActive(tab)) {
+                tab.classList.add('show');
+                tab.classList.add('active');
             }
+        }
+        else {
+            tab.classList.remove('show');
+            tab.classList.remove('active');
         }
     }
 }
