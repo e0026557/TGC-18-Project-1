@@ -314,7 +314,7 @@ async function displayMuseumResult() {
     // Make search result tab visible and hide all other tabs
     showTabContent('tab--search');
     // Display the museum sub-tab
-    showSubTabContent('tab-museum-content');
+    showSubTabContent('tab-museum', 'tab-museum-content');
 
     // Expand console drawer
     expandConsoleDrawer()
@@ -390,7 +390,7 @@ async function displayMuseumInfo(museum) {
     // Make search result tab visible and hide all other tabs
     showTabContent('tab--search');
     // Display the museum sub-tab
-    showSubTabContent('tab-museum-content');
+    showSubTabContent('tab-museum', 'tab-museum-content');
 
     expandConsoleDrawer();
 }
@@ -718,7 +718,7 @@ function getUserLocation() {
 
 // Function to make Bootstrap tab show and hide other tabs
 // -> Bootstrap tabs are implemented as a sub-tab in search console
-function showSubTabContent(tabId) {
+function showSubTabContent(tabId, tabContentId) {
     // Local function to check if tab is active
     function isActive(tab) {
         if (tab.classList.contains('active') && tab.classList.contains('show')) {
@@ -727,19 +727,34 @@ function showSubTabContent(tabId) {
         return false;
     }
 
-    // Hide all tabs (except for selected tab)
-    let tabs = document.querySelectorAll('.tab-pane');
+    // Unselect all tabs except for selected tab to be displayed
+    let tabs = document.querySelectorAll('.nav-link');
     for (let tab of tabs) {
+        // Show selected tab as active
         if (tab.id == tabId) {
-            // Show selected tab if it is not being displayed
-            if (!isActive(tab)) {
-                tab.classList.add('show');
+            // Add active class if tab is not already active
+            if (!tab.classList.contains('active')) {
                 tab.classList.add('active');
             }
         }
         else {
-            tab.classList.remove('show');
             tab.classList.remove('active');
+        }
+    }
+
+    // Hide all tab contents (except for selected tab content)
+    let tabContents = document.querySelectorAll('.tab-pane');
+    for (let tabContent of tabContents) {
+        if (tabContent.id == tabContentId) {
+            // Show selected tab if it is not being displayed
+            if (!isActive(tabContent)) {
+                tabContent.classList.add('show');
+                tabContent.classList.add('active');
+            }
+        }
+        else {
+            tabContent.classList.remove('show');
+            tabContent.classList.remove('active');
         }
     }
 }
