@@ -167,67 +167,6 @@ document.querySelector('#icon-close').addEventListener('click', function() {
     btnHelp.classList.remove('invisible');
 })
 
-
-// Function for checking if name is valid for help form (assuming English context only)
-function isValidName(name) {
-    // Convert name to lowercase
-    let nameWords = name.toLowerCase().split(' '); // Split by whitespaces
-
-    // Check each word of name
-    for (let nameWord of nameWords) {
-        // Check each char of word
-        for (let char of nameWord) {
-            // Convert char to ascii code
-            let ascii = char.charCodeAt(0);
-
-            // Alphabets are from (97-122), apostrophe (') is 39, and dash (-) is 45
-            if ((ascii >= 97 && ascii <= 122) || ascii == 39 || ascii == 45) {
-                return true;
-            } 
-            return false;
-        }
-    }
-    
-}
-
-// Function to validate email address for help form
-function isValidEmail(email) {
-    // Valid email address if there is name@domain.xxx format 
-    if (!email.includes('@') || !email.includes('.') || email.includes(' ')) {
-        return false;
-    }
-
-   // Check that there is only 1 '@' symbol 
-   // -> also check that there are no invalid special characters listed below
-   let invalidSpecialChars = `"'(),:<>[]\\/\``;
-   let count = 0;
-   for (let char of email) {
-       if (char == '@') {
-           count++;
-       }
-       else if (invalidSpecialChars.includes(char)) {
-            return false;
-       }
-   } 
-   if (count > 1) {
-       return false;
-   }
-
-   // Check that there is a '.' after '@'
-   if (email.lastIndexOf('.') < email.indexOf('@')) {
-        return false;
-   }
-
-
-   // Check that email does not end with '.'
-   if (email[email.length-1] == '.') {
-       return false;
-   }
-
-   // If email passes the above checks, consider it valid 
-   return true;
-}
-
 // Validation for help form
 document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
     // Set up flags
@@ -264,7 +203,7 @@ document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
     let descriptionInput = document.querySelector('#txtDescription').value;
     if (!descriptionInput.trim()) {
         invalidDescription = true;
-        errorDescription.innerHTML = `Please enter description`
+        errorDescription.innerHTML = `Please enter description`;
     }
     else {
         errorDescription.innerHTML = '';
