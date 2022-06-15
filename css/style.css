@@ -22,12 +22,12 @@
 
 /* States for help form */
 .slide-up {
-    transform: translateY(0);
+    transform: translate(50%, 0);
     transition: transform 0.3s;
 }
 
 .slide-down {
-    transform: translateY(100%);
+    transform: translate(50%, 100%);
 }
 
 /* *** MOBILE SETTINGS (BELOW 768PX) *** */
@@ -162,17 +162,21 @@
 /* --- Help Form --- */
 .container-help {
     background-color: rgba(255, 255, 255, 0.95);
-    width: 400px;
-    height: 70vh;
+    /* width: 400px; */
+    /* height: 70vh; */
     z-index: 314159;
 
     position: absolute;
     bottom: 0px;
-    right: 0px;
+    /* right: 0px; */
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 95vw;
+    height: 75vh;
+    right: 50%;
 }
 
 #icon-close {
@@ -191,6 +195,16 @@
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
 @media screen and (min-width: 768px) {
 
+    /* States for help form */
+    .slide-up {
+        transform: translateY(0);
+        transition: transform 0.3s;
+    }
+
+    .slide-down {
+        transform: translateY(100%);
+    }
+
     /* --- Search Console Components --- */
     .container-console {
         width: 400px;
@@ -203,6 +217,15 @@
     .container-map-button {
         bottom: 40px;
         right: 30px;
+    }
+
+    /* --- Help Form --- */
+    .container-help {
+        width: 400px;
+        height: 70vh;
+
+        bottom: 0px;
+        right: 0px;
     }
 
 }
