@@ -42,16 +42,20 @@
 
 /* --- Search Console Components --- */
 .container-console {
-    width: 400px;
-    z-index: 314159;
+    z-index: 314160;
     background-color: rgba(255, 255, 255, 0.9);
-
     display: flex;
     flex-direction: column;
-
+    
     position: absolute;
     top: 20px;
-    left: 20px;
+
+    width: 95vw;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* width: 400px; */
+    /* left: 20px; */
 }
 
 /* --- Search Bar Components --- */
@@ -185,7 +189,17 @@
 }
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+
+    /* --- Search Console Components --- */
+    .container-console {
+        width: 400px;
+        top: 20px;
+        left: 20px;
+        transform: translateX(0);
+    }
+
+}
 
 /* *** LARGE SCREEN SETTINGS (992PX AND ABOVE) *** */
 @media screen and (min-width: 992px) {}
