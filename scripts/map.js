@@ -14,6 +14,9 @@ let userMarker = null;
 let centerPoint = [1.3521, 103.8198];
 const map = createMap(centerPoint[0], centerPoint[1], 'map');
 
+// Set Leaflet attribution to be on the bottomleft corner of map
+map.attributionControl.setPosition('bottomleft');
+
 // Create Leaflet marker cluster group
 let markerCluster = L.markerClusterGroup();
 markerCluster.addTo(map);

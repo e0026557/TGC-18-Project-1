@@ -46,14 +46,14 @@
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
-    
+
     position: absolute;
     top: 20px;
 
     width: 95vw;
     left: 50%;
     transform: translateX(-50%);
-    
+
     /* width: 400px; */
     /* left: 20px; */
 }
@@ -123,12 +123,12 @@
 .container-map-button {
     z-index: 314159;
     position: absolute;
-    bottom: 40px;
-    right: 30px;
+    bottom: 50px;
+    right: 20px;
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 /* Location button */
@@ -197,6 +197,12 @@
         top: 20px;
         left: 20px;
         transform: translateX(0);
+    }
+
+    /* --- Map Buttons --- */
+    .container-map-button {
+        bottom: 40px;
+        right: 30px;
     }
 
 }
