@@ -560,23 +560,19 @@ async function displayNearbyResult(museum) {
     };
     L.circle(museum.coordinates, circleOptions).addTo(amenitiesLayer);
 
-    // Set count variables to tally total number of nearby results by category
-    let nearbyResultCount = {
-        'dining': 0,
-        'bus': 0,
-        'mrt': 0,
-        'parking': 0
-    };
+    // Set count variables to tally total number of nearby results by category (Default is 0)
+    let nearbyResultCount = 0;
 
     // Get nearby amenities by category
     for (let category of selectedAmenities) {
         let places = await getNearby(museum.coordinates.join(','), radius, category);
+        console.log(places);
 
         // Change marker icon and layer group depending on category of amenities to display
         let markerIcon = markerIcons[category];
 
-        // Update number of results by category
-        nearbyResultCount[category] = places.length;
+        // Update count number of results by category
+        nearbyResultCount += places.length;
 
         // Create marker for each place
         for (let place of places) {
@@ -604,23 +600,14 @@ async function displayNearbyResult(museum) {
 
     }
 
-    // Get total number of nearby results
-    let totalResultCount = 0;
-    for (let key in nearbyResultCount) {
-        totalResultCount += nearbyResultCount[key];
+    // Only display message when there are no results found
+    let resultNearbyDiv = document.querySelector('#results-nearby');
+    if (nearbyResultCount == 0) {
+        resultNearbyDiv.innerHTML = `There are no results found.`;
     }
-
-    // Display number of nearby results in nearby form
-    let displayMessage = `There are no results found.`;
-
-    if (totalResultCount == 1) {
-        displayMessage = `There is 1 result found.`;
+    else {
+        resultNearbyDiv.innerHTML = '';
     }
-    else if (totalResultCount > 1) {
-        displayMessage = `There are ${totalResultCount} results found.`;
-    }
-
-    document.querySelector('#results-nearby').innerHTML = displayMessage;
 }
 
 
