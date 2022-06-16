@@ -293,18 +293,26 @@ async function displayMuseumResult() {
             // Update state variable
             resultFound = true;
 
+            // Populate div #searchResult with museum information
             divSearchResult.innerHTML = `
-                <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
-                <h3 class="museum-name">${museum.name}</h3>
-                <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
-                    Set as start point
-                </button>
-                <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
-                    Set as end point
-                </button>
-                <p class="museum-description">${museum.description}</p>
-                <address class="museum-address">${museum.address}</address>
+                <img class="content--museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
+                <h3 class="content--museum-name">${museum.name}</h3>
+                <div class="content--container-button">
+                    <button class="btn btn-start btn-sm">Set as origin</button>
+                    <button class="btn btn-end btn-sm">Set as destination</button>
+                </div>
+                <p class="content--museum-description">${museum.description}</p>
+                <address class="content--museum-address">${museum.address}</address>
            `;
+
+            // Add event listener to buttons
+            divSearchResult.querySelector('.btn-start').addEventListener('click', function() {
+                testSetNavigationPoint(museum.coordinates, museum.name, 'start');
+            });
+            divSearchResult.querySelector('.btn-end').addEventListener('click', function() {
+                testSetNavigationPoint(museum.coordinates, museum.name, 'end');
+            });
+
 
             // Display weather information of museum's location
             await displayWeatherResult(museum.coordinates);
@@ -319,6 +327,7 @@ async function displayMuseumResult() {
                 museum.layer.openPopup();
             });
 
+            break;
         }
     }
 
