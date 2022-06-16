@@ -10,42 +10,42 @@ let endCoordinates = null;
 let userMarker = null;
 
 // --- Rendering Leaflet map ---
-// Create Leaflet map
 const CENTERPOINT = [1.3521, 103.8198]; // Singapore's latlng as center point
 const map = createMap(CENTERPOINT, 'map');
 
-// Set Leaflet attribution to be on the bottomleft corner of map
-map.attributionControl.setPosition('bottomleft');
+// --- Set up Leaflet layer groups ---
+// Museum marker cluster group
+const markerCluster = L.markerClusterGroup().addTo(map);
 
-// Create Leaflet marker cluster group
-let markerCluster = L.markerClusterGroup();
-markerCluster.addTo(map);
+// Layer for displaying markers of nearby amenities and radius circle
+const amenitiesLayer = L.layerGroup().addTo(map);
 
-// Create layer to display markers of nearby amenities and radius circle
-let amenitiesLayer = L.layerGroup().addTo(map);
+// Layer for displaying navigation routes
+const navigationLayer = L.layerGroup().addTo(map);
 
-// Create layer to display navigation routes
-let navigationLayer = L.layerGroup().addTo(map);
-
-// Create layer controls
-let layerControl = L.control.layers({}, {
+// Set up layer controls
+const layerControl = L.control.layers({}, {
     'Nearby Amenities': amenitiesLayer,
     'Navigation Route': navigationLayer
 }).addTo(map);
 
-// Set position of Leaflet controls
-adjustLeafletControls()
+
+// --- Set position of Leaflet controls
+// Position Leaflet attribution
+map.attributionControl.setPosition('bottomleft');
+
+// Position Leaflet controls
+setLeafletControlPosition();
 // If window resizes, adjust position of Leaflet controls accordingly
 window.addEventListener('resize', function() {
-    adjustLeafletControls()
-})
+    setLeafletControlPosition();
+});
 
 // Render all museum markers
 renderAllMuseumMarkers();
 
 // Search bar interactions
 // Search bar - search button click
-let searchMuseumLayer = L.layerGroup();
 document.querySelector('#btnSearch').addEventListener('click', async function () {
     await displayMuseumResult();
 });

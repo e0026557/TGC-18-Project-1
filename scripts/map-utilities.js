@@ -106,7 +106,7 @@ function createMap(latlng, mapId) {
 }
 
 // Function to adjust position of Leaflet controls depending on screen width
-function adjustLeafletControls() {
+function setLeafletControlPosition() {
     // Adjust position of Leaflet zoom and layer controls depending on screen width
     if (window.innerWidth < 768) {
         map.zoomControl.setPosition('bottomleft'); // Set zoom controls to be on the bottomleft corner
