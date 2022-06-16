@@ -85,13 +85,12 @@ const markerIcons = {
 // --- Functions ---
 // Function to create Leaflet map
 // Note: mapId is the ID of the element containing the map (without '#')
-function createMap(lat, lon, mapId) {
+function createMap(latlng, mapId) {
     // Initialize map
     const map = L.map(mapId);
-    let defaultCoord = [lat, lon]; // center point
     let defaultZoom = 13;
 
-    map.setView(defaultCoord, defaultZoom); // Set center point
+    map.setView(latlng, defaultZoom); // Set given coordinates as center point
 
     // Set up tile layers
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {

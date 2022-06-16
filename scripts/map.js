@@ -11,8 +11,8 @@ let userMarker = null;
 
 // --- Rendering Leaflet map ---
 // Create Leaflet map
-let centerPoint = [1.3521, 103.8198];
-const map = createMap(centerPoint[0], centerPoint[1], 'map');
+const CENTERPOINT = [1.3521, 103.8198]; // Singapore's latlng as center point
+const map = createMap(CENTERPOINT, 'map');
 
 // Set Leaflet attribution to be on the bottomleft corner of map
 map.attributionControl.setPosition('bottomleft');
