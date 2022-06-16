@@ -4,8 +4,7 @@ const museumMarkerNames = {};
 let amenitiesMarkerNames = {}; // Lookup table will be renewed each time a new nearby amenities query is made
 let userMarkerNames = {};
 
-// --- Set up Leaflet marker icons ---
-// Set up marker icons
+// --- Leaflet marker icons ---
 const museumIcon = L.icon({
     iconUrl: '../assets/leaflet-icons/location-pin-museum.png',
 
@@ -148,7 +147,7 @@ function getMuseumInfo(html) {
 }
 
 // Function to render all museum markers
-async function renderAllMuseumMarkers() {
+async function renderAllMuseumMarkers(museumIcon, markerLayer) {
     let museums = await getMuseums();
     let museumLayer = L.geoJson(museums, {
         'pointToLayer': function (feature, latlng) {
@@ -160,15 +159,36 @@ async function renderAllMuseumMarkers() {
             museum['coordinates'] = feature.geometry.coordinates.slice(0, 2).reverse(); // To get [lat,lon] instead of [lon,lat]
             museum['layer'] = layer; // Store the museum marker
 
-            layer.bindPopup(`
-                <h3 class="museum-name">${museum.name}</h3>
-                <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
-                    Set as start point
-                </button>
-                <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
-                    Set as end point
-                </button>
-            `);
+            // Set up HTML element to insert into marker popup
+            let div = document.createElement('div');
+            div.innerHTML = `
+                <h3 class="marker--museum-header">${museum.name}</h3>
+                <div class="marker--container-button">
+                    <button class="btn btn-start btn-sm">Set as origin</button>
+                    <button class="btn btn-end btn-sm">Set as destination</button>
+                </div>
+            `;
+
+            // Add event listener to buttons
+            div.querySelector('.btn-start').addEventListener('click', function() {
+                testSetNavigationPoint(museum.coordinates, museum.name, 'start');
+            });
+            div.querySelector('.btn-end').addEventListener('click', function() {
+                testSetNavigationPoint(museum.coordinates, museum.name, 'end');
+            });
+
+
+            layer.bindPopup(div);
+
+            // layer.bindPopup(`
+            //     <h3 class="museum-name">${museum.name}</h3>
+            //     <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
+            //         Set as start point
+            //     </button>
+            //     <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
+            //         Set as end point
+            //     </button>
+            // `);
 
             // Add event listener for click interaction with markers
             layer.addEventListener('click', async function () {
@@ -180,11 +200,11 @@ async function renderAllMuseumMarkers() {
             MUSEUMS.push(museum);
 
             // Store museum names by their coordinates
-            let coordString = museum.coordinates.join(',');
-            museumMarkerNames[coordString] = museum.name;
+            // let coordString = museum.coordinates.join(',');
+            // museumMarkerNames[coordString] = museum.name;
         }
     });
-    museumLayer.addTo(markerCluster);
+    museumLayer.addTo(markerLayer);
 
 };
 
@@ -644,6 +664,26 @@ function showTabContent(tabClassName) {
 
     // Expand console drawer
     expandConsoleDrawer();
+}
+
+
+function testSetNavigationPoint(latlng, locationName, option) {
+    if (option == 'start') {
+        // Reassign value of global variable start point
+        startCoordinates = latlng;
+        // Populate start input field of navigation form
+        document.querySelector('#startPoint').value = locationName;
+    }
+    else {
+        // Reassign value of global variable end point
+        endCoordinates = latlng;
+        // Populate end input field of navigation form
+        document.querySelector('#endPoint').value = locationName;
+    }
+
+    // Show navigation form
+    showTabContent('tab--navigation');
+
 }
 
 // Function for buttons to set start/end points

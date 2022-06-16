@@ -42,7 +42,7 @@ window.addEventListener('resize', function() {
 });
 
 // Render all museum markers
-renderAllMuseumMarkers();
+renderAllMuseumMarkers(museumIcon, markerCluster);
 
 // Search bar interactions
 // Search bar - search button click
