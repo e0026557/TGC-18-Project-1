@@ -30,13 +30,13 @@ const layerControl = L.control.layers({}, {
 }).addTo(map);
 
 
-// --- Set position of Leaflet controls
+// --- Positioning of Leaflet controls ---
 // Position Leaflet attribution
 map.attributionControl.setPosition('bottomleft');
 
 // Position Leaflet controls
 setLeafletControlPosition();
-// If window resizes, adjust position of Leaflet controls accordingly
+// Re-position Leaflet controls if window resizes
 window.addEventListener('resize', function() {
     setLeafletControlPosition();
 });
