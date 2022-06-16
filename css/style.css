@@ -30,6 +30,18 @@
     transform: translate(50%, 100%);
 }
 
+/* Buttons */
+.btn-light {
+    background-color:rgba(237, 237, 237, 1);
+    border: 1px solid  rgb(255, 255, 255);
+}
+
+.btn-light:focus,
+.btn-light:hover {
+    background-color:rgb(230, 230, 230);
+    border: 1px solid  rgb(255, 255, 255);
+}
+
 /* *** MOBILE SETTINGS (BELOW 768PX) *** */
 /* --- Main --- */
 .container-main {
@@ -43,7 +55,7 @@
 /* --- Search Console Components --- */
 .container-console {
     z-index: 314160;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(237, 237, 237, 0.9);
     display: flex;
     flex-direction: column;
 
@@ -56,6 +68,9 @@
 
     /* width: 400px; */
     /* left: 20px; */
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+    gap: 2px;
 }
 
 /* --- Search Bar Components --- */
@@ -68,6 +83,13 @@
 /* Search input field */
 #txtSearch {
     flex: 1;
+    background-color: rgba(237, 237, 237, 1);
+    border: 1px solid  rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+#txtSearch:focus-visible {
+    outline: none;
 }
 
 /* --- Console Drawer Components --- */
@@ -77,6 +99,7 @@
     flex-direction: column;
 
     position: relative;
+    background-color:rgb(248, 248, 248);
 }
 
 /* Console drawer */
