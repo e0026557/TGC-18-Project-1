@@ -143,6 +143,12 @@ async function renderAllMuseumMarkers(museumIcon, markerLayer) {
 
 };
 
+// Function to clear search bar query
+function clearSearchBar() {
+    let searchInput = document.querySelector('#txtSearch');
+    searchInput.value = '';
+}
+
 // Function to clear autocomplete results
 function clearAutocompleteResults() {
     let autocompleteBox = document.querySelector('#autocomplete-box');
@@ -267,12 +273,6 @@ async function displayMuseumResult() {
 
 }
 
-// Function to clear search bar query
-function clearSearchBar() {
-    let searchInput = document.querySelector('#txtSearch');
-    searchInput.value = '';
-}
-
 // Function to display museum information on search console (for click on marker interactions)
 async function displayMuseumInfo(museum) {
     // Clear previous search result
@@ -346,7 +346,6 @@ async function displayWeatherResult(latlng) {
     }
 
 }
-
 
 // Function to display form for nearby tab
 function displayNearbyForm(museum) {
@@ -565,5 +564,4 @@ function setNavigationPoint(latlng, locationName, option) {
 
     // Expand console drawer
     expandConsoleDrawer();
-
 }
