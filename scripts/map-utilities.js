@@ -854,7 +854,7 @@ function showSubTabContent(tabId, tabContentId) {
         if (tab.classList.contains('active') && tab.classList.contains('show')) {
             return true;
         }
-        return false;
+        return false;git
     }
 
     // Unselect all tabs except for selected tab to be displayed
