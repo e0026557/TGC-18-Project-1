@@ -95,29 +95,6 @@ function changeToggleBtnState(button, drawer) {
     }
 }
 
-// Function for buttons to set start/end points
-function setNavigationPoint(latlng, locationName, option) {
-    if (option == 'start') {
-        // Reassign value of global variable start point
-        START_COORDINATES = latlng;
-        // Populate start input field of navigation form
-        document.querySelector('#startPoint').value = locationName;
-    }
-    else {
-        // Reassign value of global variable end point
-        END_COORDINATES = latlng;
-        // Populate end input field of navigation form
-        document.querySelector('#endPoint').value = locationName;
-    }
-
-    // Show navigation form
-    showTabContent('tab--navigation');
-
-    // Expand console drawer
-    expandConsoleDrawer();
-
-}
-
 // Function to show selected tab and hide all other tabs
 function showTabContent(tabClassName) {
     // Make navigation tab visible and hide all other tabs
