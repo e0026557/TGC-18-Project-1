@@ -113,6 +113,9 @@ function testSetNavigationPoint(latlng, locationName, option) {
     // Show navigation form
     showTabContent('tab--navigation');
 
+    // Expand console drawer
+    expandConsoleDrawer();
+
 }
 
 // Function to show selected tab and hide all other tabs
@@ -232,4 +235,32 @@ function isValidEmail(email) {
 
     // If email passes the above checks, consider it valid 
     return true;
+}
+
+// Function to collapse console drawer
+function collapseConsoleDrawer() {
+    // Update state of console drawer and state of toggle button
+    let consoleDrawer = document.querySelector('.console--drawer');
+    consoleDrawer.dataset.expand = 'true'; // so that changeToggleBtnState can update both states accordingly
+
+    // -> Collapse console drawer (if expanded)
+    consoleDrawer.classList.add('console--drawer-collapse');
+    consoleDrawer.classList.remove('console--drawer-expand');
+
+    let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+    changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
+}
+
+// Function to expand console drawer
+function expandConsoleDrawer() {
+    // Update state of console drawer and state of toggle button
+    let consoleDrawer = document.querySelector('.console--drawer');
+    consoleDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
+
+    // -> Expand console drawer (if collapsed)
+    consoleDrawer.classList.add('console--drawer-expand');
+    consoleDrawer.classList.remove('console--drawer-collapse');
+
+    let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+    changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
 }

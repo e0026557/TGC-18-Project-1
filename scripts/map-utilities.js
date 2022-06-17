@@ -267,33 +267,33 @@ async function displayMuseumResult() {
 
 }
 
-// Function to collapse console drawer
-function collapseConsoleDrawer() {
-    // Update state of console drawer and state of toggle button
-    let consoleDrawer = document.querySelector('.console--drawer');
-    consoleDrawer.dataset.expand = 'true'; // so that changeToggleBtnState can update both states accordingly
+// // Function to collapse console drawer
+// function collapseConsoleDrawer() {
+//     // Update state of console drawer and state of toggle button
+//     let consoleDrawer = document.querySelector('.console--drawer');
+//     consoleDrawer.dataset.expand = 'true'; // so that changeToggleBtnState can update both states accordingly
 
-    // -> Collapse console drawer (if expanded)
-    consoleDrawer.classList.add('console--drawer-collapse');
-    consoleDrawer.classList.remove('console--drawer-expand');
+//     // -> Collapse console drawer (if expanded)
+//     consoleDrawer.classList.add('console--drawer-collapse');
+//     consoleDrawer.classList.remove('console--drawer-expand');
 
-    let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
-    changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
-}
+//     let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+//     changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
+// }
 
-// Function to expand console drawer
-function expandConsoleDrawer() {
-    // Update state of console drawer and state of toggle button
-    let consoleDrawer = document.querySelector('.console--drawer');
-    consoleDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
+// // Function to expand console drawer
+// function expandConsoleDrawer() {
+//     // Update state of console drawer and state of toggle button
+//     let consoleDrawer = document.querySelector('.console--drawer');
+//     consoleDrawer.dataset.expand = 'false'; // so that changeToggleBtnState can update both states accordingly
 
-    // -> Expand console drawer (if collapsed)
-    consoleDrawer.classList.add('console--drawer-expand');
-    consoleDrawer.classList.remove('console--drawer-collapse');
+//     // -> Expand console drawer (if collapsed)
+//     consoleDrawer.classList.add('console--drawer-expand');
+//     consoleDrawer.classList.remove('console--drawer-collapse');
 
-    let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
-    changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
-}
+//     let btnToggleConsoleDrawer = document.querySelector('#btnToggleConsoleDrawer');
+//     changeToggleBtnState(btnToggleConsoleDrawer, consoleDrawer); // update both states of console drawer and toggle button
+// }
 
 // Function to clear search bar query
 function clearSearchBar() {
@@ -563,17 +563,12 @@ function getUserLocation() {
             newUserMarker.openPopup();
 
             // Remove old marker (if any)
-            if (userMarker != null) {
-                userMarker.removeFrom(map);
+            if (USER_MARKER != null) {
+                USER_MARKER.removeFrom(map);
             }
 
             // Store new user marker
-            userMarker = newUserMarker;
-
-            // Store marker's coordinates as key in userMarkerNames object
-            let coordString = coordinates.join(',');
-            userMarkerNames = {};
-            userMarkerNames[coordString] = 'Current location';
+            USER_MARKER = newUserMarker;
         });
     }
 }
