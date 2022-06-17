@@ -146,6 +146,60 @@ function getMuseumInfo(html) {
     };
 }
 
+// Function to create HTML element for content display
+function createContentDiv(contentObj, option) {
+    // Set up HTML element to insert into marker popup
+    let div = document.createElement('div');
+
+    // Set up content depending on option
+    // Display distance information
+    let distanceContent = '';
+    if (option.displayDistance) {
+        distanceContent = `
+            <span class="marker--distance">
+                Distance: ${contentObj.distance}m
+            </span>
+        `;
+    }
+
+    // -> Concise content for markers
+    if (option.concise) {
+        div.classList.add('container--marker-content');
+        div.innerHTML = `
+            <h3 class="marker--header">${contentObj.name}</h3>
+            ${distanceContent}
+            <div class="marker--container-button">
+                <button class="btn btn-sm btn-start marker--btn">Set as origin</button>
+                <button class="btn btn-sm btn-end marker--btn">Set as destination</button>
+            </div>
+        `;
+    }
+    // -> Detailed content
+    else {
+        div.classList.add('container--content');
+        div.innerHTML = `
+            <img class="content--img img-fluid" src="${contentObj.imageUrl}" alt="Photo of museum" />
+            <h3 class="content--name">${contentObj.name}</h3>
+            <div class="content--container-button">
+                <button class="btn btn-sm btn-start content--btn">Set as origin</button>
+                <button class="btn btn-sm btn-end content--btn">Set as destination</button>
+            </div>
+            <p class="content--description">${contentObj.description}</p>
+            <address class="content--address">${contentObj.address}</address>
+        `;
+    }
+
+    // Add event listener to buttons
+    div.querySelector('.btn-start').addEventListener('click', function () {
+        testSetNavigationPoint(contentObj.coordinates, contentObj.name, 'start');
+    });
+    div.querySelector('.btn-end').addEventListener('click', function () {
+        testSetNavigationPoint(contentObj.coordinates, contentObj.name, 'end');
+    });
+
+    return div;
+}
+
 // Function to render all museum markers
 async function renderAllMuseumMarkers(museumIcon, markerLayer) {
     let museums = await getMuseums();
@@ -159,25 +213,27 @@ async function renderAllMuseumMarkers(museumIcon, markerLayer) {
             museum['coordinates'] = feature.geometry.coordinates.slice(0, 2).reverse(); // To get [lat,lon] instead of [lon,lat]
             museum['layer'] = layer; // Store the museum marker
 
-            // Set up HTML element to insert into marker popup
-            let div = document.createElement('div');
-            div.innerHTML = `
-                <h3 class="marker--museum-header">${museum.name}</h3>
-                <div class="marker--container-button">
-                    <button class="btn btn-start btn-sm">Set as origin</button>
-                    <button class="btn btn-end btn-sm">Set as destination</button>
-                </div>
-            `;
-
-            // Add event listener to buttons
-            div.querySelector('.btn-start').addEventListener('click', function() {
-                testSetNavigationPoint(museum.coordinates, museum.name, 'start');
-            });
-            div.querySelector('.btn-end').addEventListener('click', function() {
-                testSetNavigationPoint(museum.coordinates, museum.name, 'end');
-            });
+            // // Set up HTML element to insert into marker popup
+            // let div = document.createElement('div');
+            // div.innerHTML = `
+            //     <h3 class="marker--header">${museum.name}</h3>
+            //     <div class="marker--container-button">
+            //         <button class="btn btn-sm btn-start marker--btn">Set as origin</button>
+            //         <button class="btn btn-sm btn-end marker--btn">Set as destination</button>
+            //     </div>
+            // `;
 
 
+            // // Add event listener to buttons
+            // div.querySelector('.btn-start').addEventListener('click', function () {
+            //     testSetNavigationPoint(museum.coordinates, museum.name, 'start');
+            // });
+            // div.querySelector('.btn-end').addEventListener('click', function () {
+            //     testSetNavigationPoint(museum.coordinates, museum.name, 'end');
+            // });
+
+
+            let div = createContentDiv(museum, { 'concise': true });
             layer.bindPopup(div);
 
             // layer.bindPopup(`
@@ -293,26 +349,28 @@ async function displayMuseumResult() {
             // Update state variable
             resultFound = true;
 
-            // Populate div #searchResult with museum information
-            divSearchResult.innerHTML = `
-                <img class="content--museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
-                <h3 class="content--museum-name">${museum.name}</h3>
-                <div class="content--container-button">
-                    <button class="btn btn-start btn-sm">Set as origin</button>
-                    <button class="btn btn-end btn-sm">Set as destination</button>
-                </div>
-                <p class="content--museum-description">${museum.description}</p>
-                <address class="content--museum-address">${museum.address}</address>
-           `;
+            //     // Populate div #searchResult with museum information
+            //     divSearchResult.innerHTML = `
+            //         <img class="content--img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
+            //         <h3 class="content--name">${museum.name}</h3>
+            //         <div class="content--container-button">
+            //             <button class="btn btn-sm btn-start content--btn">Set as origin</button>
+            //             <button class="btn btn-sm btn-end content--btn">Set as destination</button>
+            //         </div>
+            //         <p class="content--description">${museum.description}</p>
+            //         <address class="content--address">${museum.address}</address>
+            //    `;
 
-            // Add event listener to buttons
-            divSearchResult.querySelector('.btn-start').addEventListener('click', function() {
-                testSetNavigationPoint(museum.coordinates, museum.name, 'start');
-            });
-            divSearchResult.querySelector('.btn-end').addEventListener('click', function() {
-                testSetNavigationPoint(museum.coordinates, museum.name, 'end');
-            });
+            //     // Add event listener to buttons
+            //     divSearchResult.querySelector('.btn-start').addEventListener('click', function () {
+            //         testSetNavigationPoint(museum.coordinates, museum.name, 'start');
+            //     });
+            //     divSearchResult.querySelector('.btn-end').addEventListener('click', function () {
+            //         testSetNavigationPoint(museum.coordinates, museum.name, 'end');
+            //     });
 
+            let museumContentDiv = createContentDiv(museum, {'concise': false});
+            divSearchResult.appendChild(museumContentDiv);
 
             // Display weather information of museum's location
             await displayWeatherResult(museum.coordinates);
@@ -396,18 +454,29 @@ async function displayMuseumInfo(museum) {
     let searchInput = document.querySelector('#txtSearch');
     searchInput.value = museum.name;
 
-    divSearchResult.innerHTML = `
-        <img class="museum-img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
-        <h3 class="museum-name">${museum.name}</h3>
-        <button class="btn-sm btn-start" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'start')">
-            Set as start point
-        </button>
-        <button class="btn-sm btn-end" onclick="setNavigationPoint(${museum.coordinates[0]}, ${museum.coordinates[1]}, 'end')">
-            Set as end point
-        </button>
-        <p class="museum-description">${museum.description}</p>
-        <address class="museum-address">${museum.address}</address>
-    `;
+    // Populate div #searchResult with museum information
+    // divSearchResult.innerHTML = `
+    //     <img class="content--img img-fluid" src="${museum.imageUrl}" alt="Photo of museum" />
+    //     <h3 class="content--name">${museum.name}</h3>
+    //     <div class="content--container-button">
+    //         <button class="btn btn-sm btn-start content--btn">Set as origin</button>
+    //         <button class="btn btn-sm btn-end content--btn">Set as destination</button>
+    //     </div>
+    //     <p class="content--description">${museum.description}</p>
+    //     <address class="content--address">${museum.address}</address>
+    // `;
+
+    // // Add event listener to buttons
+    // divSearchResult.querySelector('.btn-start').addEventListener('click', function () {
+    //     testSetNavigationPoint(museum.coordinates, museum.name, 'start');
+    // });
+    // divSearchResult.querySelector('.btn-end').addEventListener('click', function () {
+    //     testSetNavigationPoint(museum.coordinates, museum.name, 'end');
+    // });
+
+
+    let museumContentDiv = createContentDiv(museum, {'concise': false});
+    divSearchResult.appendChild(museumContentDiv);
 
     // Display weather information of museum's location
     await displayWeatherResult(museum.coordinates);
@@ -609,20 +678,25 @@ async function displayNearbyResult(museum) {
         // Create marker for each place
         for (let place of places) {
             let marker = L.marker(place.coordinates, { icon: markerIcon });
-            marker.bindPopup(`
-                <h3 class="marker--amenities-header">${place.name}</h3>
-                <span class="marker--amenities-distance">
-                    Distance: ${place.distance}m
-                </span>
-                <div>
-                    <button class="btn-sm btn-start" onclick="setNavigationPoint(${place.coordinates[0]}, ${place.coordinates[1]}, 'start')">
-                        Set as start point
-                    </button>
-                    <button class="btn-sm btn-end" onclick="setNavigationPoint(${place.coordinates[0]}, ${place.coordinates[1]}, 'end')">
-                        Set as end point
-                    </button>
-                </div>
-            `);
+
+            let div = createContentDiv(place, {'concise': true, 'displayDistance': true});
+            marker.bindPopup(div);
+
+            // marker.bindPopup(`
+            //     <h3 class="marker--amenities-header">${place.name}</h3>
+            //     <span class="marker--amenities-distance">
+            //         Distance: ${place.distance}m
+            //     </span>
+            //     <div>
+            //         <button class="btn-sm btn-start" onclick="setNavigationPoint(${place.coordinates[0]}, ${place.coordinates[1]}, 'start')">
+            //             Set as start point
+            //         </button>
+            //         <button class="btn-sm btn-end" onclick="setNavigationPoint(${place.coordinates[0]}, ${place.coordinates[1]}, 'end')">
+            //             Set as end point
+            //         </button>
+            //     </div>
+            // `);
+
             marker.addTo(amenitiesLayer);
 
             // Store amenities' names by their coordinates
@@ -733,17 +807,25 @@ function getUserLocation() {
             // Create new marker
             let newUserMarker = L.marker(coordinates, { icon: redIcon }).addTo(map);
 
-            newUserMarker.bindPopup(`
-            <h3 class="marker--amenities-header">Current Location</h3>
-            <div>
-                <button class="btn-sm btn-start" onclick="setNavigationPoint(${coordinates[0]}, ${coordinates[1]}, 'start')">
-                    Set as start point
-                </button>
-                <button class="btn-sm btn-end" onclick="setNavigationPoint(${coordinates[0]}, ${coordinates[1]}, 'end')">
-                    Set as end point
-                </button>
-            </div>
-            `);
+            let userObject = {
+                'name': 'Current location',
+                'coordinates': coordinates
+            };
+
+            let div = createContentDiv(userObject, {'concise': true});
+            newUserMarker.bindPopup(div);
+
+            // newUserMarker.bindPopup(`
+            // <h3 class="marker--amenities-header">Current Location</h3>
+            // <div>
+            //     <button class="btn-sm btn-start" onclick="setNavigationPoint(${coordinates[0]}, ${coordinates[1]}, 'start')">
+            //         Set as start point
+            //     </button>
+            //     <button class="btn-sm btn-end" onclick="setNavigationPoint(${coordinates[0]}, ${coordinates[1]}, 'end')">
+            //         Set as end point
+            //     </button>
+            // </div>
+            // `);
 
             map.flyTo(coordinates, 17);
             newUserMarker.openPopup();
@@ -823,11 +905,11 @@ function isValidName(name) {
             // Alphabets are from (97-122), apostrophe (') is 39, and dash (-) is 45
             if ((ascii >= 97 && ascii <= 122) || ascii == 39 || ascii == 45) {
                 return true;
-            } 
+            }
             return false;
         }
     }
-    
+
 }
 
 // Function to validate email address for help form
@@ -837,33 +919,33 @@ function isValidEmail(email) {
         return false;
     }
 
-   // Check that there is only 1 '@' symbol 
-   // -> also check that there are no invalid special characters listed below
-   let invalidSpecialChars = `"'(),:<>[]\\/\``;
-   let count = 0;
-   for (let char of email) {
-       if (char == '@') {
-           count++;
-       }
-       else if (invalidSpecialChars.includes(char)) {
+    // Check that there is only 1 '@' symbol 
+    // -> also check that there are no invalid special characters listed below
+    let invalidSpecialChars = `"'(),:<>[]\\/\``;
+    let count = 0;
+    for (let char of email) {
+        if (char == '@') {
+            count++;
+        }
+        else if (invalidSpecialChars.includes(char)) {
             return false;
-       }
-   } 
-   if (count > 1) {
-       return false;
-   }
-
-   // Check that there is a '.' after '@'
-   if (email.lastIndexOf('.') < email.indexOf('@')) {
+        }
+    }
+    if (count > 1) {
         return false;
-   }
+    }
+
+    // Check that there is a '.' after '@'
+    if (email.lastIndexOf('.') < email.indexOf('@')) {
+        return false;
+    }
 
 
-   // Check that email does not end with '.'
-   if (email[email.length-1] == '.') {
-       return false;
-   }
+    // Check that email does not end with '.'
+    if (email[email.length - 1] == '.') {
+        return false;
+    }
 
-   // If email passes the above checks, consider it valid 
-   return true;
+    // If email passes the above checks, consider it valid 
+    return true;
 }
