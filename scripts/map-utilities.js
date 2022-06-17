@@ -452,9 +452,6 @@ function displayNearbyForm(museum) {
 
 // Function to display nearby amenities
 async function displayNearbyResult(museum) {
-    // Clear lookup table containing amenities markers' coordinates (key) and amenities' names (value)
-    amenitiesMarkerNames = {};
-
     // Clear all existing amenities markers and radius circle
     amenitiesLayer.clearLayers();
 
@@ -486,7 +483,6 @@ async function displayNearbyResult(museum) {
     // Get nearby amenities by category
     for (let category of selectedAmenities) {
         let places = await getNearby(museum.coordinates.join(','), radius, category);
-        console.log(places);
 
         // Change marker icon and layer group depending on category of amenities to display
         let markerIcon = markerIcons[category];
@@ -502,10 +498,6 @@ async function displayNearbyResult(museum) {
             marker.bindPopup(div);
 
             marker.addTo(amenitiesLayer);
-
-            // Store amenities' names by their coordinates
-            let coordString = place.coordinates.join(',');
-            amenitiesMarkerNames[coordString] = place.name;
         }
 
     }
