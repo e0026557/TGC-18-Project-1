@@ -73,10 +73,10 @@ function createContentDiv(contentObj, option) {
 
     // Add event listener to buttons
     div.querySelector('.btn-start').addEventListener('click', function () {
-        testSetNavigationPoint(contentObj.coordinates, contentObj.name, 'start');
+        setNavigationPoint(contentObj.coordinates, contentObj.name, 'start');
     });
     div.querySelector('.btn-end').addEventListener('click', function () {
-        testSetNavigationPoint(contentObj.coordinates, contentObj.name, 'end');
+        setNavigationPoint(contentObj.coordinates, contentObj.name, 'end');
     });
 
     return div;
@@ -96,7 +96,7 @@ function changeToggleBtnState(button, drawer) {
 }
 
 // Function for buttons to set start/end points
-function testSetNavigationPoint(latlng, locationName, option) {
+function setNavigationPoint(latlng, locationName, option) {
     if (option == 'start') {
         // Reassign value of global variable start point
         START_COORDINATES = latlng;
