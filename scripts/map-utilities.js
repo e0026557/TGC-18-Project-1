@@ -357,19 +357,31 @@ async function displayWeatherResult(latlng) {
 
 // Function to display form for nearby tab
 function displayNearbyForm(museum) {
-    // Select div containing content for Nearby tab
+    // Select div #searchNearby
     let divSearchNearby = document.querySelector('#searchNearby');
+    divSearchNearby.innerHTML = ''; // clear previous content
 
-    // Clear previous results
-    divSearchNearby.innerHTML = '';
+    // Create div to contain form and nearby result
+    let divContainerContent = document.createElement('div');
+    divContainerContent.classList.add('container--content');
+    divSearchNearby.appendChild(divContainerContent); // Append to div #searchNearby
 
-    // Create form
+    // Add header to div .container--content
+    divContainerContent.innerHTML = `
+        <h3 class="content--header">Explore nearby: </h3>
+    `;
+
+    // Create div for form components
     let divForm = document.createElement('div');
-    divForm.classList.add('form-nearby');
+    divForm.classList.add('content--form');
+    divContainerContent.appendChild(divForm); // Append to div .container--content
 
-    // -> 4 checkboxes to select category of amenities to display
+    // Create a div for checkboxes section of form
     let divCheckboxes = document.createElement('div'); // div to hold all checkbox elements
-    divCheckboxes.innerHTML = '<h3 class="form-header">Explore Nearby: </h3>';
+    divCheckboxes.classList.add('form-section--checkbox');
+    divForm.appendChild(divCheckboxes); // Append to form div .content--form
+    
+    // -> 4 checkboxes to select category of amenities to display
     let checkboxValues = ['dining', 'parking', 'bus', 'mrt'];
     let checkboxLabels = {
         'dining': 'Dining',
@@ -380,10 +392,10 @@ function displayNearbyForm(museum) {
     for (let value of checkboxValues) {
         // Create checkbox element
         let checkbox = document.createElement('input');
+        checkbox.id = `checkbox-${value}`; // for label to target checkbox
+        checkbox.classList.add('form-check-input'); // Bootstrap's checkbox class
         checkbox.type = 'checkbox';
         checkbox.name = 'amenitiesType'
-        checkbox.id = `checkbox-${value}`;
-        checkbox.classList.add('checkbox-amenities');
         checkbox.value = value;
 
         // Add event listener to update nearby markers on change
@@ -393,39 +405,42 @@ function displayNearbyForm(museum) {
 
         // Create label for checkbox element
         let label = document.createElement('label');
+        label.classList.add('form-check-label'); // Bootstrap's label class
+        label.htmlFor = checkbox.id; // to target checkbox
         label.innerHTML = checkboxLabels[value];
-        label.htmlFor = checkbox.id;
 
+        // Append checkbox and label to div .form-section--checkbox
         divCheckboxes.appendChild(checkbox);
         divCheckboxes.appendChild(label);
     }
 
-    // Append div containing checkboxes to form div
-    divForm.appendChild(divCheckboxes);
+    // // Append checkbox div .form-section--checkbox to form div .content--form
+    // divForm.appendChild(divCheckboxes);
 
-    // Create a div to contain select dropdown
+    // Create a div for select dropdown section of form
     let divSelect = document.createElement('div');
-    divSelect.innerHTML = '<h3 class="form-header">Select search radius: </h3>';
-    // Create select dropdown to select radius of search
+    divSelect.classList.add('form-section--select');
+    divForm.appendChild(divSelect); // append to form div .content--form
+
+    // Create select dropdown element for selecting search radius
     let selectElement = document.createElement('select');
+    selectElement.classList.add('form-select'); // Bootstrap's select class
     selectElement.id = 'select-radius';
-
-    // Create a default option for radius selection
-    selectElement.innerHTML = `<option value="0" disabled selected>Select radius</option>`
-
+    
     // Add event listener to select element
     selectElement.addEventListener('change', async function () {
         displayNearbyResult(museum);
     });
 
-    // -> 3 options: 500m, 1km and 2km
+    // Create a default option for radius selection
+    selectElement.innerHTML = `<option value="0" disabled selected>Select radius</option>`
+    // -> 3 options for search radius: 300m, 500m and 1km
     let optionValues = ['300', '500', '1000'];
     let optionTexts = {
         '300': '300m',
         '500': '500m',
         '1000': '1km'
     };
-
     for (let value of optionValues) {
         // Create option element
         let optionElement = document.createElement('option');
@@ -436,18 +451,19 @@ function displayNearbyForm(museum) {
         selectElement.appendChild(optionElement);
     }
 
-    // Append select element to divSelect
+    // Append select element to div .form-section--select
     divSelect.appendChild(selectElement);
-    divForm.appendChild(divSelect);
+    // // Append div .form-section--select to form div .content--form
+    // divForm.appendChild(divSelect);
 
-    // Append a div to divForm to show number of nearby results found
-    let resultsDiv = document.createElement('div');
-    resultsDiv.id = 'results-nearby';
+    // Create a div to inform user when there is no results found
+    let divResults = document.createElement('div');
+    divResults.classList.add('content--result');
+    divResults.id = 'results-nearby';
+    divContainerContent.appendChild(divResults); // append to div .container--content
 
-    divForm.appendChild(resultsDiv);
-
-    // Append form div to divSearchNearby
-    divSearchNearby.appendChild(divForm);
+    // // Append form div to divSearchNearby
+    // divSearchNearby.appendChild(divForm);
 }
 
 // Function to display nearby amenities
@@ -458,7 +474,8 @@ async function displayNearbyResult(museum) {
     // Get user's input on form
     // -> Get selected amenities to display
     let selectedAmenities = [];
-    let checkboxes = document.querySelectorAll('.checkbox-amenities');
+    // let checkboxes = document.querySelectorAll('.checkbox-amenities');
+    let checkboxes = document.querySelectorAll('.form-check-input');
     for (let checkbox of checkboxes) {
         if (checkbox.checked) {
             selectedAmenities.push(checkbox.value);
@@ -503,12 +520,12 @@ async function displayNearbyResult(museum) {
     }
 
     // Only display message when there are no results found
-    let resultNearbyDiv = document.querySelector('#results-nearby');
+    let divResult = document.querySelector('#results-nearby');
     if (nearbyResultCount == 0) {
-        resultNearbyDiv.innerHTML = `There are no results found.`;
+        divResult.innerHTML = `There are no results found.`;
     }
     else {
-        resultNearbyDiv.innerHTML = '';
+        divResult.innerHTML = '';
     }
 }
 
