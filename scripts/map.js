@@ -7,7 +7,7 @@ let START_COORDINATES = null;
 let END_COORDINATES = null;
 
 // Global variable to store user's current location marker
-let userMarker = null;
+let USER_MARKER = null;
 
 // --- Rendering Leaflet map ---
 const CENTERPOINT = [1.3521, 103.8198]; // Singapore's latlng as center point
@@ -64,6 +64,7 @@ searchMuseumInput.addEventListener('keyup', async function (event) {
 // Search bar - navigation button click
 document.querySelector('#btnNavigation').addEventListener('click', function() {
     showTabContent('tab--navigation');
+    expandConsoleDrawer();
 })
 
 // Toggle expand/collapse of search bar console drawer component
