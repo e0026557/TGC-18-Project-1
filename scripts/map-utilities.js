@@ -312,13 +312,18 @@ async function displayWeatherResult(latlng) {
     let divSearchWeather = document.querySelector('#searchWeather');
     divSearchWeather.innerHTML = '';
 
+    // Create a div element to store each weather div
+    let divContainerContent = document.createElement('div');
+    divContainerContent.classList.add('container--content');
+
     for (let weather of Object.values(weatherInfo)) {
         // Create div element
         let weatherDiv = document.createElement('div');
+        weatherDiv.classList.add('content--weather');
 
         // Create header element
         let weatherHeader = document.createElement('h3');
-        weatherHeader.classList.add('weather-header');
+        weatherHeader.classList.add('content--weather-header');
 
         if (weather.type == 'current') {
             weatherHeader.innerHTML = 'Current Weather';
@@ -330,10 +335,11 @@ async function displayWeatherResult(latlng) {
         // Create img element
         let weatherIcon = document.createElement('img');
         weatherIcon.src = `../assets/weather-icons/${weather.iconCode}.png`;
-        weatherIcon.classList.add('weather-icon');
+        weatherIcon.classList.add('content--weather-img');
 
         // Create span element
         let weatherDescription = document.createElement('span');
+        weatherDescription.classList.add('content--weather-description');
         weatherDescription.innerHTML = weather.description[0].toUpperCase() + weather.description.slice(1);
 
         // Set up weather information div
@@ -341,9 +347,11 @@ async function displayWeatherResult(latlng) {
         weatherDiv.appendChild(weatherIcon);
         weatherDiv.appendChild(weatherDescription);
 
-        // Append weather information div to div #searchWeather
-        divSearchWeather.appendChild(weatherDiv);
+        // Append weather information div to div .container--content
+        divContainerContent.appendChild(weatherDiv);
     }
+
+    divSearchWeather.appendChild(divContainerContent);
 
 }
 
