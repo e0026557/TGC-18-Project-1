@@ -3,9 +3,6 @@
 const MUSEUMS = [];
 
 // Global variables for navigation
-// let startCoordinates = null;
-// let endCoordinates = null;
-
 let START_COORDINATES = null;
 let END_COORDINATES = null;
 
