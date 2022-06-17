@@ -3,8 +3,11 @@
 const MUSEUMS = [];
 
 // Global variables for navigation
-let startCoordinates = null;
-let endCoordinates = null;
+// let startCoordinates = null;
+// let endCoordinates = null;
+
+let START_COORDINATES = null;
+let END_COORDINATES = null;
 
 // Global variable to store user's current location marker
 let userMarker = null;
@@ -94,24 +97,24 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
     
     // Check if start point has been selected
     let errorStart = document.querySelector('#error-start');
-    if (startCoordinates == null) {
+    if (START_COORDINATES == null) {
         errorStart.innerHTML = 'Please select a start point';
         routeError = true;
     }
     else {
         errorStart.innerHTML = '';
-        origin = startCoordinates.join(',');
+        origin = START_COORDINATES.join(',');
     }
 
     // Check if End point has been selected
     let errorEnd = document.querySelector('#error-end');
-    if (endCoordinates == null) {
+    if (END_COORDINATES == null) {
         errorEnd.innerHTML = 'Please select an end point';
         routeError = true;
     }
     else {
         errorEnd.innerHTML = '';
-        destination = endCoordinates.join(',');
+        destination = END_COORDINATES.join(',');
     }
 
     // Check that Start and End points are different (when start/end points have been selected)

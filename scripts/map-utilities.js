@@ -753,13 +753,13 @@ function showTabContent(tabClassName) {
 function testSetNavigationPoint(latlng, locationName, option) {
     if (option == 'start') {
         // Reassign value of global variable start point
-        startCoordinates = latlng;
+        START_COORDINATES = latlng;
         // Populate start input field of navigation form
         document.querySelector('#startPoint').value = locationName;
     }
     else {
         // Reassign value of global variable end point
-        endCoordinates = latlng;
+        END_COORDINATES = latlng;
         // Populate end input field of navigation form
         document.querySelector('#endPoint').value = locationName;
     }
@@ -854,7 +854,7 @@ function showSubTabContent(tabId, tabContentId) {
         if (tab.classList.contains('active') && tab.classList.contains('show')) {
             return true;
         }
-        return false;git
+        return false;
     }
 
     // Unselect all tabs except for selected tab to be displayed
