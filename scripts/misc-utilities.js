@@ -115,6 +115,22 @@ function testSetNavigationPoint(latlng, locationName, option) {
 
 }
 
+// Function to show selected tab and hide all other tabs
+function showTabContent(tabClassName) {
+    // Make navigation tab visible and hide all other tabs
+    let tabs = document.querySelectorAll('.tab');
+    for (let tab of tabs) {
+        if (tab.classList.contains(tabClassName)) {
+            tab.classList.remove('invisible');
+        }
+        else {
+            if (!tab.classList.contains('invisible')) {
+                tab.classList.add('invisible');
+            }
+        }
+    }
+}
+
 // Function to make Bootstrap tab show and hide other tabs
 // -> Bootstrap tabs are implemented as a sub-tab in search console
 function showSubTabContent(tabId, tabContentId) {
