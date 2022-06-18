@@ -390,6 +390,10 @@ function displayNearbyForm(museum) {
         'mrt': 'MRT Station'
     };
     for (let value of checkboxValues) {
+        // Create div for each checkbox (Bootstrap)
+        let div = document.createElement('div');
+        div.classList.add('form-check', 'form-switch')
+
         // Create checkbox element
         let checkbox = document.createElement('input');
         checkbox.id = `checkbox-${value}`; // for label to target checkbox
@@ -410,8 +414,9 @@ function displayNearbyForm(museum) {
         label.innerHTML = checkboxLabels[value];
 
         // Append checkbox and label to div .form-section--checkbox
-        divCheckboxes.appendChild(checkbox);
-        divCheckboxes.appendChild(label);
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        divCheckboxes.appendChild(div);
     }
 
     // // Append checkbox div .form-section--checkbox to form div .content--form
