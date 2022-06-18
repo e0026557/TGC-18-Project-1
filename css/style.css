@@ -150,12 +150,12 @@ body {
 .container-map-button {
     z-index: 314159;
     position: absolute;
-    bottom: 50px;
-    right: 20px;
+    bottom: 30px;
+    right: 10px;
 
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 /* Location button */
@@ -222,7 +222,7 @@ body {
 
 /* --- Leaflet attribution --- */
 .leaflet-control-attribution {
-    font-size: 0.59rem;
+    font-size: 8px;
 }
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
@@ -250,6 +250,7 @@ body {
     .container-map-button {
         bottom: 40px;
         right: 30px;
+        gap: 12px;
     }
 
     /* --- Help Form --- */
