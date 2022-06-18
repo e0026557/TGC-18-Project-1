@@ -157,7 +157,7 @@
 /* Location button */
 .btn-map--location {
     color: white;
-    background-color: grey;
+    background-color: #7d8393;
     border-radius: 100%;
     width: 40px;
     height: 40px;
@@ -165,13 +165,13 @@
 
 .btn-map--location:hover {
     color: white;
-    background-color: rgb(110, 109, 109);
+    background-color: #6e7587;
 }
 
 /* Help button */
 .btn-map--help {
     color: white;
-    background-color: orange;
+    background-color: #90aea7;
     border-radius: 100%;
     width: 40px;
     height: 40px;
@@ -179,7 +179,7 @@
 
 .btn-map--help:hover {
     color: white;
-    background-color: rgb(238, 156, 5);
+    background-color: #809a94;
 }
 
 /* --- Help Form --- */
