@@ -1,6 +1,6 @@
 // --- Set up APIs ---
 // API keys
-const MAPBOX_API_KEY = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+const MAPBOX_API_KEY = 'pk.eyJ1Ijoid2VzbGV5MTg4IiwiYSI6ImNsM3gycmZqejAwZGEzaWxocW1qdGZiNWMifQ.dim57Hy0ke3xC7dS__A93Q';
 const NAVIGATION_API_KEY = 'DTlb4SGIUXbhU3D12zA1iAGXFiZna7BK';
 const WEATHER_API_KEY = '891b31000be51f52585183d6ffdb3dc1';
 const FOURSQUARE_API_KEY = 'fsq3yqoRulXjtzuJ8AHH4ZXqd+AlIXUfLNFhMGfN8kOOLRk=';
@@ -13,7 +13,7 @@ const FOURSQUARE_API_BASE_URL = 'https://api.foursquare.com/v3/places/search';
 // Museum data's relative path
 const MUSEUM_URL = '../data/museums.geojson';
 
-// Functions to get data from each API
+// --- Functions to get data from each API ---
 async function getNavigation(mode, origin, destination) {
     let url = NAVIGATION_API_BASE_URL + `/${mode}`;
     let response = await axios.get(url, {
@@ -95,27 +95,27 @@ async function getMuseums() {
     return response.data;
 }
 
-// Functions to test APIs
-async function testNavigationAPI() {
-    let data = await getNavigation('default', '1.3548,103.7763', '1.3387,103.7787');
-    console.log(data);
-};
-// testNavigationAPI();
+// // --- Functions to test APIs ---
+// async function testNavigationAPI() {
+//     let data = await getNavigation('default', '1.3548,103.7763', '1.3387,103.7787');
+//     console.log(data);
+// };
+// // testNavigationAPI();
 
-async function testWeatherAPI() {
-    let data = await getWeather(1.3548,103.7763);
-    console.log(data);
-}
-// testWeatherAPI();
+// async function testWeatherAPI() {
+//     let data = await getWeather(1.3548,103.7763);
+//     console.log(data);
+// }
+// // testWeatherAPI();
 
-async function testFoursquareAPI() {
-    let data = await getNearby('1.3548,103.7763', 3000, 'bus');
-    console.log(data);
-}
-// testFoursquareAPI();
+// async function testFoursquareAPI() {
+//     let data = await getNearby('1.3548,103.7763', 3000, 'bus');
+//     console.log(data);
+// }
+// // testFoursquareAPI();
 
-async function testMuseum() {
-    let data = await getMuseums();
-    console.log(data);
-}
-// testMuseum();
+// async function testMuseum() {
+//     let data = await getMuseums();
+//     console.log(data);
+// }
+// // testMuseum();
