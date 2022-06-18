@@ -198,7 +198,8 @@
     align-items: center;
 
     width: 95vw;
-    height: 75vh;
+    /* height: 75vh; */
+    height: 500px;
     right: 50%;
 }
 
@@ -245,7 +246,8 @@
     /* --- Help Form --- */
     .container-help {
         width: 400px;
-        height: 70vh;
+        /* height: 70vh; */
+        height: 500px;
 
         bottom: 0px;
         right: 0px;
