@@ -32,14 +32,14 @@
 
 /* Buttons */
 .btn-light {
-    background-color:rgba(237, 237, 237, 1);
-    border: 1px solid  rgb(255, 255, 255);
+    background-color: rgba(237, 237, 237, 1);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .btn-light:focus,
 .btn-light:hover {
-    background-color:rgb(230, 230, 230);
-    border: 1px solid  rgb(255, 255, 255);
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 /* *** MOBILE SETTINGS (BELOW 768PX) *** */
@@ -84,7 +84,7 @@
 #txtSearch {
     flex: 1;
     background-color: rgba(237, 237, 237, 1);
-    border: 1px solid  rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
 }
 
@@ -99,7 +99,7 @@
     flex-direction: column;
 
     position: relative;
-    background-color:rgb(248, 248, 248);
+    background-color: rgb(248, 248, 248);
 }
 
 /* Console drawer */
@@ -216,6 +216,11 @@
     color: red;
 }
 
+/* --- Leaflet attribution --- */
+.leaflet-control-attribution {
+    font-size: 0.59rem;
+}
+
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
 @media screen and (min-width: 768px) {
 
@@ -251,6 +256,12 @@
 
         bottom: 0px;
         right: 0px;
+    }
+
+    /* --- Leaflet attribution --- */
+    /* Default value */
+    .leaflet-control-attribution {
+        font-size: 0.75rem;
     }
 
 }
