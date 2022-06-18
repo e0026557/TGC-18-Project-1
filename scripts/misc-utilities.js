@@ -67,7 +67,7 @@ function createContentDiv(contentObj, option) {
                 <button class="btn btn-sm btn-end content--btn">Set as destination</button>
             </div>
             <p class="content--description">${contentObj.description}</p>
-            <address class="content--address">${contentObj.address}</address>
+            <address class="content--address">${contentObj.address.replaceAll(',', ', <br>')}</address>
         `;
     }
 
