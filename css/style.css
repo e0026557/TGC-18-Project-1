@@ -49,21 +49,21 @@ body {
 /* *** MOBILE SETTINGS (BELOW 768PX) *** */
 /* --- Main --- */
 .container-main {
-    position: relative;
-    overflow: hidden;
-
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+    
+    position: relative;
 }
 
 /* --- Search Console Components --- */
 .container-console {
+    width: 95vw;
+    z-index: 314160;
     /* background-color: #c7cbd1; */
     background-color: #ededed;
-    width: 95vw;
     padding: 5px;
     border-radius: 10px;
-    z-index: 314160;
     box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
 
     display: flex;
@@ -83,55 +83,58 @@ body {
     display: flex;
 }
 
-/* Logo */
+/* Logo Button */
 .btn-logo {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Logo */
 .console--search-bar .logo-img {
     width: 35px;
 }
 
 /* Search input field */
 #txtSearch {
-    flex: 1;
+    min-width: 0px;
     background-color: rgba(237, 237, 237, 1);
     border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
-    min-width: 0px;
     padding-left: 10px;
     padding-right: 10px;
+    flex: 1;
 }
 
 #txtSearch:focus-visible {
     outline: none;
 }
 
+/* Navigation Button */
 #btnNavigation {
+    color: rgba(66, 133, 244, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgba(66, 133, 244, 0.85);
 }
 
 #btnNavigation:hover {
     color: rgba(66, 133, 244, 1);
 }
 
+/* Navigation icon */
 #btnNavigation i {
     font-size: 20px;
 }
 
 /* --- Console Drawer Components --- */
 .container-console--drawer {
+    background-color: rgb(248, 248, 248);
     width: 100%;
     display: flex;
     flex-direction: column;
 
     position: relative;
-    background-color: rgb(248, 248, 248);
 }
 
 /* Console drawer */
@@ -144,28 +147,28 @@ body {
     transition: height 0.3s;
 }
 
-/* Tab Content Scrollbar */
+/* Tab Content */
 .tab-content {
     overflow-y: scroll;
 }
 
-/* width */
+/* --- Tab Content Scrollbar --- */
+/* Scrollbar width */
 .tab-content::-webkit-scrollbar {
     width: 10px;
 }
 
-/* Track */
+/* Scrollbar Track */
 .tab-content::-webkit-scrollbar-track {
     border-radius: 10px;
 }
 
-/* Handle */
+/* Scrollbar Handle */
 .tab-content::-webkit-scrollbar-thumb {
     background: rgba(242, 151, 101, 0.5);
     border-radius: 10px;
 }
 
-/* Handle on hover */
 .tab-content::-webkit-scrollbar-thumb:hover {
     background: rgba(242, 151, 101, 0.65);
 }
@@ -185,13 +188,13 @@ body {
 /* Autocomplete display box */
 #autocomplete-box {
     background-color: aliceblue;
-    top: 0;
-    left: 0;
     max-height: 30vh;
     width: 100%;
     overflow-y: scroll;
-
+    
     position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* --- Map --- */
@@ -203,6 +206,7 @@ body {
 /* --- Map Buttons --- */
 .container-map-button {
     z-index: 314159;
+
     position: absolute;
     bottom: 30px;
     right: 10px;
@@ -214,18 +218,17 @@ body {
 
 /* Location button */
 .btn-map--location {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    width: 40px;
+    height: 40px;
     color: #6e7587;
     /* background-color: #7d8393; */
     background-color: #ededed;
-
     border-radius: 100%;
-    width: 40px;
-    height: 40px;
     box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-map--location:hover {
@@ -236,20 +239,21 @@ body {
     background-color: #90aea7;
 }
 
+/* Location button icon */
 .btn-map--location i {
     font-size: 18px;
 }
 
 /* Help button */
 .btn-map--help {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
     color: white;
     color: #6e7587;
     background-color: #90aea7;
     background-color: #ededed;
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
 }
 
 .btn-map--help:hover {
@@ -260,33 +264,31 @@ body {
 
 /* --- Help Form --- */
 .container-help {
-    background-color: rgba(255, 255, 255, 0.95);
-    /* width: 400px; */
-    /* height: 70vh; */
+    width: 95vw;
+    height: 500px;
     z-index: 314161;
-
-    position: absolute;
-    bottom: 0px;
-    /* right: 0px; */
+    background-color: rgba(255, 255, 255, 0.95);
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    width: 95vw;
-    /* height: 75vh; */
-    height: 500px;
+    position: absolute;
+    bottom: 0px;
     right: 50%;
 }
 
+/* Close icon for help form */
 #icon-close {
     font-size: 30px;
 }
 
+/* Asterisk for help form input labels */
 .form-asterisk {
     color: red;
 }
 
+/* Error message for help form */
 .form-error-message {
     font-size: 12px;
     color: red;
@@ -299,8 +301,8 @@ body {
 
 /* --- Offcanvas (About-us) --- */
 .offcanvas {
-    z-index: 314161;
     width: 421px;
+    z-index: 314161;
 }
 
 .offcanvas .logo-img {
@@ -309,7 +311,7 @@ body {
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
 @media screen and (min-width: 768px) {
-
+    /* --- General --- */
     /* States for help form */
     .slide-up {
         transform: translateY(0);
@@ -323,6 +325,7 @@ body {
     /* --- Search Console Components --- */
     .container-console {
         width: 400px;
+
         top: 20px;
         left: 20px;
         transform: translateX(0);
@@ -338,7 +341,6 @@ body {
     /* --- Help Form --- */
     .container-help {
         width: 400px;
-        /* height: 70vh; */
         height: 500px;
 
         bottom: 0px;
