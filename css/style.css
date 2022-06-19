@@ -36,7 +36,7 @@ body {
 
 /* Buttons */
 .btn-light {
-    background-color: rgba(237, 237, 237, 1);
+    background-color: #ededed;
     border: 1px solid rgb(255, 255, 255);
 }
 
@@ -58,11 +58,13 @@ body {
 
 /* --- Search Console Components --- */
 .container-console {
-    background-color: #c7cbd1;
+    /* background-color: #c7cbd1; */
+    background-color: #ededed;
     width: 95vw;
     padding: 5px;
     border-radius: 10px;
     z-index: 314160;
+    box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
     
     display: flex;
     flex-direction: column;
@@ -170,16 +172,27 @@ body {
 
 /* Location button */
 .btn-map--location {
-    color: white;
-    background-color: #7d8393;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #6e7587;
+    /* background-color: #7d8393; */
+    background-color: #ededed;
     border-radius: 100%;
     width: 40px;
     height: 40px;
+    box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
 }
 
 .btn-map--location:hover {
-    color: white;
-    background-color: #6e7587;
+    color: #585e6c;
+    /* background-color: #6e7587; */
+    /* background-color: #d5d5d5; */
+}
+
+.btn-map--location i {
+    font-size: 20px;
 }
 
 /* Help button */
@@ -189,6 +202,7 @@ body {
     border-radius: 100%;
     width: 40px;
     height: 40px;
+    box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
 }
 
 .btn-map--help:hover {
