@@ -143,6 +143,28 @@ body {
     transition: height 0.3s;
 }
 
+/* Console drawer Scrollbar */
+/* width */
+.console--drawer::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.console--drawer::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+.console--drawer::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.console--drawer::-webkit-scrollbar-thumb:hover {
+    background: rgb(111, 111, 111);
+}
+
 /* Console drawer toggle button */
 #btnToggleConsoleDrawer {
     display: flex;
