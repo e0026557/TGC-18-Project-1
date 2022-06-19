@@ -136,33 +136,37 @@ body {
 /* Console drawer */
 .console--drawer {
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
 
     display: flex;
     flex-direction: column;
     transition: height 0.3s;
 }
 
-/* Console drawer Scrollbar */
+/* Tab Content Scrollbar */
+.tab-content {
+    overflow-y: scroll;
+}
+
 /* width */
-.console--drawer::-webkit-scrollbar {
+.tab-content::-webkit-scrollbar {
     width: 10px;
 }
 
 /* Track */
-.console--drawer::-webkit-scrollbar-track {
+.tab-content::-webkit-scrollbar-track {
     border-radius: 10px;
 }
 
 /* Handle */
-.console--drawer::-webkit-scrollbar-thumb {
-    background: grey;
+.tab-content::-webkit-scrollbar-thumb {
+    background: rgba(242, 151, 101, 0.7);
     border-radius: 10px;
 }
 
 /* Handle on hover */
-.console--drawer::-webkit-scrollbar-thumb:hover {
-    background: rgb(111, 111, 111);
+.tab-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(242, 151, 101, 0.85);
 }
 
 /* Console drawer toggle button */
