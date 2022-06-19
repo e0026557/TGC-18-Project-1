@@ -91,7 +91,7 @@ body {
     align-items: center;
 }
 
-.console--search-bar img {
+.console--search-bar .logo-img {
     width: 35px;
 }
 
@@ -238,10 +238,14 @@ body {
     font-size: 8px;
 }
 
-/* Offcanvas (About-us) */
+/* --- Offcanvas (About-us) --- */
 .offcanvas {
     z-index: 314161;
     width: 421px;
+}
+
+.offcanvas .logo-img {
+    width: 150px;
 }
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
