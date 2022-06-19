@@ -84,12 +84,27 @@ body {
     display: flex;
 }
 
+/* Logo */
+.btn-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.console--search-bar img {
+    width: 35px;
+}
+
 /* Search input field */
 #txtSearch {
     flex: 1;
     background-color: rgba(237, 237, 237, 1);
     border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
+}
+
+#txtSearch::placeholder {
+    padding-left: 5px;
 }
 
 #txtSearch:focus-visible {
@@ -223,6 +238,12 @@ body {
 /* --- Leaflet attribution --- */
 .leaflet-control-attribution {
     font-size: 8px;
+}
+
+/* Offcanvas (About-us) */
+.offcanvas {
+    z-index: 314161;
+    width: 421px;
 }
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */

@@ -44,6 +44,9 @@
         <!-- Search bar console -->
         <div class="container-console">
             <div class="console--search-bar">
+                <button class="btn btn-sm btn-logo btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                    <img src="assets/logo/logo-icon3.png" alt="">
+                </button>
                 <input type="text" id="txtSearch" placeholder="Search Museum@SG">
                 <button id="btnSearch" class="btn btn-light">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -199,6 +202,18 @@
         </div>
     </main>
 
+    <aside>
+         <!-- Offcanvas Body for About-us -->
+         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdroped with scrolling</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <p>Try scrolling the rest of the page to see this option in action.</p>
+            </div>
+          </div>
+    </aside>
 
     <!-- JAVASCRIPTS -->
     <!-- Bootstrap 5 JavaScript -->
