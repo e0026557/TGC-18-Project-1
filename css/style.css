@@ -154,21 +154,25 @@ body {
 
 /* --- Tab Content Scrollbar --- */
 /* Scrollbar width */
+#autocomplete-box::-webkit-scrollbar,
 .tab-content::-webkit-scrollbar {
     width: 10px;
 }
 
 /* Scrollbar Track */
+#autocomplete-box::-webkit-scrollbar-track,
 .tab-content::-webkit-scrollbar-track {
     border-radius: 10px;
 }
 
 /* Scrollbar Handle */
+#autocomplete-box::-webkit-scrollbar-thumb,
 .tab-content::-webkit-scrollbar-thumb {
     background: rgba(242, 151, 101, 0.5);
     border-radius: 10px;
 }
 
+#autocomplete-box::-webkit-scrollbar-thumb:hover,
 .tab-content::-webkit-scrollbar-thumb:hover {
     background: rgba(242, 151, 101, 0.65);
 }
@@ -190,11 +194,27 @@ body {
     background-color: aliceblue;
     max-height: 30vh;
     width: 100%;
+    border-radius: 10px;
     overflow-y: scroll;
     
     position: absolute;
     top: 0;
     left: 0;
+}
+
+/* Autocomplete list */
+.autocomplete-list {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.autocomplete-result {
+    padding: 7px 20px 0 20px;
+    cursor: pointer;
+}
+
+.autocomplete-result:hover {
+    background-color: rgba(242, 151, 101, 0.3);
 }
 
 /* --- Map --- */
