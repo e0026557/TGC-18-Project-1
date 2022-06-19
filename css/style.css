@@ -35,15 +35,18 @@ body {
 }
 
 /* Buttons */
-.btn-light {
-    background-color: #ededed;
+.btn-light,
+.btn-light:focus {
+    background-color: rgba(237, 237, 237, 0.6);
     border: 1px solid rgb(255, 255, 255);
 }
 
-.btn-light:focus,
+.btn-light:active:focus {
+    box-shadow: none;
+}
+
 .btn-light:hover {
-    background-color: rgb(230, 230, 230);
-    border: 1px solid rgb(255, 255, 255);
+    background-color: #e6e6e6;
 }
 
 /* *** MOBILE SETTINGS (BELOW 768PX) *** */
@@ -112,6 +115,7 @@ body {
 
 /* Search Button */
 #btnSearch {
+    width: 40px;
     color: #6e7587;
     display: flex;
     justify-content: center;
@@ -120,6 +124,7 @@ body {
 
 /* Navigation Button */
 #btnNavigation {
+    width: 40px;
     color: rgba(66, 133, 244, 0.85);
     display: flex;
     justify-content: center;
