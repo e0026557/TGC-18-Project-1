@@ -313,6 +313,37 @@ body {
     width: 100vw;
 }
 
+/* Marker popup */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background-color: #fceae0;
+}
+
+.marker--header {
+    text-align: center;
+}
+
+.marker--container-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.marker--btn {
+    font-size: 11px;
+    width: 100px;
+    color: white;
+    background-color: #f29765;
+    border-radius: 15px;
+    padding: 0 2px;
+}
+
+.marker--btn:hover {
+    color: white;
+    background-color: #da885b;
+}
+
 /* --- Map Buttons --- */
 .container-map-button {
     z-index: 314159;
