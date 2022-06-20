@@ -56,7 +56,7 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    
+
     position: relative;
 }
 
@@ -210,7 +210,7 @@ body {
     width: 100%;
     border-radius: 10px;
     overflow-y: scroll;
-    
+
     position: absolute;
     top: 0;
     left: 0;
@@ -219,12 +219,21 @@ body {
 /* Autocomplete list */
 .autocomplete-list {
     list-style: none;
-    padding: 10px 0;
+    margin: 0;
+    padding: 0;
 }
 
 .autocomplete-result {
-    padding: 7px 20px 0 20px;
+    padding: 0px 20px 5px 15px;
     cursor: pointer;
+}
+
+.autocomplete-result:first-child {
+    padding-top: 8px;
+}
+
+.autocomplete-result:last-child {
+    padding-bottom: 8px;
 }
 
 .autocomplete-result:hover {
@@ -259,7 +268,7 @@ body {
     background-color: #ededed;
     border-radius: 100%;
     box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -346,6 +355,7 @@ body {
 
 /* *** MEDIUM SCREEN SETTINGS (768PX AND ABOVE) *** */
 @media screen and (min-width: 768px) {
+
     /* --- General --- */
     /* States for help form */
     .slide-up {
