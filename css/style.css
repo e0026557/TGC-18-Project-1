@@ -208,7 +208,7 @@ body {
     background-color: aliceblue;
     max-height: 30vh;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     overflow-y: scroll;
 
     position: absolute;
