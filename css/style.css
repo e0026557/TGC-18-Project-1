@@ -311,6 +311,12 @@ body {
     box-shadow: none;
 }
 
+/* --- Navigation --- */
+.tab--navigation {
+    height: 100%;
+    background-color: #fceae0;
+}
+
 /* --- Console drawer toggle button --- */
 #btnToggleConsoleDrawer {
     display: flex;
