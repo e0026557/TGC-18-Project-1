@@ -260,7 +260,7 @@ body {
 }
 
 .content--address {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     padding-left: 0.5rem;
     padding-bottom: 0.7rem;
@@ -274,8 +274,8 @@ body {
 }
 
 .content--btn {
-    font-size: 12px;
-    width: 125px;
+    font-size: 14px;
+    width: fit-content;
     color: white;
     background-color: #f29765;
     border-radius: 15px;
@@ -287,7 +287,7 @@ body {
 }
 
 .content--description {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* --- Weather Content --- */
@@ -434,6 +434,7 @@ body {
 }
 
 .marker--distance {
+    font-size: 14px;
     display: flex;
     justify-content: center;
     padding-bottom: 0.75rem;
@@ -443,16 +444,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .marker--btn {
-    font-size: 11px;
-    width: 100px;
+    font-size: 14px;
+    width: fit-content;
     color: white;
     background-color: #f29765;
     border-radius: 15px;
-    padding: 0 2px;
+    padding: 0 10px;
 }
 
 .marker--btn:hover {
