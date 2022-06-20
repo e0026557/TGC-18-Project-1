@@ -35,13 +35,13 @@ body {
 }
 
 /* Buttons */
-.btn-navigation {
+.btn-orange {
     color: white;
     background-color: #f29765;
     border-color: #f29765;
 }
 
-.btn-navigation:hover {
+.btn-orange:hover {
     color:white;
     background-color: #da885b;
     border-color: #f29765;
@@ -53,8 +53,8 @@ body {
     border: 1px solid rgb(255, 255, 255);
 }
 
-.btn-navigation:focus,
-.btn-navigation:active:focus,
+.btn-orange:focus,
+.btn-orange:active:focus,
 .btn-light:focus,
 .btn-light:active:focus {
     box-shadow: none;
@@ -519,6 +519,7 @@ body {
 
 /* Close icon for help form */
 #icon-close {
+    color: #f29765;
     font-size: 30px;
 }
 
