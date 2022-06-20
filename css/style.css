@@ -276,7 +276,40 @@ body {
 }
 
 /* --- Nearby Content --- */
+.content--header {
+    font-size: 24px;
+    padding-bottom: 0.5rem;
+}
 
+.content--form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-section--checkbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    padding-left: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: #f29765;
+    border-color: #f29765;
+}
+
+.form-check-input:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.form-select:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
 
 /* --- Console drawer toggle button --- */
 #btnToggleConsoleDrawer {
