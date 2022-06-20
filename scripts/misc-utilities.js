@@ -51,7 +51,7 @@ function createContentDiv(contentObj, option) {
             <h3 class="marker--header">${contentObj.name}</h3>
             ${distanceContent}
             <div class="marker--container-button">
-                <button class="btn btn-sm btn-start marker--btn">Set as origin</button>
+                <button class="btn btn-sm btn-start marker--btn">Set as start point</button>
                 <button class="btn btn-sm btn-end marker--btn">Set as destination</button>
             </div>
         `;
@@ -64,7 +64,7 @@ function createContentDiv(contentObj, option) {
             <h3 class="content--name">${contentObj.name}</h3>
             <address class="content--address">${contentObj.address}</address>
             <div class="content--container-button">
-                <button class="btn btn-sm btn-start content--btn">Set as origin</button>
+                <button class="btn btn-sm btn-start content--btn">Set as start point</button>
                 <button class="btn btn-sm btn-end content--btn">Set as destination</button>
             </div>
             <p class="content--description">${contentObj.description}</p>
