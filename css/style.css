@@ -369,6 +369,7 @@ body {
 .offcanvas {
     width: 421px;
     z-index: 314161;
+    background-color: #fceae0;
 }
 
 .offcanvas .logo-img {
