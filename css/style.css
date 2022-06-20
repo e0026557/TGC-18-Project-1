@@ -161,8 +161,25 @@ body {
     transition: height 0.3s;
 }
 
+/* Tab Button */
+.nav-link {
+    color: #6e7587;
+}
+
+.nav-link:hover {
+    color: #63697a;
+    background-color: #efefef;
+}
+
+.nav-tabs .nav-link.active {
+    color: black;
+    background-color: #fceae0;
+}
+
 /* Tab Content */
 .tab-content {
+    height: 100%;
+    background-color: #fceae0;
     overflow-y: scroll;
 }
 
