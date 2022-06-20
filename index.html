@@ -116,25 +116,25 @@
                     <!-- Display: Navigation (Hidden by default) -->
                     <div class="tab tab--navigation invisible">
                         <!-- Radio selection for transport type -->
-                        <div class="d-flex justify-content-center gap-4 mt-4">
+                        <div class="d-flex justify-content-center px-4 gap-4 mt-4">
                             <input type="radio" class="btn-check transport-mode" name="transport-mode"
                                 id="option-driving" value="default" checked>
-                            <label class="btn btn-light" for="option-driving"><i class="fa-solid fa-car"></i></label>
+                            <label class="btn btn-outline-light flex-grow-1" for="option-driving"><i class="fa-solid fa-car transport-icon"></i></label>
 
                             <input type="radio" class="btn-check transport-mode" name="transport-mode"
                                 id="option-transit" value="transit">
-                            <label class="btn btn-light" for="option-transit"><i
-                                    class="fa-solid fa-train-subway"></i></label>
+                            <label class="btn btn-outline-light flex-grow-1" for="option-transit"><i
+                                    class="fa-solid fa-train-subway transport-icon"></i></label>
 
                             <input type="radio" class="btn-check transport-mode" name="transport-mode"
                                 id="option-walking" value="walking">
-                            <label class="btn btn-light" for="option-walking"><i
-                                    class="fa-solid fa-person-walking"></i></label>
+                            <label class="btn btn-outline-light flex-grow-1" for="option-walking"><i
+                                    class="fa-solid fa-person-walking transport-icon"></i></label>
 
                             <input type="radio" class="btn-check transport-mode" name="transport-mode"
                                 id="option-cycling" value="bicycling">
-                            <label class="btn btn-light" for="option-cycling"><i
-                                    class="fa-solid fa-bicycle"></i></label>
+                            <label class="btn btn-outline-light flex-grow-1" for="option-cycling"><i
+                                    class="fa-solid fa-bicycle transport-icon"></i></label>
                         </div>
                         <!-- Form to display start and end points (Note: Read-only fields) -->
                         <div class="container">
@@ -146,8 +146,8 @@
                             </div>
 
                             <div class="mt-3">
-                                <label class="form-label">End:</label>
-                                <input type="text" id="endPoint" class="form-control" placeholder="Choose an end point"
+                                <label class="form-label">Destination:</label>
+                                <input type="text" id="endPoint" class="form-control" placeholder="Choose a destination"
                                     readonly>
                                 <span id="error-end" class="form-error-message"></span>
                             </div>

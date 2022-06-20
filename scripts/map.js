@@ -107,7 +107,7 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
     // Check if End point has been selected
     let errorEnd = document.querySelector('#error-end');
     if (END_COORDINATES == null) {
-        errorEnd.innerHTML = 'Please select an end point';
+        errorEnd.innerHTML = 'Please select a destination';
         routeError = true;
     }
     else {

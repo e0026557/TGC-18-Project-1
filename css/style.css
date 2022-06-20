@@ -47,12 +47,31 @@ body {
     border-color: #f29765;
 }
 
+.btn-outline-light {
+    color: #8e8e8e;
+    background-color: #ededed;
+    border-color: #d5d5d5;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-outline-light:hover,
+.btn-check:checked + .btn-outline-light {
+    color: white;
+    background-color: #f9cbb2;
+}
+
 .btn-light,
 .btn-light:focus {
     background-color: rgba(237, 237, 237, 0.6);
     border: 1px solid rgb(255, 255, 255);
 }
 
+.btn:focus,
+.btn-check:focus+.btn,
 .btn-orange:focus,
 .btn-orange:active:focus,
 .btn-light:focus,
@@ -333,6 +352,10 @@ body {
 .tab--navigation {
     height: 100%;
     background-color: #fceae0;
+}
+
+.transport-icon {
+    font-size: 18px;
 }
 
 #startPoint:focus,
