@@ -325,6 +325,10 @@ body {
     box-shadow: none;
 }
 
+.content--result {
+    padding-top: 1rem;
+}
+
 /* --- Navigation --- */
 .tab--navigation {
     height: 100%;
