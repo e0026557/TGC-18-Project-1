@@ -331,6 +331,12 @@ body {
     background-color: #fceae0;
 }
 
+#startPoint:focus,
+#endPoint:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
 /* --- Console drawer toggle button --- */
 #btnToggleConsoleDrawer {
     display: flex;
