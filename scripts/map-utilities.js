@@ -332,6 +332,10 @@ async function displayWeatherResult(latlng) {
             weatherHeader.innerHTML = '2-Hour Forecast';
         }
 
+        // Create div element to store img and description
+        let infoDiv = document.createElement('div');
+        infoDiv.classList.add('content--weather-info');
+
         // Create img element
         let weatherIcon = document.createElement('img');
         weatherIcon.src = `../assets/weather-icons/${weather.iconCode}.png`;
@@ -343,9 +347,11 @@ async function displayWeatherResult(latlng) {
         weatherDescription.innerHTML = weather.description[0].toUpperCase() + weather.description.slice(1);
 
         // Set up weather information div
+        infoDiv.appendChild(weatherIcon);
+        infoDiv.appendChild(weatherDescription);
+
         weatherDiv.appendChild(weatherHeader);
-        weatherDiv.appendChild(weatherIcon);
-        weatherDiv.appendChild(weatherDescription);
+        weatherDiv.appendChild(infoDiv);
 
         // Append weather information div to div .container--content
         divContainerContent.appendChild(weatherDiv);

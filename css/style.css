@@ -186,7 +186,7 @@ body {
     transition: height 0.3s;
 }
 
-/* Tab Button */
+/* --- Tab Button --- */
 .nav-link {
     color: #6e7587;
 }
@@ -201,7 +201,7 @@ body {
     background-color: #fceae0;
 }
 
-/* Tab Content */
+/* --- Tab Content --- */
 .tab-content {
     height: 100%;
     background-color: #fceae0;
@@ -214,7 +214,7 @@ body {
 
 }
 
-/* Museum Content */
+/* --- Museum Content --- */
 .content--img {
     width: 100%;
     height: 230px;
@@ -257,7 +257,28 @@ body {
     font-size: 14px;
 }
 
-/* Console drawer toggle button */
+/* --- Weather Content --- */
+.content--weather {
+    padding-bottom: 1rem;
+}
+
+.content--weather-header {
+    font-size: 24px;
+}
+
+.content--weather-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    background-color: #fbe0d1;
+    border-radius: 10px;
+}
+
+/* --- Nearby Content --- */
+
+
+/* --- Console drawer toggle button --- */
 #btnToggleConsoleDrawer {
     display: flex;
     justify-content: center;
@@ -269,6 +290,7 @@ body {
     font-size: 10px;
 }
 
+/* --- Autocomplete --- */
 /* Autocomplete display box */
 #autocomplete-box {
     /* background-color: aliceblue; */
@@ -313,6 +335,7 @@ body {
     width: 100vw;
 }
 
+/* --- Map Marker --- */
 /* Marker popup */
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
