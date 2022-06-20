@@ -268,7 +268,7 @@ body {
 
 .content--container-button {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     padding-left: 0.25rem;
     padding-bottom: 1rem;
 }
