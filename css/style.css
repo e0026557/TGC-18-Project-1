@@ -50,6 +50,31 @@ body {
     background-color: #e6e6e6;
 }
 
+/* --- Scrollbar --- */
+/* Scrollbar width */
+#autocomplete-box::-webkit-scrollbar,
+.tab-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Scrollbar Track */
+#autocomplete-box::-webkit-scrollbar-track,
+.tab-content::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Scrollbar Handle */
+#autocomplete-box::-webkit-scrollbar-thumb,
+.tab-content::-webkit-scrollbar-thumb {
+    background: rgba(242, 151, 101, 0.5);
+    border-radius: 10px;
+}
+
+#autocomplete-box::-webkit-scrollbar-thumb:hover,
+.tab-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(242, 151, 101, 0.65);
+}
+
 /* *** MOBILE SETTINGS (BELOW 768PX) *** */
 /* --- Main --- */
 .container-main {
@@ -183,29 +208,53 @@ body {
     overflow-y: scroll;
 }
 
-/* --- Tab Content Scrollbar --- */
-/* Scrollbar width */
-#autocomplete-box::-webkit-scrollbar,
-.tab-content::-webkit-scrollbar {
-    width: 10px;
+/* Note: Bootstrap's padding classes will overwrite the padding declared here -> No need to worry about 'No results' message */
+.container--content {
+    padding: 10px 8px 0 8px;
+
 }
 
-/* Scrollbar Track */
-#autocomplete-box::-webkit-scrollbar-track,
-.tab-content::-webkit-scrollbar-track {
-    border-radius: 10px;
+/* Museum Content */
+.content--img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
 }
 
-/* Scrollbar Handle */
-#autocomplete-box::-webkit-scrollbar-thumb,
-.tab-content::-webkit-scrollbar-thumb {
-    background: rgba(242, 151, 101, 0.5);
-    border-radius: 10px;
+.content--name {
+    font-size: 24px;
+    padding-top: 10px;
 }
 
-#autocomplete-box::-webkit-scrollbar-thumb:hover,
-.tab-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(242, 151, 101, 0.65);
+.content--address {
+    font-size: 12px;
+    margin: 0;
+    padding-left: 0.5rem;
+    padding-bottom: 0.7rem;
+}
+
+.content--container-button {
+    display: flex;
+    gap: 10px;
+    padding-left: 0.25rem;
+    padding-bottom: 1rem;
+}
+
+.content--btn {
+    font-size: 12px;
+    width: 125px;
+    color: white;
+    background-color: #f29765;
+    border-radius: 15px;
+}
+
+.content--btn:hover {
+    color: white;
+    background-color: #da885b;
+}
+
+.content--description {
+    font-size: 14px;
 }
 
 /* Console drawer toggle button */
