@@ -4,9 +4,10 @@
 
 Link to demo : [Museums@SG](https://sg-museums.netlify.app/)
 
-Recent growing interest in the arts and culture of Singapore among young Singaporeans has seen events such as the Singapore Arts Week (SAW) and unique exhibitions like the *"Marvel Studios : 10 Years of Heroes"* sprung up over the years. 
+## Summary
+Museums@SG is a web application with an interactive map feature that allows users to explore the various museums dotted around Singapore.
 
-Museums@SG aims to ride on this trend to promote awareness of Singapore's arts and culture among Singaporeans, especially the younger generations. While the Singapore Art Museum and the Singapore Art Science Museum are few of the well-known and most frequented museums, little is known about the other 50+ museums dotted around Singapore.
+In line with efforts by the National Arts Council (NAC) to promote art consumption and museums, Museums@SG aims to promote awareness of Singapore's arts and cultures among Singaporeans, especially the younger generations.
 
  In a quick glance, Museums@SG provides essential information about all the museums in Singapore, with features such as weather forecast, nearby dining and transport, as well as navigation for those art-lovers and 'museum-hoppers' out there.
 
@@ -19,12 +20,12 @@ Link to user persona study can be found [here](https://miro.com/app/board/uXjVOv
 
 ### User Goals
 
-The users of Museums@SG are mostly students and young adults who have an interest for the arts. The aim of users is to be able to access information about all the museums in Singapore with ease. Additionally, users would also want to get informed advisory on the directions, nearby amenities and weather conditions around the museum locations. 
+The users of Museums@SG are mostly students and young adults with an interest for the arts. The aim of users is to be able to access information about all the museums in Singapore with ease. Additionally, users would also want to get informed advisory on the directions, nearby amenities and weather conditions around the museum locations. 
 
 
 ### Organisational Goals
 
-Organisations such as the National Arts Council (NAC) aim to promote awareness for the arts and culture in Singapore and would want a platform that can provide information about all the museums in Singapore and encourage participation in arts events. 
+Organisations such as the National Arts Council (NAC) aim to promote awareness for the arts and culture in Singapore and would want a platform that can provide information about all the museums in Singapore and encourage participation in arts and museum events. 
 
 
 ### Structure and Skeleton
