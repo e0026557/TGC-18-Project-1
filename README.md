@@ -16,7 +16,7 @@ In line with efforts by the National Arts Council (NAC) to promote art consumpti
 
 ## UI/UX
 
-Link to user persona study can be found [here](https://miro.com/app/board/uXjVOvARG74=/?share_link_id=463975420245).
+Link to user persona study can be found [here](assets/user-personas/user-persona-study.pdf).
 
 ### User Goals
 
