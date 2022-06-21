@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon2.ico">
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,14 +44,18 @@
         <!-- Search bar console -->
         <div class="container-console">
             <div class="console--search-bar">
+                <!-- Logo button -->
                 <button class="btn btn-sm btn-logo btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
                     aria-controls="offcanvas">
-                    <img class="logo-img" src="assets/logo/logo-icon3.png" alt="Logo of Museums@SG">
+                    <img class="logo-img" src="assets/logo/logo-icon.png" alt="Logo of Museums@SG">
                 </button>
+                <!-- Search input -->
                 <input type="text" id="txtSearch" placeholder="Search Museum@SG">
+                <!-- Search button -->
                 <button id="btnSearch" class="btn btn-sm btn-light">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
+                <!-- Navigation button -->
                 <button id="btnNavigation" class="btn btn-sm btn-light">
                     <i class="fa-solid fa-diamond-turn-right"></i>
                 </button>
@@ -115,11 +119,12 @@
 
                     <!-- Display: Navigation (Hidden by default) -->
                     <div class="tab tab--navigation invisible">
-                        <!-- Radio selection for transport type -->
+                        <!-- Radio selection for transport mode -->
                         <div class="d-flex justify-content-center px-4 gap-4 mt-4">
                             <input type="radio" class="btn-check transport-mode" name="transport-mode"
                                 id="option-driving" value="default" checked>
-                            <label class="btn btn-outline-light flex-grow-1" for="option-driving"><i class="fa-solid fa-car transport-icon"></i></label>
+                            <label class="btn btn-outline-light flex-grow-1" for="option-driving"><i
+                                    class="fa-solid fa-car transport-icon"></i></label>
 
                             <input type="radio" class="btn-check transport-mode" name="transport-mode"
                                 id="option-transit" value="transit">
@@ -175,12 +180,12 @@
 
         <!-- Map Buttons -->
         <div class="container-map-button">
-            <!-- Location icon -->
+            <!-- Location button -->
             <button id="icon-location" class="btn btn-map--location">
                 <i class="fa-solid fa-location-crosshairs"></i>
             </button>
 
-            <!-- Help icon -->
+            <!-- Help button -->
             <button id="icon-help" class="btn btn-map--help">
                 <i class="fa-solid fa-question"></i>
             </button>
@@ -216,7 +221,7 @@
             </div>
         </div>
 
-        <!-- Offcanvas Body for About-us -->
+        <!-- Offcanvas Body for About-us section -->
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvas"
             aria-labelledby="offcanvasLabel">
             <div class="offcanvas-header">
@@ -226,9 +231,9 @@
             </div>
             <div class="offcanvas-body">
                 <div class="w-100 d-flex justify-content-center">
-                    <img class="logo-img" src="assets/logo/logo-icon3.png" alt="Logo of Museums@SG">
+                    <img class="logo-img" src="assets/logo/logo-icon.png" alt="Logo of Museums@SG">
                 </div>
-                <p>Museums@SG is a web application designed for art-lovers and 'museum-hoppers' to navigate around and
+                <p>Museums@SG is a map-based web application designed for art-lovers and 'museum-hoppers' to navigate around and
                     learn more about the various museums dotted around Singapore.</p>
             </div>
         </div>
@@ -263,7 +268,6 @@
     <script src="scripts/misc-utilities.js"></script>
     <script src="scripts/map-utilities.js"></script>
     <script src="scripts/map.js"></script>
-    <script src="scripts/script.js"></script>
 </body>
 
 </html>
