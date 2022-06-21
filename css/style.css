@@ -48,10 +48,11 @@ body {
 }
 
 .btn-outline-light {
+    height: 40px;
     color: #8e8e8e;
     background-color: #ededed;
     border-color: #d5d5d5;
-    height: 40px;
+    border-radius: 5px;
 
     display: flex;
     justify-content: center;
@@ -60,7 +61,8 @@ body {
 
 .btn-outline-light:hover,
 .btn-check:checked + .btn-outline-light {
-    color: white;
+    /* color: white; */
+    color: #404247;
     background-color: #f9cbb2;
 }
 
