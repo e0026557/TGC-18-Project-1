@@ -171,6 +171,7 @@ document.querySelector('#icon-close').addEventListener('click', function() {
 // Validation for help form
 document.querySelector('#btnHelpSubmit').addEventListener('click', function() {
     // Set up flags
+    // (Note: The flag variables are currently not used but will be useful for future implementations of validation rules)
     let invalidName = false;
     let invalidEmail = false;
     let invalidDescription = false;
