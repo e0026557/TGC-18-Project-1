@@ -138,3 +138,6 @@ The website is hosted using [Netlify](https://www.netlify.com/), deployed direct
 
 3. [Tourism Information & Services Hub (TIH) Experiential Route API](https://tih-dev.stb.gov.sg/map-api/apis/get/v1.1/experiential_route/%7Bmode%7D) 
     - Used to display navigation route between locations on map
+
+### Screenshot :
+1. [CreateMockup.com](https://www.createmockup.com/generate/) - Used to generate responsive website mockup for README file
