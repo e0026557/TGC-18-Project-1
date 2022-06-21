@@ -34,6 +34,19 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 [Wireframes](assets/wireframes/wireframes.pdf)
 
+
+### Design Decisions
+
+#### Color scheme
+
+![Screenshot of color scheme](assets/color-schemes/color-scheme.png)
+
+The color scheme chosen revolves around an orange-based primary color as it represents youthfulness, energy and inspires creativity. This was also used in the brand color as it fits the mood and feeling that the website aims to convey to users. 
+
+#### Fonts
+
+*Montserrat* is the font used in the website. It was chosen because the font is mainly used in posters and signs which fits the look that the website aims to achieve.
+
 ---
 
 ## Features
