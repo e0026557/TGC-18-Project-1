@@ -1,6 +1,6 @@
 # **Museums@SG**
 
-![Screenshots of Museums@SG's homepage](image.jpg)
+![Screenshots of Museums@SG's homepage](assets/screenshots/responsive-screenshots.png)
 
 Recent growing interest in the arts and culture of Singapore among young Singaporeans has seen events such as the Singapore Arts Week (SAW) and unique exhibitions like the *"Marvel Studios : 10 Years of Heroes"* sprung up over the years. 
 
