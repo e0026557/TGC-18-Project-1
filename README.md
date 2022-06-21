@@ -67,6 +67,8 @@ The website is hosted using [Netlify](https://www.netlify.com/), deployed direct
 ### Logo :
 1. [Adobe Express Logo Maker](https://www.adobe.com/express/create/logo) - Used to generate brand logo for website
 
+### Fonts :
+1. [Google Fonts](https://fonts.google.com/) - Used for fonts displayed in website 
 
 ### Icons :
 1. [Font Awesome](https://fontawesome.com/) - Used in tabs and buttons of website
@@ -75,8 +77,11 @@ The website is hosted using [Netlify](https://www.netlify.com/), deployed direct
 
 
 ### Data :
-1. [Data.gov.sg](https://data.gov.sg/) - Used to display museum information and photos on website
+1. [Data.gov.sg](https://data.gov.sg/) 
+    - The 'Museums' dataset by National Heritage Board was used to display museum information and photos on website
 
-2. [OpenWeather](https://openweathermap.org/) - Used to display weather information and icons on website
+2. [OpenWeather API](https://openweathermap.org/) 
+    - Used to display current weather, weather forecast and icons on website
 
-3. [Tourism Information & Services Hub (TIH)](https://tih-dev.stb.gov.sg/map-api/apis/get/v1.1/experiential_route/%7Bmode%7D) - Used to display navigation information between locations on map
+3. [Tourism Information & Services Hub (TIH) Experiential Route API](https://tih-dev.stb.gov.sg/map-api/apis/get/v1.1/experiential_route/%7Bmode%7D) 
+    - Used to display navigation route between locations on map
