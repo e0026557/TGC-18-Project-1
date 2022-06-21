@@ -94,28 +94,3 @@ async function getMuseums() {
     let response = await axios.get(MUSEUM_URL);
     return response.data;
 }
-
-// // --- Functions to test APIs ---
-// async function testNavigationAPI() {
-//     let data = await getNavigation('default', '1.3548,103.7763', '1.3387,103.7787');
-//     console.log(data);
-// };
-// // testNavigationAPI();
-
-// async function testWeatherAPI() {
-//     let data = await getWeather(1.3548,103.7763);
-//     console.log(data);
-// }
-// // testWeatherAPI();
-
-// async function testFoursquareAPI() {
-//     let data = await getNearby('1.3548,103.7763', 3000, 'bus');
-//     console.log(data);
-// }
-// // testFoursquareAPI();
-
-// async function testMuseum() {
-//     let data = await getMuseums();
-//     console.log(data);
-// }
-// // testMuseum();
