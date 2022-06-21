@@ -425,9 +425,6 @@ function displayNearbyForm(museum) {
         divCheckboxes.appendChild(div);
     }
 
-    // // Append checkbox div .form-section--checkbox to form div .content--form
-    // divForm.appendChild(divCheckboxes);
-
     // Create a div for select dropdown section of form
     let divSelect = document.createElement('div');
     divSelect.classList.add('form-section--select');
@@ -464,17 +461,12 @@ function displayNearbyForm(museum) {
 
     // Append select element to div .form-section--select
     divSelect.appendChild(selectElement);
-    // // Append div .form-section--select to form div .content--form
-    // divForm.appendChild(divSelect);
 
     // Create a div to inform user when there is no results found
     let divResults = document.createElement('div');
     divResults.classList.add('content--result');
     divResults.id = 'results-nearby';
     divContainerContent.appendChild(divResults); // append to div .container--content
-
-    // // Append form div to divSearchNearby
-    // divSearchNearby.appendChild(divForm);
 }
 
 // Function to display nearby amenities
