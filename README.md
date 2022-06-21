@@ -51,6 +51,34 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 ---
 
+## Limitations and Future Implementations
+
+- Design a more comprehensive search feature
+    - Current limitation : 
+        - The current search feature can only handle queries that match the museum names (case-insensitive) 
+    - Future implementation : 
+        - To provide a suggestion even if user's query has some typos and to allow for search based on tags or related keywords in addition to museum names
+
+- Incorporate museum websites and ticketing sites into website
+    - Current limitation :
+        - The website can only provide the address and description of the museums based on the museums dataset from Data.gov.sg
+    - Future implementation :
+        - To provide more information about the museums, future implementations can include providing links to the museum webpages as well as information relating to ticketing and operating hours.
+
+- Improve on the museum photos displayed on website
+    - Current limitation :
+        - The museum photos are currently extracted from the museum dataset from Data.gov.sg and hence, there are some differences in image quality
+    - Future implementation :
+        - To collate a set of photos for each museum and integrate these photos with the museum dataset from Data.gov.sg so that the photos displayed will be coherent
+
+- Provide turn-by-turn navigation instructions in addition to the current polyline route
+    - Current limitation :
+        - Due to time constraints, the current navigation feature is only able to display the polyline route between two specified locations on the map
+    - Future implementation :
+        - To add turn-by-turn navigation instructions to guide users from the specified starting point to destination
+
+---
+
 ## Technologies Used
 
 1. HTML
