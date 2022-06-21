@@ -30,7 +30,7 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 ### Structure and Skeleton
 
-[Sitemap](https://miro.com/app/board/uXjVOvH0src=/?share_link_id=918144273258)
+![Sitemap](assets/wireframes/sitemap.jpg)
 
 [Wireframes](assets/wireframes/wireframes.pdf)
 
