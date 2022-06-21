@@ -1,4 +1,5 @@
 // --- Miscellaneous Helper Functions ---
+
 // Function to extract key information from HTML description in museum geojson feature
 function getMuseumInfo(html) {
     // Create an element to store the HTML description for extraction
