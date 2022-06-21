@@ -234,12 +234,14 @@ body {
 .nav-tabs .nav-link.active {
     color: black;
     background-color: #fceae0;
+    background-color: #fef5f0;
 }
 
 /* --- Tab Content --- */
 .tab-content {
     height: 100%;
     background-color: #fceae0;
+    background-color: #fef5f0;
     overflow-y: scroll;
 }
 
@@ -357,6 +359,7 @@ body {
 .tab--navigation {
     height: 100%;
     background-color: #fceae0;
+    background-color: #fef5f0;
 }
 
 .transport-icon {
@@ -431,6 +434,7 @@ body {
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
     background-color: #fceae0;
+    background-color: #fef5f0;
 }
 
 .marker--header {
@@ -536,6 +540,7 @@ body {
     height: 500px;
     z-index: 314161;
     background-color: #fceae0;
+    background-color: #fef5f0;
 
     display: flex;
     flex-direction: column;
@@ -577,6 +582,7 @@ body {
     width: 421px;
     z-index: 314161;
     background-color: #fceae0;
+    background-color: #fef5f0;
 }
 
 .offcanvas .logo-img {
