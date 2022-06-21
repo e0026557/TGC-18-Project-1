@@ -23,7 +23,7 @@ changeMultipleButtonText(tabButtons);
 // Change search bar's placeholder text depending on screen width
 changePlaceholderText('txtSearch', 'Search Museums@SG', 'Search');
 
-
+// On window resize event :
 window.addEventListener('resize', function() {
     changePlaceholderText('txtSearch', 'Search Museums@SG', 'Search ...');
     changeMultipleButtonText(tabButtons);
