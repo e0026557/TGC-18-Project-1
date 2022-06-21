@@ -280,6 +280,7 @@ body {
     color: white;
     background-color: #f29765; 
     border-radius: 15px;
+    padding: 2px 10px;
 }
 
 .content--btn:hover {
@@ -455,7 +456,7 @@ body {
     color: white;
     background-color: #f29765;
     border-radius: 15px;
-    padding: 0 10px;
+    padding: 2px 10px;
 }
 
 .marker--btn:hover {
