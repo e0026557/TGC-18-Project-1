@@ -37,6 +37,18 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 ## Features
 
+| Features | Description |
+| ----------- | ----------- |
+| Search museum by name | This search feature allows users to search for a museum by its name. |
+| Autocomplete suggestion | This feature is designed to work with the search feature to provide a dropdown list of suggested museum names based on the user's current input in the search field and the list will update dynamically as the user types in his/her search query. |
+| Display museum information based on marker interaction | This feature allows user to interact with the map to explore the various museums dotted around Singapore. Clicking on any of the museum markers will trigger the expansion of the map console to display more information about the museum, as well as other features around the museum. |
+| Display weather information | This feature allows users to check the current weather and a 2-hour weather forecast at the museum's location to enable better planning of itineraries. |
+| Display nearby amenities around museum | This feature allows users to search for any amenities (Eg. Dining, parking and bus stops etc.) near the museum for better planning of itineraries. |
+| Navigation | This feature displays the polyline route between user-specified start and end locations on the map to help users get from one location to another |
+| Display user's current location | This feature allows users to locate themselves on the map and set their locations as start or end points for route navigation. |
+| Help form | This feature allows users to submit suggestions or requests for assistance. The form is designed with validation rules to prevent invalid inputs from being submitted. (Note: Due to the scope of the project, the form submission does not have a backend to handle the post request) |
+
+
 ---
 
 ## Technologies Used
