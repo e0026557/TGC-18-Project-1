@@ -63,3 +63,20 @@ The website is hosted using [Netlify](https://www.netlify.com/), deployed direct
 ---
 
 ## Credits and Acknowledgement
+
+### Logo :
+1. [Adobe Express Logo Maker](https://www.adobe.com/express/create/logo) - Used to generate brand logo for website
+
+
+### Icons :
+1. [Font Awesome](https://fontawesome.com/) - Used in tabs and buttons of website
+
+2. [Flaticon](https://www.flaticon.com/) - Used in map marker icons of website
+
+
+### Data :
+1. [Data.gov.sg](https://data.gov.sg/) - Used to display museum information and photos on website
+
+2. [OpenWeather](https://openweathermap.org/) - Used to display weather information and icons on website
+
+3. [Tourism Information & Services Hub (TIH)](https://tih-dev.stb.gov.sg/map-api/apis/get/v1.1/experiential_route/%7Bmode%7D) - Used to display navigation information between locations on map
