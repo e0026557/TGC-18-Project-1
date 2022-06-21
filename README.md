@@ -41,14 +41,26 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 ## Technologies Used
 
-- HTML
-- CSS
-- Bootstrap 5
-- JavaScript
-- Axios
-- LeafletJS
-- Leaflet.markercluster
-- Leaflet.encoded
+1. HTML
+
+2. CSS
+
+3. [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) 
+    - Used for buttons, tabs and offcanvas of website
+
+4. JavaScript
+
+5. [Axios](https://github.com/axios/axios)
+    - Used to fetch data from APIs used by website
+
+6. [LeafletJS](https://leafletjs.com/)
+    - Used to render interactive map used by website
+
+7. [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
+    - Used to cluster map markers on map
+
+8. [Leaflet.encoded](https://github.com/jieter/Leaflet.encoded)
+    - Used to render polyline route between locations on map
 
 ---
 
