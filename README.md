@@ -58,6 +58,8 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 ## Deployment
 
+The website is hosted using [Netlify](https://www.netlify.com/), deployed directly from the main branch of this Github repository.
+
 ---
 
 ## Credits and Acknowledgement
