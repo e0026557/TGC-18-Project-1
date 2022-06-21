@@ -11,7 +11,7 @@ function changePlaceholderText(elementId, longText, shortText) {
 // Function to change button text for mobile screen width and larger screen widths
 function changeButtonText(buttonId, longText, shortText) {
     let button = document.querySelector(`#${buttonId}`);
-    if (window.innerWidth < 300) {
+    if (window.innerWidth < 768) {
         button.innerHTML = shortText;
     }
     else {
