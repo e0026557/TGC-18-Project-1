@@ -45,7 +45,7 @@ The color scheme chosen revolves around an orange-based primary color as it repr
 
 #### Fonts
 
-*Montserrat* is the font used in the website. It was chosen because the font is mainly used in posters and signs which fits the look that the website aims to achieve.
+*Montserrat* is a font family that is mainly used in old posters and signs. It is chosen as the main font of the website as it fits the look that the website aims to achieve.
 
 ---
 
