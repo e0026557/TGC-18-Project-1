@@ -258,9 +258,10 @@ async function displayMuseumResult() {
     // Return a message if query does not match all museum names
     // -> Display same message for each tab of search console drawer
     if (!resultFound) {
-        divSearchResult.innerHTML = `No matches for "${actualQuery}" found.`;
-        document.querySelector('#searchWeather').innerHTML = `No matches for "${actualQuery}" found.`;
-        document.querySelector('#searchNearby').innerHTML = `No matches for "${actualQuery}" found.`;
+        let messageDiv = `<div class="container--content">No matches for "${actualQuery}" found.</div>`
+        divSearchResult.innerHTML = messageDiv;
+        document.querySelector('#searchWeather').innerHTML = messageDiv;
+        document.querySelector('#searchNearby').innerHTML = messageDiv;
     }
 
     // Make search result tab visible and hide all other tabs
