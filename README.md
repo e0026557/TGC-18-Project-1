@@ -54,8 +54,8 @@ The color scheme chosen revolves around an orange-based primary color as it repr
 | Features | Description |
 | ----------- | ----------- |
 | Search museum by name | This search feature allows users to search for a museum by its name. A simple algorithm is used to match the search query with the existing museum names in the dataset (case-insensitive). |
-| Autocomplete suggestion | This feature is designed to work with the search feature to provide a dropdown list of suggested museum names based on the user's current input in the search field, which updates dynamically as the user types his/her search query. It uses a simple algorithm that match the current search query string with the existing museum names in the dataset (case-insensitive). |
-| Display museum information based on marker interaction | This feature allows user to interact with the map to explore the various museums dotted around Singapore. Clicking on any of the museum markers will trigger the expansion of the map console to display more information about the museum, as well as other features around the museum. |
+| Autocomplete suggestion | This feature is designed to work with the search feature to provide a dropdown list of suggested museum names based on the user's current input in the search field, which updates dynamically as the user types his/her search query. It uses a simple algorithm that matches the current search query string with the existing museum names in the dataset (case-insensitive). |
+| Display museum information based on marker interaction | This feature allows user to interact with the map to explore the various museums dotted around Singapore. Clicking on any of the museum markers will trigger the expansion of the map console to display more information about the museum, as well as other features such as weather and nearby amenities around the museum. |
 | Display weather information | This feature allows users to check the current weather and a 2-hour weather forecast at the museum's location to aid in better planning of itineraries. |
 | Display nearby amenities around museum | This feature allows users to search for any amenities (Eg. Dining, parking and bus stops etc.) near the museum to aid in better planning of itineraries. |
 | Navigation | This feature displays the polyline route between user-specified start and end locations on the map to help users get from one location to another |
@@ -67,25 +67,25 @@ The color scheme chosen revolves around an orange-based primary color as it repr
 
 ## Limitations and Future Implementations
 
-- Design a more comprehensive search feature
+1. Design a more comprehensive search feature
     - Current limitation : 
         - The current search feature can only handle queries that match the museum names (case-insensitive) 
     - Future implementation : 
         - To provide a suggestion even if user's query has some typos and to allow for search based on tags or related keywords in addition to museum names
 
-- Incorporate museum websites and ticketing sites into website
+2. Incorporate museum websites and ticketing sites into website
     - Current limitation :
         - The website can only provide the address and description of the museums based on the museums dataset from Data.gov.sg
     - Future implementation :
         - To provide more information about the museums, future implementations can include providing links to the museum webpages as well as information relating to ticketing and operating hours.
 
-- Improve on the museum photos displayed on website
+3. Improve on the museum photos displayed on website
     - Current limitation :
         - The museum photos are currently extracted from the museum dataset from Data.gov.sg and hence, there are some differences in image quality
     - Future implementation :
         - To collate a set of photos for each museum and integrate these photos with the museum dataset from Data.gov.sg so that the photos displayed will be coherent
 
-- Provide turn-by-turn navigation instructions in addition to the current polyline route
+4. Provide turn-by-turn navigation instructions in addition to the current polyline route
     - Current limitation :
         - Due to time constraints, the current navigation feature is only able to display the polyline route between two specified locations on the map
     - Future implementation :
