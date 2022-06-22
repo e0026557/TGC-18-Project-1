@@ -117,7 +117,7 @@ document.querySelector('#btnGetRoute').addEventListener('click', async function(
 
     // Check that Start and End points are different (when start/end points have been selected)
     if (origin == destination && destination != null) {
-        errorEnd.innerHTML = 'Please select an end point that is different from start point';
+        errorEnd.innerHTML = 'Please select a destination that is different from start point';
         routeError = true;
     }
 
