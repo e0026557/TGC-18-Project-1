@@ -71,25 +71,25 @@ The color scheme chosen revolves around an orange-based primary color as it repr
     - Current limitation : 
         - The current search feature can only handle queries that match the museum names (case-insensitive) 
     - Future implementation : 
-        - To provide a suggestion even if user's query has some typos and to allow for search based on tags or related keywords in addition to museum names
+        - To provide a suggestion even if user's query has some typos and to allow users to search based on tags or related keywords in addition to museum names
 
 2. Incorporate museum websites and ticketing sites into website
     - Current limitation :
         - The website can only provide the address and description of the museums based on the museums dataset from Data.gov.sg
     - Future implementation :
-        - To provide more information about the museums, future implementations can include providing links to the museum webpages as well as information relating to ticketing and operating hours.
+        - To provide an even more comprehensive information about the museums, future implementations can include providing links to the museum webpages as well as displaying information relating to ticketing and operating hours. Also, current and upcoming events can also be displayed dynamically on the website to encourage particpation in these events.
 
 3. Improve on the museum photos displayed on website
     - Current limitation :
-        - The museum photos are currently extracted from the museum dataset from Data.gov.sg and hence, there are some differences in image quality
+        - The museum photos are currently extracted from the museum dataset from Data.gov.sg and hence, there are some differences in image quality among the museum images.
     - Future implementation :
-        - To collate a set of photos for each museum and integrate these photos with the museum dataset from Data.gov.sg so that the photos displayed will be coherent
+        - To collate a set of photos for each museum and integrate these photos with the museum dataset from Data.gov.sg so that the photos can be displayed in a reel and the image quality will be coherent.
 
 4. Provide turn-by-turn navigation instructions in addition to the current polyline route
     - Current limitation :
-        - Due to time constraints, the current navigation feature is only able to display the polyline route between two specified locations on the map
+        - Due to time constraint, the current navigation feature is only able to display the polyline route between two specified locations on the map. 
     - Future implementation :
-        - To add turn-by-turn navigation instructions to guide users from the specified starting point to destination
+        - To add turn-by-turn navigation instructions to guide users from the specified starting point to destination.
 
 ---
 
