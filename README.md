@@ -41,7 +41,7 @@ Organisations such as the National Arts Council (NAC) aim to promote awareness f
 
 ![Screenshot of color scheme](assets/color-schemes/color-scheme.png)
 
-The color scheme chosen revolves around an orange-based primary color as it represents youthfulness, energy and inspires creativity. This was also used in the brand color as it fits the mood and feeling that the website aims to convey to users. 
+The color scheme chosen revolves around an orange-based primary color as it represents youthfulness, energy and inspires creativity. This is also used as the brand color as it fits the mood and feeling that the website aims to convey to users. 
 
 #### Fonts
 
