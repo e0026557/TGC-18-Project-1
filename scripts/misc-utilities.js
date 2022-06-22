@@ -197,11 +197,13 @@ function isValidName(name) {
 
             // Alphabets are from (97-122), apostrophe (') is 39, and dash (-) is 45
             if ((ascii >= 97 && ascii <= 122) || ascii == 39 || ascii == 45) {
-                return true;
+                continue;
             }
             return false;
         }
     }
+
+    return true;
 
 }
 
