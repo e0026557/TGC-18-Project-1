@@ -7,7 +7,7 @@ Link to demo : [Museums@SG](https://sg-museums.netlify.app/)
 ## Summary
 Museums@SG is a web application with an interactive map feature that allows users to explore the various museums dotted around Singapore.
 
-In line with efforts by the National Arts Council (NAC) to promote art consumption and museums, Museums@SG aims to promote awareness of Singapore's arts and cultures among Singaporeans, especially the younger generations.
+In line with efforts by the National Arts Council (NAC) and other organisations to promote art consumption and museums, Museums@SG aims to promote awareness of Singapore's arts and cultures among Singaporeans, especially the younger generations.
 
  In a quick glance, Museums@SG provides essential information about all the museums in Singapore, with features such as weather forecast, nearby dining and transport, as well as navigation for those art-lovers and 'museum-hoppers' out there. These features save users time and effort needed to search each museum and related information one by one on the Internet.
 
