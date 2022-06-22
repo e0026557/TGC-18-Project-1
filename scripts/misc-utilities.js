@@ -185,6 +185,11 @@ function expandConsoleDrawer() {
 
 // Function for checking if name is valid for help form (assuming English context only)
 function isValidName(name) {
+    // If name is empty, return false
+    if (!name) {
+        return false;
+    }
+
     // Convert name to lowercase
     let nameWords = name.toLowerCase().split(' '); // Split by whitespaces
 
