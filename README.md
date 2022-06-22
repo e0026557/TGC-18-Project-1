@@ -20,7 +20,7 @@ Link to user persona study can be found [here](assets/user-personas/user-persona
 
 ### User Goals
 
-The users of Museums@SG are mostly students and young adults with an interest for the arts. The aim of users is to be able to access information about all the museums in Singapore with ease. Additionally, users would also want to get informed advisory on the directions, nearby amenities and weather conditions around the museum locations. 
+The users of Museums@SG are mostly students and young adults with an interest for the arts and cultures. The aim of users is to be able to access information about all the museums in Singapore with ease. Also, for the case where users do not know much about the museums in Singapore, they would want to be able to explore what museums are there in Singapore and find out more information about them. Additionally, users would also want to get informed advisory on the directions, nearby amenities and weather conditions around the museum locations to aid in planning their itineraries better. 
 
 
 ### Organisational Goals
