@@ -125,6 +125,7 @@ The color scheme chosen revolves around an orange-based primary color as it repr
 ## Deployment
 
 The website is hosted using [Netlify](https://www.netlify.com/), deployed directly from the main branch of this Github repository.
+For the detailed deployment steps, you can refer to the blog post on Netlify [here](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/).
 
 ---
 
